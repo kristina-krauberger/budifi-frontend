@@ -1,0 +1,28 @@
+/* .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgb(234, 251, 200);
+  padding: 20px;
+  gap: 20px;
+}
+
+.logo {
+  width: 50px;
+}
+
+button {
+  background-color: rgb(76, 133, 255);
+  color: white;
+}
+
+nav {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+  margin-right: 50px;
+} */
