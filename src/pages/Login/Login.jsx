@@ -1,7 +1,8 @@
 import { use, useState } from "react";
-import "./LoginDialog.css";
+import "../../App.css";
+import "./Login.css";
 
-export default function LoginDialog() {
+export default function Login() {
   // e.g. {
   //     email: "Ralf@",
   //     password: "1234",
@@ -18,7 +19,7 @@ export default function LoginDialog() {
   };
 
   return (
-    <div className="login-dialog">
+    <div className="login-dialog main-content bg-red-500">
       {/* onSubmit = Eventhandler --> führe Funktion "login" aus - Form kann weg, input reicht, dann muss im button onClick={login} rein */}
       {/* besser action als onSubmit nutzen - siehe react doku */}
       <form action={login}>

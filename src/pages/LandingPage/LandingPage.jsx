@@ -1,13 +1,14 @@
 import React from "react";
 import "./LandingPage.css";
+import "../../App.css"
 import hero1 from "../../assets/hero1.png";
 
 function LandingPage() {
   return (
-    <div className="main-hero">
+    <div className="main-content">
       <main className="flex items-center justify-between px-10 py-20">
         <div className="w-1/2 pr-10">
-          <h1 className="text-6xl font-extrabold text-gray-900 mb-4">
+          <h1 className="text-6xl font-extrabold text-mint-500 mb-4">
             Invest smart. Learn easy.
           </h1>
           <p className="mt-4 text-gray-600 text-lg leading-relaxed">

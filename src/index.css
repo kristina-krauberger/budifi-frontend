@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @source "../.flowbite-react/class-list.json";
+
+/* TODO: Dark Mode - for local preference, delete? */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind Themes */
+@theme {
+  --color-brand: oklch(0.72 0.11 178);
+}

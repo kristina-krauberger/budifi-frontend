@@ -1,12 +1,12 @@
-import "../../App.css";
 import React from "react";
+import "../../App.css";
 
-function Dashboard() {
+function Lessons() {
   return (
     <div className="main-content bg-red-500">
-      <h1>Dashboard</h1>
+      <h1>Lessons</h1>
     </div>
   );
 }
 
-export default Dashboard;
+export default Lessons;
