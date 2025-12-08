@@ -1,4 +1,4 @@
-import Course from "../../components/Course/Course";
+import CourseCard from "../../components/CourseCard/CourseCard";
 import data from "../../mockdata/course.json";
 import "../../App.css";
 import { useState } from "react";
