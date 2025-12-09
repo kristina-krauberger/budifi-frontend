@@ -1,29 +1,34 @@
 import "./App.css";
-import Footer from "./components/Footer/Footer.jsx";
-import Header from "./components/Header/Header.jsx";
-import NotFound from "./pages/NotFound/NotFound.jsx"
+import NotFound from "./pages/NotFound/NotFound.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
-import CoursesOverview from "./pages/CoursesOverview/CoursesOverview.jsx";
+import Course1 from "./pages/Course1/Course1.jsx";
+import Course2 from "./pages/Course2/Course2.jsx";
+import Course3 from "./pages/Course3/Course3.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
-import Test from "./components/Test/Test.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Lessons from "./pages/Lessons/Lessons.jsx";
 import Login from "./pages/Login/Login.jsx";
+import PublicLayout from "./layouts/PublicLayout";
+import PrivateLayout from "./layouts/PrivateLayout";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-        <Routes>
+    <div>
+      <Routes>
+        {/* Public layout */}
+        <Route element={<PublicLayout />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/datenschutz" element={<h1>Datenschutz TEST</h1>} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+
+        {/* Private layout */}
+        <Route element={<PrivateLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/courses" element={<CoursesOverview />} />
-          <Route path="/lessons" element={<Lessons />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<NotFound />} /> 
-        </Routes>
-      <Footer />
+          <Route path="/course1" element={<Course1 />} />
+          <Route path="/course2" element={<Course2 />} />
+          <Route path="/course3" element={<Course3 />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
