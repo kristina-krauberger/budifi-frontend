@@ -7,41 +7,10 @@ function Dashboard() {
     <div className="main-content">
       <h1>DEIN DASHBOARD</h1>
       <h2>Hallo [NAME], willkommen zurück!</h2>
-      <CourseCard title="INVESTIEREN" duration="30 Minuten" />
-      <div className="w-full bg-neutral-quaternary rounded-full">
-        <div className="w-full bg-neutral-quaternary rounded-full">
-          <div
-            className="bg-brand text-xs font-medium text-white text-center p-0.5 leading-none rounded-full h-4 flex items-center justify-center"
-            style={{ width: "45%" }}
-          >
-            {" "}
-            45%
-          </div>
-        </div>
-      </div>
-      <CourseCard title="SPAREN" duration="30 Minuten" />
-           <div className="w-full bg-neutral-quaternary rounded-full">
-        <div className="w-full bg-neutral-quaternary rounded-full">
-          <div
-            className="bg-brand text-xs font-medium text-white text-center p-0.5 leading-none rounded-full h-4 flex items-center justify-center"
-            style={{ width: "0%" }}
-          >
-            {" "}
-            0%
-          </div>
-        </div>
-      </div>
-      <CourseCard title="RENTE" duration="30 Minuten" />
-           <div className="w-full bg-neutral-quaternary rounded-full">
-        <div className="w-full bg-neutral-quaternary rounded-full">
-          <div
-            className="bg-brand text-xs font-medium text-white text-center p-0.5 leading-none rounded-full h-4 flex items-center justify-center"
-            style={{ width: "0%" }}
-          >
-            {" "}
-            0%
-          </div>
-        </div>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 max-w-4xl mx-auto mt-10">
+        <CourseCard to="/course1" title="INVESTIEREN" duration="30 Minuten" progress={45} />
+        <CourseCard to="/course2" title="SPAREN" duration="30 Minuten" progress={0}/>
+        <CourseCard to="/course3" title="RENTE" duration="30 Minuten" progress={0}/>
       </div>
     </div>
   );
