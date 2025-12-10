@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Login from "./pages/Login/Login.jsx";
 import PublicLayout from "./layouts/PublicLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
+import Datenschutz from "./pages/Datenschutz/Datenschutz.jsx";
+import Impressum from "./pages/Impressum/Impressum.jsx";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         {/* Public layout */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/impressum" element={<Impressum />} />
           <Route path="*" element={<NotFound />} />
         </Route>
 
