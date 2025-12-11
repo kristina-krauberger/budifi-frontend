@@ -1,9 +1,7 @@
 import "./App.css";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
-import Course1 from "./pages/Course1/Course1.jsx";
-import Course2 from "./pages/Course2/Course2.jsx";
-import Course3 from "./pages/Course3/Course3.jsx";
+import Course from "./pages/Course/Course.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Login from "./pages/Login/Login.jsx";
@@ -28,18 +26,29 @@ function App() {
         {/* Private layout */}
         <Route element={<PrivateLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/course1" element={<Course1 />} />
+          <Route path="/course/:id" element={<Course />} />
+
 
           {/* NESTED LESSON ROUTE */}
           <Route path="/course1/lesson1" element={<Lesson />}>
-            <Route path="intro" element={<div className="main-content">INTRO </div>}/>
-            <Route path="video" element={<div className="main-content">Video </div>}/>
-            <Route path="quiz" element={<div className="main-content">Quiz </div>}/>
-            <Route path="summary" element={<div className="main-content">Summary </div>}/>
+            <Route
+              path="intro"
+              element={<div className="main-content">INTRO </div>}
+            />
+            <Route
+              path="video"
+              element={<div className="main-content">Video </div>}
+            />
+            <Route
+              path="quiz"
+              element={<div className="main-content">Quiz </div>}
+            />
+            <Route
+              path="summary"
+              element={<div className="main-content">Summary </div>}
+            />
           </Route>
-          
-          <Route path="/course2" element={<Course2 />} />
-          <Route path="/course3" element={<Course3 />} />
+
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

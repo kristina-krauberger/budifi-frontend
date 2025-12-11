@@ -1,0 +1,97 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Investieren",
+      "description": "Lerne die Grundlagen des Investierens mit einfachen Micro-Learning-Lessons.",
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Warum Investieren?",
+          "duration": "10 Minuten",
+          "completed": true
+        },
+        {
+          "id": 2,
+          "title": "Was sind ETFs?",
+          "duration": "12 Minuten",
+          "completed": false
+        },
+        {
+          "id": 3,
+          "title": "Wie funktioniert der Zinseszins?",
+          "duration": "8 Minuten",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Sparen",
+      "description": "Lerne Spar-Methoden, Budgetierung und moderne Tools für deinen Alltag.",
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Warum Sparen wichtig ist",
+          "duration": "9 Minuten",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "title": "Notgroschen aufbauen",
+          "duration": "7 Minuten",
+          "completed": false
+        },
+        {
+          "id": 3,
+          "title": "Budgeting-Methoden",
+          "duration": "12 Minuten",
+          "completed": false
+        },
+        {
+          "id": 4,
+          "title": "Mehrkontenmodell",
+          "duration": "8 Minuten",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Rente",
+      "description": "Verstehe das Rentensystem und baue eine stabile Altersvorsorge auf.",
+      "lessons": [
+        {
+          "id": 1,
+          "title": "Wie funktioniert Rente?",
+          "duration": "10 Minuten",
+          "completed": false
+        },
+        {
+          "id": 2,
+          "title": "Gesetzliche vs. private Rente",
+          "duration": "11 Minuten",
+          "completed": false
+        },
+        {
+          "id": 3,
+          "title": "Riester & Rürup erklärt",
+          "duration": "9 Minuten",
+          "completed": false
+        },
+        {
+          "id": 4,
+          "title": "Was ist eine bAV?",
+          "duration": "12 Minuten",
+          "completed": false
+        },
+        {
+          "id": 5,
+          "title": "Deine Rentenstrategie",
+          "duration": "10 Minuten",
+          "completed": false
+        }
+      ]
+    }
+  ]
+}
