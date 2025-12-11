@@ -8,6 +8,7 @@ import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Login from "./pages/Login/Login.jsx";
 import PublicLayout from "./layouts/PublicLayout";
+import Lesson from "./pages/Lesson/Lesson";
 import PrivateLayout from "./layouts/PrivateLayout";
 import Datenschutz from "./pages/Datenschutz/Datenschutz.jsx";
 import Impressum from "./pages/Impressum/Impressum.jsx";
@@ -28,6 +29,15 @@ function App() {
         <Route element={<PrivateLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/course1" element={<Course1 />} />
+
+          {/* NESTED LESSON ROUTE */}
+          <Route path="/course1/lesson1" element={<Lesson />}>
+            <Route path="intro" element={<div className="main-content">INTRO </div>}/>
+            <Route path="video" element={<div className="main-content">Video </div>}/>
+            <Route path="quiz" element={<div className="main-content">Quiz </div>}/>
+            <Route path="summary" element={<div className="main-content">Summary </div>}/>
+          </Route>
+          
           <Route path="/course2" element={<Course2 />} />
           <Route path="/course3" element={<Course3 />} />
           <Route path="*" element={<NotFound />} />

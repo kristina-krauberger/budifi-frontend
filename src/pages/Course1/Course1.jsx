@@ -8,7 +8,7 @@ function Course1() {
         Dein Kurs: Investieren
       </h1>
       <LessonCard
-        to="/course1-lesson1"
+        to="/course1/lesson1"
         title="Titel"
         duration="10 Minuten"
         completed={true}
