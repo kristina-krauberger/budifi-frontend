@@ -26,11 +26,11 @@ function App() {
         {/* Private layout */}
         <Route element={<PrivateLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/course/:id" element={<Course />} />
+          <Route path="/course/:courseId" element={<Course />} />
 
 
           {/* NESTED LESSON ROUTE */}
-          <Route path="/course1/lesson1" element={<Lesson />}>
+          <Route path="/course/1/lesson1" element={<Lesson />}>
             <Route
               path="intro"
               element={<div className="main-content">INTRO </div>}
