@@ -30,7 +30,7 @@ function App() {
 
 
           {/* NESTED LESSON ROUTE */}
-          <Route path="/course/1/lesson1" element={<Lesson />}>
+          <Route path="/course/:courseId/lesson/:lessonId" element={<Lesson />}>
             <Route
               path="intro"
               element={<div className="main-content">INTRO </div>}

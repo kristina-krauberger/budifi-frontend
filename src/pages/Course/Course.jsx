@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LessonCard from "../../components/LessonCard/LessonCard";
 import { useParams } from "react-router";
 import coursesData from "./courses.mock.json";
+import { compile } from "tailwindcss";
 
 // TODO: delete all console.logs
 
@@ -12,7 +13,8 @@ function Course() {
   // State to store the selected course data
   const [course, setCourse] = useState(null);
 
-  console.log(courseId);
+  console.log(`courseId ${courseId}`);
+
   useEffect(() => {
     if (courseId) {
       console.log(coursesData);
@@ -28,48 +30,24 @@ function Course() {
     return null;
   }
 
+  const lessonCards = course.lessons.map((lesson) => (
+    <LessonCard
+      key={lesson.id}
+      to={`/course/${courseId}/lesson/${lesson.id}`}
+      title={lesson.title}
+      duration={lesson.duration}
+      isCompleted={lesson.isCompleted}
+      isLast={lesson.isLast}
+    />
+  ));
+
   return (
     <div className="main-content">
       <h1 className="mb-10 text-2xl font-semibold tracking-tight text-heading leading-8 text-left">
         {course.title}
       </h1>
 
-      {/* The link is built dynamically using the URL id */}
-      <LessonCard
-        to={`/course/${courseId}/lesson1`}
-        title="Titel"
-        duration="10 Minuten"
-        completed={true}
-        isLast={false}
-      />
-      <LessonCard
-        to="/course1-lesson2"
-        title="Titel"
-        duration="10 Minuten"
-        completed={false}
-        isLast={false}
-      />
-      <LessonCard
-        to="/course1-lesson3"
-        title="Titel"
-        duration="10 Minuten"
-        completed={false}
-        isLast={false}
-      />
-      <LessonCard
-        to="/course1-lesson4"
-        title="Titel"
-        duration="10 Minuten"
-        completed={false}
-        isLast={false}
-      />
-      <LessonCard
-        to="/course1-lesson5"
-        title="Titel"
-        duration="10 Minuten"
-        completed={false}
-        isLast={true}
-      />
+      {lessonCards}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import "./LessonCard.css";
 
-function LessonCard({ to, title, duration, completed, isLast }) {
+function LessonCard({ to, title, duration, isCompleted, isLast }) {
   return (
     <div className="flex items-stretch gap-6 w-full">
       {/* Left timeline column */}
@@ -28,7 +28,7 @@ function LessonCard({ to, title, duration, completed, isLast }) {
           {title}
         </h5>
         <p className="text-body text-left">Dauer: {duration}</p>
-        {completed && (
+        {isCompleted && (
           <div className="mt-4 text-green-600 font-light text-left">
             ✓ Completed
           </div>

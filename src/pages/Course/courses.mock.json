@@ -3,93 +3,105 @@
     {
       "id": 1,
       "title": "Investieren",
-      "description": "Lerne die Grundlagen des Investierens mit einfachen Micro-Learning-Lessons.",
+      "description": "Lerne die Grundlagen des Investierens.",
       "lessons": [
         {
           "id": 1,
-          "title": "Warum Investieren?",
+          "title": "Was ist Investieren?",
           "duration": "10 Minuten",
-          "completed": true
+          "isCompleted": false,
+          "isLast": false
         },
         {
           "id": 2,
-          "title": "Was sind ETFs?",
-          "duration": "12 Minuten",
-          "completed": false
+          "title": "Aktien und Anleihen",
+          "duration": "15 Minuten",
+          "isCompleted": false,
+          "isLast": false
         },
         {
           "id": 3,
-          "title": "Wie funktioniert der Zinseszins?",
-          "duration": "8 Minuten",
-          "completed": false
+          "title": "Investmentfonds",
+          "duration": "12 Minuten",
+          "isCompleted": false,
+          "isLast": false
+        },
+        {
+          "id": 4,
+          "title": "Risiken verstehen",
+          "duration": "20 Minuten",
+          "isCompleted": false,
+          "isLast": false
+        },
+        {
+          "id": 5,
+          "title": "Langfristige Strategien",
+          "duration": "18 Minuten",
+          "isCompleted": false,
+          "isLast": true
         }
       ]
     },
     {
       "id": 2,
       "title": "Sparen",
-      "description": "Lerne Spar-Methoden, Budgetierung und moderne Tools für deinen Alltag.",
+      "description": "Wie man effektiv spart.",
       "lessons": [
         {
           "id": 1,
-          "title": "Warum Sparen wichtig ist",
-          "duration": "9 Minuten",
-          "completed": false
+          "title": "Warum sparen?",
+          "duration": "8 Minuten",
+          "isCompleted": false,
+          "isLast": false
         },
         {
           "id": 2,
-          "title": "Notgroschen aufbauen",
-          "duration": "7 Minuten",
-          "completed": false
+          "title": "Sparmethoden",
+          "duration": "14 Minuten",
+          "isCompleted": false,
+          "isLast": false
         },
         {
           "id": 3,
-          "title": "Budgeting-Methoden",
-          "duration": "12 Minuten",
-          "completed": false
-        },
-        {
-          "id": 4,
-          "title": "Mehrkontenmodell",
-          "duration": "8 Minuten",
-          "completed": false
+          "title": "Budgetplanung",
+          "duration": "16 Minuten",
+          "isCompleted": false,
+          "isLast": true
         }
       ]
     },
     {
       "id": 3,
       "title": "Rente",
-      "description": "Verstehe das Rentensystem und baue eine stabile Altersvorsorge auf.",
+      "description": "Vorbereitung auf die Rente.",
       "lessons": [
         {
           "id": 1,
-          "title": "Wie funktioniert Rente?",
+          "title": "Rentenarten",
           "duration": "10 Minuten",
-          "completed": false
+          "isCompleted": false,
+          "isLast": false
         },
         {
           "id": 2,
-          "title": "Gesetzliche vs. private Rente",
-          "duration": "11 Minuten",
-          "completed": false
+          "title": "Private Vorsorge",
+          "duration": "15 Minuten",
+          "isCompleted": false,
+          "isLast": false
         },
         {
           "id": 3,
-          "title": "Riester & Rürup erklärt",
-          "duration": "9 Minuten",
-          "completed": false
+          "title": "Staatliche Unterstützung",
+          "duration": "12 Minuten",
+          "isCompleted": false,
+          "isLast": false
         },
         {
           "id": 4,
-          "title": "Was ist eine bAV?",
-          "duration": "12 Minuten",
-          "completed": false
-        },
-        {
-          "id": 5,
-          "title": "Deine Rentenstrategie",
-          "duration": "10 Minuten",
-          "completed": false
+          "title": "Planung und Tipps",
+          "duration": "20 Minuten",
+          "isCompleted": false,
+          "isLast": true
         }
       ]
     }
