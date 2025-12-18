@@ -23,21 +23,21 @@
           "id": 3,
           "title": "Investmentfonds",
           "duration": "12 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": false
         },
         {
           "id": 4,
           "title": "Risiken verstehen",
           "duration": "20 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": false
         },
         {
           "id": 5,
           "title": "Langfristige Strategien",
           "duration": "18 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": true
         }
       ]
@@ -51,14 +51,14 @@
           "id": 1,
           "title": "Warum sparen?",
           "duration": "8 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": false
         },
         {
           "id": 2,
           "title": "Sparmethoden",
           "duration": "14 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": false
         },
         {
@@ -79,14 +79,14 @@
           "id": 1,
           "title": "Rentenarten",
           "duration": "10 Minuten",
-          "isCompleted": true,
+          "isCompleted": false,
           "isLast": false
         },
         {
           "id": 2,
           "title": "Private Vorsorge",
           "duration": "15 Minuten",
-          "isCompleted": true,
+          "isCompleted": false,
           "isLast": false
         },
         {

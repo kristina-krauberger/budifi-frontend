@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import LessonCard from "../../components/LessonCard/LessonCard";
 import { useParams } from "react-router";
-import coursesData from "../../mockdata/courses.mock.json";
-
 
 // TODO: delete all console.logs
 
-function Course() {
+function Course({course, coursesData, setCourse}) {
   // Get the course id from URL parameter (e.g., /course/:id)
   const { courseId } = useParams();
-
-  // State to store the selected course data
-  const [course, setCourse] = useState(null);
 
   console.log(`courseId ${courseId}`);
 
   useEffect(() => {
     if (courseId) {
-      console.log(coursesData);
-
       // `id` comes from the URL as a string (e.g. "2"), so we convert it to a number
       // to safely use it as an index for our mock data array
       setCourse(coursesData.courses[parseInt(courseId) - 1]);
