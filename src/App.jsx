@@ -13,6 +13,10 @@ import Datenschutz from "./pages/Datenschutz/Datenschutz.jsx";
 import Impressum from "./pages/Impressum/Impressum.jsx";
 // Static mock data containing all courses and their lessons
 import coursesData from "./mockdata/courses.mock.json";
+import LessonIntro from "./components/LessonIntro/LessonIntro.jsx";
+import LessonVideo from "./components/LessonVideo/LessonVideo.jsx";
+import LessonQuiz from "./components/LessonQuiz/LessonQuiz.jsx";
+import LessonSummary from "./components/LessonSummary/LessonSummary.jsx";
 
 function App() {
   // Holds the currently selected course.
@@ -53,24 +57,24 @@ function App() {
             }
           />
 
-          {/* NESTED LESSON ROUTE */}
-          <Route path="/course/:courseId/lesson/:lessonId" element={<Lesson />}>
-            <Route
-              path="intro"
-              element={<div className="main-content">INTRO </div>}
-            />
-            <Route
-              path="video"
-              element={<div className="main-content">Video </div>}
-            />
-            <Route
-              path="quiz"
-              element={<div className="main-content">Quiz </div>}
-            />
-            <Route
-              path="summary"
-              element={<div className="main-content">Summary </div>}
-            />
+          {/* NESTED LESSON ROUTE
+          These routes define the internal flow of a lesson
+          (intro → video → quiz → summary).
+          The content is rendered inside the <Outlet /> of Lesson.jsx.*/}
+          <Route
+            path="/course/:courseId/lesson/:lessonId"
+            element={
+              <Lesson
+                course={course}
+                coursesData={coursesData}
+                setCourse={setCourse}
+              />
+            }
+          >
+            <Route path="intro" element={<LessonIntro />} />
+            <Route path="video" element={<LessonVideo />} />
+            <Route path="quiz" element={<LessonQuiz />} />
+            <Route path="summary" element={<LessonSummary />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
