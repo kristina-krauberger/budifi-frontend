@@ -11,10 +11,12 @@ import Lesson from "./pages/Lesson/Lesson";
 import PrivateLayout from "./layouts/PrivateLayout";
 import Datenschutz from "./pages/Datenschutz/Datenschutz.jsx";
 import Impressum from "./pages/Impressum/Impressum.jsx";
+// Static mock data containing all courses and their lessons
 import coursesData from "./mockdata/courses.mock.json";
 
 function App() {
-  // State to store course data
+  // Holds the currently selected course.
+  // Shared across Dashboard, Course and Lesson pages.
   const [course, setCourse] = useState(null);
 
   return (
@@ -30,7 +32,16 @@ function App() {
 
         {/* Private layout */}
         <Route element={<PrivateLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                course={course}
+                coursesData={coursesData}
+                setCourse={setCourse}
+              />
+            }
+          />
           <Route
             path="/course/:courseId"
             element={

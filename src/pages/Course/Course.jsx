@@ -2,9 +2,19 @@ import { useEffect } from "react";
 import LessonCard from "../../components/LessonCard/LessonCard";
 import { useParams } from "react-router";
 
+/**
+ * coursesData          = wrapper object from mock JSON
+ * coursesData.courses  = full list (array) of all courses
+ * course               = currently selected course (based on URL param)
+ *
+ * coursesData.courses is used to FIND a course
+ * course is used to RENDER lessons
+ */
+
+
 // TODO: delete all console.logs
 
-function Course({course, coursesData, setCourse}) {
+function Course({ course, coursesData, setCourse }) {
   // Get the course id from URL parameter (e.g., /course/:id)
   const { courseId } = useParams();
 

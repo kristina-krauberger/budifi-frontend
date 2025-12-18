@@ -1,16 +1,24 @@
 import "../../App.css";
-import React from "react";
 import CourseCard from "../../components/CourseCard/CourseCard";
 
-function Dashboard() {
+function Dashboard({ course, coursesData, setCourse }) {
+
+  const courseCard = coursesData.courses.map((course) => (
+    <CourseCard
+      to={`/course/${course.id}`}
+      key={course.id}
+      title={course.title}
+      lessons={course.lessons.length}
+      progress={45}
+    />
+  ));
+
   return (
     <div className="main-content">
       <h1>DEIN DASHBOARD</h1>
       <h2>Hallo [NAME], willkommen zurück!</h2>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 max-w-4xl mx-auto mt-10">
-        <CourseCard to="/course/1" title="INVESTIEREN" duration="30 Minuten" progress={45} />
-        <CourseCard to="/course/2" title="SPAREN" duration="30 Minuten" progress={0}/>
-        <CourseCard to="/course/3" title="RENTE" duration="30 Minuten" progress={0}/>
+        {courseCard}
       </div>
     </div>
   );
