@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import LessonCard from "../../components/LessonCard/LessonCard";
 import { useParams } from "react-router";
-import coursesData from "./courses.mock.json";
-import { compile } from "tailwindcss";
+import coursesData from "../../mockdata/courses.mock.json";
+
 
 // TODO: delete all console.logs
 
