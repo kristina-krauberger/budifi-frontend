@@ -9,14 +9,14 @@
           "id": 1,
           "title": "Was ist Investieren?",
           "duration": "10 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": false
         },
         {
           "id": 2,
           "title": "Aktien und Anleihen",
           "duration": "15 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": false
         },
         {
@@ -79,14 +79,14 @@
           "id": 1,
           "title": "Rentenarten",
           "duration": "10 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": false
         },
         {
           "id": 2,
           "title": "Private Vorsorge",
           "duration": "15 Minuten",
-          "isCompleted": false,
+          "isCompleted": true,
           "isLast": false
         },
         {
