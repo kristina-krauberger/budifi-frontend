@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import LessonCard from "../../components/LessonCard/LessonCard";
 import { useParams } from "react-router";
+import ButtonBack from "../../components/ButtonBack/ButtonBack";
 
 /**
  * coursesData          = wrapper object from mock JSON
@@ -30,10 +31,13 @@ function Course({ course, coursesData, setCourse }) {
   return (
     <>
       {course && (
-        <div className="main-content">
-          <h1 className="mb-10 text-2xl font-semibold tracking-tight text-heading leading-8 text-left">
-            {course.title}
-          </h1>
+        <div className="main-content text-left">
+          <div className="flex">
+            <ButtonBack />
+            <h1 className="mb-10 text-2xl font-semibold tracking-tight text-heading leading-8 text-left">
+              {course.title}{" "}
+            </h1>
+          </div>
           {course.lessons.map((lesson) => (
             <LessonCard
               key={lesson.id}

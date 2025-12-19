@@ -4,7 +4,7 @@ import "./LessonCard.css";
 
 function LessonCard({ to, title, duration, isCompleted, isLast }) {
   return (
-    <div className="flex items-stretch gap-6 w-full">
+    <div className="flex items-stretch ml-3 gap-6 w-full">
       {/* Timeline: circle + vertical line, last lesson shows only a final circle */}
       <div className="relative flex flex-col items-center">
         {!isLast ? (
@@ -13,7 +13,7 @@ function LessonCard({ to, title, duration, isCompleted, isLast }) {
             <div className="flex-1 w-[2px] bg-gray-300 mt-1"></div>
           </>
         ) : (
-          <div className="w-5 h-5 rounded-full border-2 border-gray-400 bg-neutral-100 mt-1"></div>
+          <div className="w-5 h-5 rounded-full border-2 border-gray-400 bg-neutral-100 mt-0.5"></div>
         )}
       </div>
 

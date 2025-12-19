@@ -3,6 +3,7 @@ import LessonNavbar from "../../components/LessonNavbar/LessonNavbar";
 import LessonFooter from "../../components/LessonFooter/LessonFooter";
 import { useEffect } from "react";
 import { Outlet, useParams } from "react-router";
+import ButtonBack from "../../components/ButtonBack/ButtonBack";
 
 function Lesson({ course, coursesData, setCourse }) {
   const { courseId} = useParams();
@@ -24,6 +25,7 @@ function Lesson({ course, coursesData, setCourse }) {
       (intro, video, quiz, or summary).*/}
       <Outlet context={{ course }} />
       <LessonFooter />
+      <ButtonBack />
     </div>
   );
 }

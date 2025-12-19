@@ -2,7 +2,7 @@
   "courses": [
     {
       "id": 1,
-      "title": "Investieren",
+      "title": "INVESTIEREN",
       "description": "Lerne die Grundlagen des Investierens.",
       "lessons": [
         {
@@ -120,7 +120,7 @@
     },
     {
       "id": 2,
-      "title": "Sparen",
+      "title": "SPAREN",
       "description": "Wie man effektiv spart.",
       "lessons": [
         {
@@ -190,7 +190,7 @@
     },
     {
       "id": 3,
-      "title": "Rente",
+      "title": "RENTE",
       "description": "Vorbereitung auf die Rente.",
       "lessons": [
         {
