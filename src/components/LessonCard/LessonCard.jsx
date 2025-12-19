@@ -25,7 +25,7 @@ function LessonCard({ to, title, duration, isCompleted, isLast }) {
         <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8 text-left">
           {title}
         </h5>
-        <p className="text-body text-left italic">Dauer: {duration}</p>
+        <p className="text-body text-left italic">Dauer: {duration} Minuten</p>
         {isCompleted ? (
           <div className="mt-4 text-green-600 font-light text-left">
             ✓ Abgeschlossen 100%

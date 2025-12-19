@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 
-function LessonQuiz() {
+function LessonQuiz({course, coursesData, setCourse}) {
   return <div className="main-content">LessonQuiz</div>;
 }
 

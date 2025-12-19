@@ -8,37 +8,113 @@
         {
           "id": 1,
           "title": "Was ist Investieren?",
-          "duration": "10 Minuten",
+          "duration": 10,
           "isCompleted": true,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Einführung in das Thema Investieren."
+          },
+          "video": {
+            "url": "https://example.com/video-investieren-1"
+          },
+          "quiz": [{
+            "question": "Was bedeutet investieren?",
+            "options": ["Geld ausgeben", "Geld anlegen", "Geld sparen"],
+            "correctAnswer": 1
+          },
+          {
+            "question": "Was bedeutet investieren?",
+            "options": ["Geld ausgeben", "Geld anlegen", "Geld sparen"],
+            "correctAnswer": 1
+          }
+          ],
+          "summary": {
+            "text": "Investieren bedeutet, Geld gezielt anzulegen, um langfristig Vermögen aufzubauen."
+          }
         },
         {
           "id": 2,
           "title": "Aktien und Anleihen",
-          "duration": "15 Minuten",
+          "duration": 15,
           "isCompleted": true,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Überblick über Aktien und Anleihen."
+          },
+          "video": {
+            "url": "https://example.com/video-investieren-2"
+          },
+          "quiz": {
+            "question": "Was ist eine Aktie?",
+            "options": ["Ein Kredit", "Ein Unternehmensanteil", "Eine Versicherung"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Aktien und Anleihen sind unterschiedliche Anlageformen mit verschiedenen Risiken."
+          }
         },
         {
           "id": 3,
           "title": "Investmentfonds",
-          "duration": "12 Minuten",
+          "duration": 12,
           "isCompleted": true,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Was sind Investmentfonds?"
+          },
+          "video": {
+            "url": "https://example.com/video-investieren-3"
+          },
+          "quiz": {
+            "question": "Was macht ein Fonds?",
+            "options": ["Er spart Geld", "Er bündelt Anlagen", "Er vergibt Kredite"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Investmentfonds bündeln viele Anlagen und streuen Risiken."
+          }
         },
         {
           "id": 4,
           "title": "Risiken verstehen",
-          "duration": "20 Minuten",
+          "duration": 20,
           "isCompleted": true,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Risiken beim Investieren erkennen."
+          },
+          "video": {
+            "url": "https://example.com/video-investieren-4"
+          },
+          "quiz": {
+            "question": "Was ist ein Risiko?",
+            "options": ["Garantie", "Unsicherheit", "Gewinn"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Risiken gehören zum Investieren und sollten bewusst gesteuert werden."
+          }
         },
         {
           "id": 5,
           "title": "Langfristige Strategien",
-          "duration": "18 Minuten",
+          "duration": 18,
           "isCompleted": true,
-          "isLast": true
+          "isLast": true,
+          "intro": {
+            "text": "Warum langfristiges Denken wichtig ist."
+          },
+          "video": {
+            "url": "https://example.com/video-investieren-5"
+          },
+          "quiz": {
+            "question": "Was bedeutet langfristig investieren?",
+            "options": ["Schnell verkaufen", "Geduldig bleiben", "Alles riskieren"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Langfristige Strategien helfen, Marktschwankungen auszugleichen."
+          }
         }
       ]
     },
@@ -50,23 +126,65 @@
         {
           "id": 1,
           "title": "Warum sparen?",
-          "duration": "8 Minuten",
+          "duration": 8,
           "isCompleted": true,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Warum Sparen wichtig ist."
+          },
+          "video": {
+            "url": "https://example.com/video-sparen-1"
+          },
+          "quiz": {
+            "question": "Warum sollte man sparen?",
+            "options": ["Für Sicherheit", "Für Schulden", "Für Stress"],
+            "correctAnswer": 0
+          },
+          "summary": {
+            "text": "Sparen schafft finanzielle Sicherheit."
+          }
         },
         {
           "id": 2,
           "title": "Sparmethoden",
-          "duration": "14 Minuten",
+          "duration": 14,
           "isCompleted": true,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Verschiedene Sparmethoden im Überblick."
+          },
+          "video": {
+            "url": "https://example.com/video-sparen-2"
+          },
+          "quiz": {
+            "question": "Was ist eine Sparmethode?",
+            "options": ["Planlos ausgeben", "Gezielt zurücklegen", "Alles investieren"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Sparmethoden helfen, regelmäßig Geld beiseitezulegen."
+          }
         },
         {
           "id": 3,
           "title": "Budgetplanung",
-          "duration": "16 Minuten",
+          "duration": 16,
           "isCompleted": false,
-          "isLast": true
+          "isLast": true,
+          "intro": {
+            "text": "Grundlagen der Budgetplanung."
+          },
+          "video": {
+            "url": "https://example.com/video-sparen-3"
+          },
+          "quiz": {
+            "question": "Was ist ein Budget?",
+            "options": ["Ein Wunsch", "Ein Plan", "Ein Kredit"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Ein Budget hilft, Einnahmen und Ausgaben im Blick zu behalten."
+          }
         }
       ]
     },
@@ -78,30 +196,86 @@
         {
           "id": 1,
           "title": "Rentenarten",
-          "duration": "10 Minuten",
+          "duration": 10,
           "isCompleted": false,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Überblick über verschiedene Rentenarten."
+          },
+          "video": {
+            "url": "https://example.com/video-rente-1"
+          },
+          "quiz": {
+            "question": "Welche Rentenarten gibt es?",
+            "options": ["Nur staatlich", "Staatlich und privat", "Keine"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Es gibt verschiedene Rentenarten mit unterschiedlichen Vorteilen."
+          }
         },
         {
           "id": 2,
           "title": "Private Vorsorge",
-          "duration": "15 Minuten",
+          "duration": 15,
           "isCompleted": false,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Warum private Vorsorge wichtig ist."
+          },
+          "video": {
+            "url": "https://example.com/video-rente-2"
+          },
+          "quiz": {
+            "question": "Warum privat vorsorgen?",
+            "options": ["Spaß", "Zusatzsicherheit", "Zufall"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Private Vorsorge ergänzt die gesetzliche Rente."
+          }
         },
         {
           "id": 3,
           "title": "Staatliche Unterstützung",
-          "duration": "12 Minuten",
+          "duration": 12,
           "isCompleted": false,
-          "isLast": false
+          "isLast": false,
+          "intro": {
+            "text": "Welche staatlichen Hilfen es gibt."
+          },
+          "video": {
+            "url": "https://example.com/video-rente-3"
+          },
+          "quiz": {
+            "question": "Was ist staatliche Unterstützung?",
+            "options": ["Geschenk", "Förderung", "Schulden"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Der Staat unterstützt die Altersvorsorge durch Förderungen."
+          }
         },
         {
           "id": 4,
           "title": "Planung und Tipps",
-          "duration": "20 Minuten",
+          "duration": 20,
           "isCompleted": false,
-          "isLast": true
+          "isLast": true,
+          "intro": {
+            "text": "Tipps für die langfristige Rentenplanung."
+          },
+          "video": {
+            "url": "https://example.com/video-rente-4"
+          },
+          "quiz": {
+            "question": "Warum früh planen?",
+            "options": ["Zwang", "Zeitvorteil", "Pflicht"],
+            "correctAnswer": 1
+          },
+          "summary": {
+            "text": "Frühe Planung erhöht die finanzielle Sicherheit im Alter."
+          }
         }
       ]
     }

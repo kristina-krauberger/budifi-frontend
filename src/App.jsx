@@ -9,8 +9,8 @@ import Login from "./pages/Login/Login.jsx";
 import PublicLayout from "./layouts/PublicLayout";
 import Lesson from "./pages/Lesson/Lesson";
 import PrivateLayout from "./layouts/PrivateLayout";
-import Datenschutz from "./pages/Datenschutz/Datenschutz.jsx";
-import Impressum from "./pages/Impressum/Impressum.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
+import Imprint from "./pages/Imprint/Imprint.jsx";
 // Static mock data containing all courses and their lessons
 import coursesData from "./mockdata/courses.mock.json";
 import LessonIntro from "./components/LessonIntro/LessonIntro.jsx";
@@ -29,8 +29,8 @@ function App() {
         {/* Public layout */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />
-          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<PrivacyPolicy />} />
+          <Route path="/impressum" element={<Imprint />} />
           <Route path="*" element={<NotFound />} />
         </Route>
 
@@ -71,10 +71,46 @@ function App() {
               />
             }
           >
-            <Route path="intro" element={<LessonIntro />} />
-            <Route path="video" element={<LessonVideo />} />
-            <Route path="quiz" element={<LessonQuiz />} />
-            <Route path="summary" element={<LessonSummary />} />
+            <Route
+              path="intro"
+              element={
+                <LessonIntro
+                  course={course}
+                  coursesData={coursesData}
+                  setCourse={setCourse}
+                />
+              }
+            />
+            <Route
+              path="video"
+              element={
+                <LessonVideo
+                  course={course}
+                  coursesData={coursesData}
+                  setCourse={setCourse}
+                />
+              }
+            />
+            <Route
+              path="quiz"
+              element={
+                <LessonQuiz
+                  course={course}
+                  coursesData={coursesData}
+                  setCourse={setCourse}
+                />
+              }
+            />
+            <Route
+              path="summary"
+              element={
+                <LessonSummary
+                  course={course}
+                  coursesData={coursesData}
+                  setCourse={setCourse}
+                />
+              }
+            />
           </Route>
 
           <Route path="*" element={<NotFound />} />

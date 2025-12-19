@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 
-function Datenschutz() {
+function PrivacyPolicy() {
   return (
     <div className="main-content text-left space-y-6">
       <h1 className="text-2xl font-semibold tracking-tight text-heading mb-6">
@@ -59,4 +59,4 @@ function Datenschutz() {
   );
 }
 
-export default Datenschutz;
+export default PrivacyPolicy;

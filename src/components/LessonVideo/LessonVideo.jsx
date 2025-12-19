@@ -1,6 +1,6 @@
 import React from "react";
 
-function LessonVideo() {
+function LessonVideo({course, coursesData, setCourse}) {
   return <div className="main-content">LessonVideo</div>;
 }
 

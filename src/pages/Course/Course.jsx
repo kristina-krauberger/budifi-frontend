@@ -11,7 +11,6 @@ import { useParams } from "react-router";
  * course is used to RENDER lessons
  */
 
-
 // TODO: delete all console.logs
 
 function Course({ course, coursesData, setCourse }) {
@@ -28,30 +27,26 @@ function Course({ course, coursesData, setCourse }) {
     }
   }, [courseId]);
 
-  // Guard to avoid rendering before course data is ready
-  if (!course) {
-    return null;
-  }
-
-  const lessonCards = course.lessons.map((lesson) => (
-    <LessonCard
-      key={lesson.id}
-      to={`/course/${courseId}/lesson/${lesson.id}`}
-      title={lesson.title}
-      duration={lesson.duration}
-      isCompleted={lesson.isCompleted}
-      isLast={lesson.isLast}
-    />
-  ));
-
   return (
-    <div className="main-content">
-      <h1 className="mb-10 text-2xl font-semibold tracking-tight text-heading leading-8 text-left">
-        {course.title}
-      </h1>
-
-      {lessonCards}
-    </div>
+    <>
+      {course && (
+        <div className="main-content">
+          <h1 className="mb-10 text-2xl font-semibold tracking-tight text-heading leading-8 text-left">
+            {course.title}
+          </h1>
+          {course.lessons.map((lesson) => (
+            <LessonCard
+              key={lesson.id}
+              to={`/course/${courseId}/lesson/${lesson.id}`}
+              title={lesson.title}
+              duration={lesson.duration}
+              isCompleted={lesson.isCompleted}
+              isLast={lesson.isLast}
+            />
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 
