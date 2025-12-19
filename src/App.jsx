@@ -17,6 +17,7 @@ import LessonIntro from "./components/LessonIntro/LessonIntro.jsx";
 import LessonVideo from "./components/LessonVideo/LessonVideo.jsx";
 import LessonQuiz from "./components/LessonQuiz/LessonQuiz.jsx";
 import LessonSummary from "./components/LessonSummary/LessonSummary.jsx";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   // Holds the currently selected course.
@@ -25,6 +26,8 @@ function App() {
 
   return (
     <div>
+      {/* Listens to route changes and scrolls to top. */}
+      <ScrollToTop />
       <Routes>
         {/* Public layout */}
         <Route element={<PublicLayout />}>
