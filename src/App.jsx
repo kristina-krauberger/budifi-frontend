@@ -3,7 +3,7 @@ import NotFound from "./pages/NotFound/NotFound.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Course from "./pages/Course/Course.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { useState } from "react";
 import Login from "./pages/Login/Login.jsx";
 import PublicLayout from "./layouts/PublicLayout";
@@ -74,16 +74,7 @@ function App() {
               />
             }
           >
-            <Route
-              path="intro"
-              element={
-                <LessonIntro
-                  course={course}
-                  coursesData={coursesData}
-                  setCourse={setCourse}
-                />
-              }
-            />
+            <Route index element={<Navigate to="video" replace/>} />
             <Route
               path="video"
               element={
