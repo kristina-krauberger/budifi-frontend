@@ -1,10 +1,12 @@
 # budifi-frontend
 ## To-Do
-- [ ] Logo klickbar für zurück auf Dashboard
-- [ ] Zurück Buttons
-- [ ] Datenschuzt/Impressum auf Englisch
-- [ ] 1 Lesson bauen inkl. Content und Json anpassen
+- [x] Logo klickbar für zurück auf Dashboard
+- [x] Zurück Buttons
+- [x] Datenschuzt/Impressum auf Englisch
 - [x] Lazar 
+- [x] Scroll to top 
+- [ ] 1 Lesson bauen inkl. Content und Json anpassen
+
         
 
 

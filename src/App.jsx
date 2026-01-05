@@ -13,11 +13,10 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import Imprint from "./pages/Imprint/Imprint.jsx";
 // Static mock data containing all courses and their lessons
 import coursesData from "./mockdata/courses.mock.json";
-import LessonIntro from "./components/LessonIntro/LessonIntro.jsx";
 import LessonVideo from "./components/LessonVideo/LessonVideo.jsx";
 import LessonQuiz from "./components/LessonQuiz/LessonQuiz.jsx";
 import LessonSummary from "./components/LessonSummary/LessonSummary.jsx";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
   // Holds the currently selected course.
@@ -62,7 +61,7 @@ function App() {
 
           {/* NESTED LESSON ROUTE
           These routes define the internal flow of a lesson
-          (intro → video → quiz → summary).
+          (video → quiz → summary).
           The content is rendered inside the <Outlet /> of Lesson.jsx.*/}
           <Route
             path="/course/:courseId/lesson/:lessonId"

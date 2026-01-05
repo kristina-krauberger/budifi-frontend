@@ -17,17 +17,12 @@
           "video": {
             "url": "https://example.com/video-investieren-1"
           },
-          "quiz": [{
+          "quiz": {
             "question": "Was bedeutet investieren?",
-            "options": ["Geld ausgeben", "Geld anlegen", "Geld sparen"],
-            "correctAnswer": 1
-          },
-          {
-            "question": "Was bedeutet investieren?",
-            "options": ["Geld ausgeben", "Geld anlegen", "Geld sparen"],
+            "optionsAnswer": ["Geld ausgeben", "Geld anlegen", "Geld sparen"],
             "correctAnswer": 1
           }
-          ],
+          ,
           "summary": {
             "text": "Investieren bedeutet, Geld gezielt anzulegen, um langfristig Vermögen aufzubauen."
           }
@@ -46,8 +41,8 @@
           },
           "quiz": {
             "question": "Was ist eine Aktie?",
-            "options": ["Ein Kredit", "Ein Unternehmensanteil", "Eine Versicherung"],
-            "correctAnswer": 1
+            "optionsAnswer": ["Ein Kredit", "Ein Unternehmensanteil", "Eine Versicherung"],
+            "correctAnswer": 2
           },
           "summary": {
             "text": "Aktien und Anleihen sind unterschiedliche Anlageformen mit verschiedenen Risiken."
@@ -67,8 +62,8 @@
           },
           "quiz": {
             "question": "Was macht ein Fonds?",
-            "options": ["Er spart Geld", "Er bündelt Anlagen", "Er vergibt Kredite"],
-            "correctAnswer": 1
+            "optionsAnswer": ["Er spart Geld", "Er bündelt Anlagen", "Er vergibt Kredite"],
+            "correctAnswer": 0
           },
           "summary": {
             "text": "Investmentfonds bündeln viele Anlagen und streuen Risiken."
@@ -88,7 +83,7 @@
           },
           "quiz": {
             "question": "Was ist ein Risiko?",
-            "options": ["Garantie", "Unsicherheit", "Gewinn"],
+            "optionsAnswer": ["Garantie", "Unsicherheit", "Gewinn"],
             "correctAnswer": 1
           },
           "summary": {
@@ -109,7 +104,7 @@
           },
           "quiz": {
             "question": "Was bedeutet langfristig investieren?",
-            "options": ["Schnell verkaufen", "Geduldig bleiben", "Alles riskieren"],
+            "optionsAnswer": ["Schnell verkaufen", "Geduldig bleiben", "Alles riskieren"],
             "correctAnswer": 1
           },
           "summary": {
@@ -137,7 +132,7 @@
           },
           "quiz": {
             "question": "Warum sollte man sparen?",
-            "options": ["Für Sicherheit", "Für Schulden", "Für Stress"],
+            "optionsAnswer": ["Für Sicherheit", "Für Schulden", "Für Stress"],
             "correctAnswer": 0
           },
           "summary": {
@@ -158,8 +153,8 @@
           },
           "quiz": {
             "question": "Was ist eine Sparmethode?",
-            "options": ["Planlos ausgeben", "Gezielt zurücklegen", "Alles investieren"],
-            "correctAnswer": 1
+            "optionsAnswer": ["Planlos ausgeben", "Gezielt zurücklegen", "Alles investieren"],
+            "correctAnswer": 2
           },
           "summary": {
             "text": "Sparmethoden helfen, regelmäßig Geld beiseitezulegen."
@@ -179,7 +174,7 @@
           },
           "quiz": {
             "question": "Was ist ein Budget?",
-            "options": ["Ein Wunsch", "Ein Plan", "Ein Kredit"],
+            "optionsAnswer": ["Ein Wunsch", "Ein Plan", "Ein Kredit"],
             "correctAnswer": 1
           },
           "summary": {
@@ -207,7 +202,7 @@
           },
           "quiz": {
             "question": "Welche Rentenarten gibt es?",
-            "options": ["Nur staatlich", "Staatlich und privat", "Keine"],
+            "optionsAnswer": ["Nur staatlich", "Staatlich und privat", "Keine"],
             "correctAnswer": 1
           },
           "summary": {
@@ -228,7 +223,7 @@
           },
           "quiz": {
             "question": "Warum privat vorsorgen?",
-            "options": ["Spaß", "Zusatzsicherheit", "Zufall"],
+            "optionsAnswer": ["Spaß", "Zusatzsicherheit", "Zufall"],
             "correctAnswer": 1
           },
           "summary": {
@@ -249,7 +244,7 @@
           },
           "quiz": {
             "question": "Was ist staatliche Unterstützung?",
-            "options": ["Geschenk", "Förderung", "Schulden"],
+            "optionsAnswer": ["Geschenk", "Förderung", "Schulden"],
             "correctAnswer": 1
           },
           "summary": {
@@ -270,7 +265,7 @@
           },
           "quiz": {
             "question": "Warum früh planen?",
-            "options": ["Zwang", "Zeitvorteil", "Pflicht"],
+            "optionsAnswer": ["Zwang", "Zeitvorteil", "Pflicht"],
             "correctAnswer": 1
           },
           "summary": {
