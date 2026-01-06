@@ -13,3 +13,8 @@
 ## Backlog
 - [ ] Google Firebase Bucket für Videos (Cloud Speicher)
 - [ ] Authetifizierung mit JWT
+
+
+
+
+🔊 Sound Effects used from https://pixabay.com – License: Free for commercial use, no attribution required.

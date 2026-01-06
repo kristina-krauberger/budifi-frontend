@@ -24,7 +24,9 @@ function Lesson({ course, coursesData, setCourse }) {
       {/* Outlet is a placeholder for nested lesson routes from react-router.
       React Router renders the active sub-route here
       (intro, video, quiz, or summary).*/}
-      <Outlet context={{ course }} />
+      <div className="max-w-3xl w-full min-h-[400px] mx-auto px-4">
+        <Outlet context={{ course }} />
+      </div>
       <LessonFooter />
       <button
         onClick={() => navigate(`/course/${courseId}`)}
