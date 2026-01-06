@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import "../../App.css";
 import ButtonAnswer from "../ButtonAnswer/ButtonAnswer";
 
 function LessonQuiz({ course }) {
-  const { lessonId } = useParams();
+  const { lessonId, courseId } = useParams();
+  const navigate = useNavigate();
 
   const [quiz, setQuiz] = useState();
   const [optionsAnswer, setOptionsAnswer] = useState();
@@ -50,7 +52,9 @@ function LessonQuiz({ course }) {
 
   return (
     <div className="main-content">
-      <h2 className="text-3xl font-bold text-grey-800 mb-6 text-center tracking-wide">{quiz.question}</h2>
+      <h2 className="text-3xl font-bold text-grey-800 mb-6 text-center tracking-wide">
+        {quiz.question}
+      </h2>
       {optionsAnswer.map((optionAnswer, index) => (
         <ButtonAnswer
           index={index}
@@ -59,8 +63,17 @@ function LessonQuiz({ course }) {
             setGivenAnswer(index);
             if (index === correctAnswer) {
               new Audio("/sound/correct.mp3").play();
+              console.log(
+                "📍 Navigiere zu:",
+                `/course/${courseId}/lesson/${lessonId}/summary`
+              );
+              setTimeout(() => {
+                navigate(`/course/${courseId}/lesson/${lessonId}/summary`);
+              }, 2000);
             } else {
-              new Audio("/sound/wrong.mp3").play();
+              const audio = new Audio("/sound/wrong.mp3");
+              audio.volume = 0.4;
+              audio.play();
             }
           }}
           wasClicked={index === givenAnswer}
