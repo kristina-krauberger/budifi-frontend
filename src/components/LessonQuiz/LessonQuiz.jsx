@@ -11,6 +11,7 @@ function LessonQuiz({ course }) {
   const [quiz, setQuiz] = useState();
   const [optionsAnswer, setOptionsAnswer] = useState();
   const [givenAnswer, setGivenAnswer] = useState();
+  const [isCompleted, setIsCompleted] = useState(false);
   // Optional chaining: avoids error if quiz is undefined or null
   // Without this, accessing quiz.correctAnswer could crash the app on first render
   const correctAnswer = quiz?.correctAnswer;
@@ -70,6 +71,7 @@ function LessonQuiz({ course }) {
               setTimeout(() => {
                 navigate(`/course/${courseId}/lesson/${lessonId}/summary`);
               }, 2000);
+              setIsCompleted(true)
             } else {
               const audio = new Audio("/sound/wrong.mp3");
               audio.volume = 0.4;

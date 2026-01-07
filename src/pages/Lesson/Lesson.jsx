@@ -1,13 +1,25 @@
 import "../../App.css";
 import LessonNavbar from "../../components/LessonNavbar/LessonNavbar";
 import LessonFooter from "../../components/LessonFooter/LessonFooter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useParams, useNavigate } from "react-router";
 import ButtonBack from "../../components/ButtonBack/ButtonBack";
 
 function Lesson({ course, coursesData, setCourse }) {
-  const { courseId } = useParams();
+  const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
+
+  const [isVideoCompleted, setIsVideoCompleted] = useState(() => {
+    const stored = localStorage.getItem(`lesson-${lessonId}-video`);
+    return stored ? JSON.parse(stored) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      `lesson-${lessonId}-video`,
+      JSON.stringify(isVideoCompleted)
+    );
+  }, [isVideoCompleted, lessonId]);
 
   useEffect(() => {
     const foundCourse = coursesData.courses.find(
@@ -25,9 +37,9 @@ function Lesson({ course, coursesData, setCourse }) {
       React Router renders the active sub-route here
       (intro, video, quiz, or summary).*/}
       <div className="max-w-3xl w-full min-h-[400px] mx-auto px-4">
-        <Outlet context={{ course }} />
+        <Outlet context={{ course, isVideoCompleted, setIsVideoCompleted }} />
       </div>
-      <LessonFooter />
+      <LessonFooter isVideoCompleted={isVideoCompleted} />
       <button
         onClick={() => navigate(`/course/${courseId}`)}
         className="px-6 py-2 border border-gray-200 bg-white rounded-md text-gray-700"
