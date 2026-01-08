@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import { useParams } from "react-router";
+import { useNavigate, useOutletContext, useParams } from "react-router";
 import "../../App.css";
 import ButtonAnswer from "../ButtonAnswer/ButtonAnswer";
 
@@ -12,6 +11,7 @@ function LessonQuiz({ course }) {
   const [optionsAnswer, setOptionsAnswer] = useState();
   const [givenAnswer, setGivenAnswer] = useState();
   const [isCompleted, setIsCompleted] = useState(false);
+  const { isQuizCompleted, setIsQuizCompleted } = useOutletContext();
   // Optional chaining: avoids error if quiz is undefined or null
   // Without this, accessing quiz.correctAnswer could crash the app on first render
   const correctAnswer = quiz?.correctAnswer;
@@ -31,17 +31,25 @@ function LessonQuiz({ course }) {
   // TODO console log löschen
   //2.
   useEffect(() => {
-    console.log("✅ OptionsAnswer aktualisiert:", optionsAnswer);
+    console.log("🧠 OptionsAnswer aktualisiert:", optionsAnswer);
     console.log("🧠 GivenAnswer aktualisiert:", givenAnswer);
   }, [optionsAnswer, givenAnswer]);
 
   //3.
   useEffect(() => {
     if (quiz) {
-      console.log("✅ Quiz:", quiz);
+      console.log("📍 Quiz:", quiz);
       console.log("🎯 Richtige Antwort ist:", quiz.correctAnswer);
     }
   }, [quiz]);
+
+  //4. Lauscht auf is QuizCompleted
+  useEffect(() => {
+    console.log(
+      "LessonQuiz.jsx✅ isQuizCompleted hat sich geändert:",
+      isQuizCompleted
+    );
+  }, [isQuizCompleted]);
 
   if (!quiz) {
     return null;
@@ -71,7 +79,9 @@ function LessonQuiz({ course }) {
               setTimeout(() => {
                 navigate(`/course/${courseId}/lesson/${lessonId}/summary`);
               }, 2000);
-              setIsCompleted(true)
+              setIsCompleted(true);
+              setIsQuizCompleted(true);
+              console.log("✅ setIsQuizCompleted wurde ausgeführt!");
             } else {
               const audio = new Audio("/sound/wrong.mp3");
               audio.volume = 0.4;

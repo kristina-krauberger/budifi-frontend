@@ -9,6 +9,22 @@ function Lesson({ course, coursesData, setCourse }) {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const foundCourse = coursesData.courses.find(
+      (c) => c.id === parseInt(courseId, 10)
+    );
+    setCourse(foundCourse);
+  }, [courseId]);
+
+  const isDevMode = true;
+  useEffect(() => {
+    if (isDevMode) {
+      localStorage.removeItem(`lesson-${lessonId}-video`);
+      localStorage.removeItem(`lesson-${lessonId}-quiz`);
+      console.log("🧹 Dev-Modus: localStorage wurde zurückgesetzt");
+    }
+  }, [lessonId]);
+
   const [isVideoCompleted, setIsVideoCompleted] = useState(() => {
     const stored = localStorage.getItem(`lesson-${lessonId}-video`);
     return stored ? JSON.parse(stored) : false;
@@ -21,12 +37,18 @@ function Lesson({ course, coursesData, setCourse }) {
     );
   }, [isVideoCompleted, lessonId]);
 
+  const [isQuizCompleted, setIsQuizCompleted] = useState(() => {
+    const stored = localStorage.getItem(`lesson-${lessonId}-quiz`);
+    return stored ? JSON.parse(stored) : false;
+  });
+
   useEffect(() => {
-    const foundCourse = coursesData.courses.find(
-      (c) => c.id === parseInt(courseId, 10)
+    localStorage.setItem(
+      `lesson-${lessonId}-quiz`,
+      JSON.stringify(isQuizCompleted)
     );
-    setCourse(foundCourse);
-  }, [courseId]);
+  }, [isQuizCompleted, lessonId]);
+  console.log("Lesson.jsx render:", { isQuizCompleted });
 
   if (!course) return null;
 
@@ -37,9 +59,20 @@ function Lesson({ course, coursesData, setCourse }) {
       React Router renders the active sub-route here
       (intro, video, quiz, or summary).*/}
       <div className="max-w-3xl w-full min-h-[400px] mx-auto px-4">
-        <Outlet context={{ course, isVideoCompleted, setIsVideoCompleted }} />
+        <Outlet
+          context={{
+            course,
+            isVideoCompleted,
+            setIsVideoCompleted,
+            isQuizCompleted,
+            setIsQuizCompleted,
+          }}
+        />
       </div>
-      <LessonFooter isVideoCompleted={isVideoCompleted} />
+      <LessonFooter
+        isVideoCompleted={isVideoCompleted}
+        isQuizCompleted={isQuizCompleted}
+      />
       <button
         onClick={() => navigate(`/course/${courseId}`)}
         className="px-6 py-2 border border-gray-200 bg-white rounded-md text-gray-700"
