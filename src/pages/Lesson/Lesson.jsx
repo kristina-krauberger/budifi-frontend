@@ -1,3 +1,14 @@
+/**
+ * Renders the main Lesson layout:
+ * 1. Top navigation bar (LessonNavbar)
+ * 2. Main lesson content (intro/video/quiz/summary) via React Router's <Outlet />
+ * 3. Bottom navigation and progress logic (LessonFooter)
+ *
+ * Also manages:
+ * - Video and quiz completion states (loaded/saved via localStorage)
+ * - Developer mode for testing/resetting progress (toggle isDevMode)
+ */
+
 import { useEffect, useState } from "react";
 import { Outlet, useParams, useNavigate } from "react-router";
 import "../../App.css";
@@ -8,15 +19,20 @@ function Lesson({ course, coursesData, setCourse }) {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const foundCourse = coursesData.courses.find(
-      (c) => c.id === parseInt(courseId, 10)
-    );
-    setCourse(foundCourse);
-  }, [courseId]);
+  // Track progress state for video and quiz
+  // Initialized from localStorage to persist state across reloads
+  const [isVideoCompleted, setIsVideoCompleted] = useState(() => {
+    const stored = localStorage.getItem(`lesson-${lessonId}-video`);
+    return stored ? JSON.parse(stored) : false;
+  });
+  const [isQuizCompleted, setIsQuizCompleted] = useState(() => {
+    const stored = localStorage.getItem(`lesson-${lessonId}-quiz`);
+    return stored ? JSON.parse(stored) : false;
+  });
 
-  // TODO DevMode is only for testing, delete when ready
-  // "true" localStorage is deleted, "false" localsStorage is untouched
+  // TODO DEV MODE RESET (for development only - Remove this before deploying to production.)
+  // This block resets the localStorage for video and quiz completion.
+  // It runs on every render — not inside useEffect — to ensure data is cleared each time.
   const isDevMode = true;
   if (isDevMode) {
     localStorage.removeItem(`lesson-${lessonId}-video`);
@@ -25,11 +41,15 @@ function Lesson({ course, coursesData, setCourse }) {
     console.log("🔎 DevMode Reset für lessonId:", lessonId);
   }
 
-  const [isVideoCompleted, setIsVideoCompleted] = useState(() => {
-    const stored = localStorage.getItem(`lesson-${lessonId}-video`);
-    return stored ? JSON.parse(stored) : false;
-  });
+  // Find the current course by ID and update parent state
+  useEffect(() => {
+    const foundCourse = coursesData.courses.find(
+      (c) => c.id === parseInt(courseId, 10)
+    );
+    setCourse(foundCourse);
+  }, [courseId]);
 
+  // Save isVideoCompleted state to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(
       `lesson-${lessonId}-video`,
@@ -37,11 +57,7 @@ function Lesson({ course, coursesData, setCourse }) {
     );
   }, [isVideoCompleted, lessonId]);
 
-  const [isQuizCompleted, setIsQuizCompleted] = useState(() => {
-    const stored = localStorage.getItem(`lesson-${lessonId}-quiz`);
-    return stored ? JSON.parse(stored) : false;
-  });
-
+  // Save isQuizCompleted state to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(
       `lesson-${lessonId}-quiz`,
