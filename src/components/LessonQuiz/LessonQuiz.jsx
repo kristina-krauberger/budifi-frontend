@@ -1,3 +1,11 @@
+/**
+ * Renders the quiz section of a lesson:
+ * - Loads quiz data based on lessonId
+ * - Manages user answer and feedback
+ * - Updates quiz completion state (isQuizCompleted) via context
+ * - Navigates to summary on correct answer
+ */
+
 import React, { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router";
 import "../../App.css";
@@ -6,19 +14,19 @@ import ButtonAnswer from "../ButtonAnswer/ButtonAnswer";
 function LessonQuiz({ course }) {
   const { lessonId, courseId } = useParams();
   const navigate = useNavigate();
+  const { isQuizCompleted, setIsQuizCompleted } = useOutletContext();
 
+  // Local state for quiz data and answer tracking
   const [quiz, setQuiz] = useState();
   const [optionsAnswer, setOptionsAnswer] = useState();
   const [givenAnswer, setGivenAnswer] = useState();
   const [isCompleted, setIsCompleted] = useState(false);
-  const { isQuizCompleted, setIsQuizCompleted } = useOutletContext();
+
   // Optional chaining: avoids error if quiz is undefined or null
   // Without this, accessing quiz.correctAnswer could crash the app on first render
   const correctAnswer = quiz?.correctAnswer;
 
-  console.log("📚 course:", course);
-
-  //1.
+  // Loads quiz data and answer options based on lessonId
   useEffect(() => {
     const foundLesson = course.lessons.find(
       (c) => c.id === parseInt(lessonId, 10)
@@ -28,28 +36,27 @@ function LessonQuiz({ course }) {
     setOptionsAnswer(foundLesson.quiz.optionsAnswer);
   }, []);
 
-  // TODO console log löschen
-  //2.
-  useEffect(() => {
-    console.log("🧠 OptionsAnswer aktualisiert:", optionsAnswer);
-    console.log("🧠 GivenAnswer aktualisiert:", givenAnswer);
-  }, [optionsAnswer, givenAnswer]);
+  // TODO Debug: Log changes to options and selected answer (remove in production)
+  // useEffect(() => {
+  //   console.log("🧠 OptionsAnswer aktualisiert:", optionsAnswer);
+  //   console.log("🧠 GivenAnswer aktualisiert:", givenAnswer);
+  // }, [optionsAnswer, givenAnswer]);
 
-  //3.
-  useEffect(() => {
-    if (quiz) {
-      console.log("📍 Quiz:", quiz);
-      console.log("🎯 Richtige Antwort ist:", quiz.correctAnswer);
-    }
-  }, [quiz]);
+  //TODO Debug: Log loaded quiz data (remove in production)
+  // useEffect(() => {
+  //   if (quiz) {
+  //     console.log("📍 Quiz:", quiz);
+  //     console.log("🎯 Richtige Antwort ist:", quiz.correctAnswer);
+  //   }
+  // }, [quiz]);
 
-  //4. Lauscht auf is QuizCompleted
-  useEffect(() => {
-    console.log(
-      "LessonQuiz.jsx✅ isQuizCompleted hat sich geändert:",
-      isQuizCompleted
-    );
-  }, [isQuizCompleted]);
+  //TODO Debug: Track changes in quiz completion state (from context)
+  // useEffect(() => {
+  //   console.log(
+  //     "LessonQuiz.jsx✅ isQuizCompleted hat sich geändert:",
+  //     isQuizCompleted
+  //   );
+  // }, [isQuizCompleted]);
 
   if (!quiz) {
     return null;
