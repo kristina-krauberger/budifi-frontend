@@ -1,5 +1,12 @@
-import "../../App.css";
+/**
+ * LessonFooter component:
+ * - Displays a navigation bar at the bottom of each lesson step.
+ * - Shows a "next" button conditionally based on the lesson progress.
+ * - Navigates to the next lesson section or back to the course.
+ */
+
 import { useNavigate, useLocation, useParams } from "react-router";
+import "../../App.css";
 import ButtonBack from "../ButtonBack/ButtonBack";
 
 function LessonFooter({ isVideoCompleted, isQuizCompleted }) {
@@ -8,22 +15,14 @@ function LessonFooter({ isVideoCompleted, isQuizCompleted }) {
   console.log("👉 Location Pathname", location.pathname);
   const { courseId, lessonId } = useParams();
 
-  console.log(
-    "LessonFooter.jsx VIDEOCompleted📌",
-    typeof isVideoCompleted,
-    isVideoCompleted
-  );
-  console.log(
-    "LessonFooter.jsx QuizCompleted✅",
-    typeof isQuizCompleted,
-    isQuizCompleted
-  );
-
+  // Get the current pathname from the router
   const currentPath = location.pathname;
 
+  // Define the next path and whether the button should be shown
   let nextPathname = null;
   let showButton = false;
 
+  // Determine logic based on current route and progress
   if (currentPath.includes("video") && isVideoCompleted) {
     nextPathname = `/course/${courseId}/lesson/${lessonId}/quiz`;
     showButton = true;
@@ -33,6 +32,20 @@ function LessonFooter({ isVideoCompleted, isQuizCompleted }) {
   } else if (currentPath.includes("summary")) {
     nextPathname = `/course/${courseId}`;
   }
+
+  // TODO Debug: remove in production
+  // console.log(
+  //   "LessonFooter.jsx VIDEOCompleted📌",
+  //   typeof isVideoCompleted,
+  //   isVideoCompleted
+  // );
+
+  // TODO Debug: remove in production
+  // console.log(
+  //   "LessonFooter.jsx QuizCompleted✅",
+  //   typeof isQuizCompleted,
+  //   isQuizCompleted
+  // );
 
   return (
     <nav className="main-content">
