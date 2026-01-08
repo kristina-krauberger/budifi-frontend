@@ -1,9 +1,8 @@
+import { useEffect, useState } from "react";
+import { Outlet, useParams, useNavigate } from "react-router";
 import "../../App.css";
 import LessonNavbar from "../../components/LessonNavbar/LessonNavbar";
 import LessonFooter from "../../components/LessonFooter/LessonFooter";
-import { useEffect, useState } from "react";
-import { Outlet, useParams, useNavigate } from "react-router";
-import ButtonBack from "../../components/ButtonBack/ButtonBack";
 
 function Lesson({ course, coursesData, setCourse }) {
   const { courseId, lessonId } = useParams();
@@ -16,14 +15,15 @@ function Lesson({ course, coursesData, setCourse }) {
     setCourse(foundCourse);
   }, [courseId]);
 
+  // TODO DevMode is only for testing, delete when ready
+  // "true" localStorage is deleted, "false" localsStorage is untouched
   const isDevMode = true;
-  useEffect(() => {
-    if (isDevMode) {
-      localStorage.removeItem(`lesson-${lessonId}-video`);
-      localStorage.removeItem(`lesson-${lessonId}-quiz`);
-      console.log("🧹 Dev-Modus: localStorage wurde zurückgesetzt");
-    }
-  }, [lessonId]);
+  if (isDevMode) {
+    localStorage.removeItem(`lesson-${lessonId}-video`);
+    localStorage.removeItem(`lesson-${lessonId}-quiz`);
+    console.log("🧹 Dev-Modus: localStorage wurde zurückgesetzt");
+    console.log("🔎 DevMode Reset für lessonId:", lessonId);
+  }
 
   const [isVideoCompleted, setIsVideoCompleted] = useState(() => {
     const stored = localStorage.getItem(`lesson-${lessonId}-video`);
