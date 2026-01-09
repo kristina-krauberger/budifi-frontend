@@ -13,7 +13,7 @@
           "isCompleted": true,
           "isLastLesson": false,
           "intro": {
-            "text": "Einführung in das Thema Investieren."
+            "textIntro": "Einführung in das Thema Investieren."
           },
           "video": {
             "url": "https://example.com/video-investieren-1"
@@ -24,7 +24,8 @@
             "correctAnswer": 1
           },
           "summary": {
-            "text": "Investieren bedeutet, Geld gezielt anzulegen, um langfristig Vermögen aufzubauen."
+            "congrats": "Super gemacht!",
+            "textSummary": "Investieren bedeutet, Geld gezielt anzulegen, um langfristig Vermögen aufzubauen."
           }
         },
         {
@@ -34,7 +35,7 @@
           "isCompleted": true,
           "isLastLesson": false,
           "intro": {
-            "text": "Überblick über Aktien und Anleihen."
+            "textIntro": "Überblick über Aktien und Anleihen."
           },
           "video": {
             "url": "https://example.com/video-investieren-2"
@@ -49,7 +50,8 @@
             "correctAnswer": 2
           },
           "summary": {
-            "text": "Aktien und Anleihen sind unterschiedliche Anlageformen mit verschiedenen Risiken."
+            "congrats": "Super gemacht!",
+            "textSummary": "Aktien und Anleihen sind unterschiedliche Anlageformen mit verschiedenen Risiken."
           }
         },
         {
@@ -59,7 +61,7 @@
           "isCompleted": true,
           "isLastLesson": false,
           "intro": {
-            "text": "Was sind Investmentfonds?"
+            "textIntro": "Was sind Investmentfonds?"
           },
           "video": {
             "url": "https://example.com/video-investieren-3"
@@ -74,7 +76,8 @@
             "correctAnswer": 0
           },
           "summary": {
-            "text": "Investmentfonds bündeln viele Anlagen und streuen Risiken."
+            "congrats": "Super gemacht!",
+            "textSummary": "Investmentfonds bündeln viele Anlagen und streuen Risiken."
           }
         },
         {
@@ -84,7 +87,7 @@
           "isCompleted": true,
           "isLastLesson": false,
           "intro": {
-            "text": "Risiken beim Investieren erkennen."
+            "textIntro": "Risiken beim Investieren erkennen."
           },
           "video": {
             "url": "https://example.com/video-investieren-4"
@@ -95,7 +98,8 @@
             "correctAnswer": 1
           },
           "summary": {
-            "text": "Risiken gehören zum Investieren und sollten bewusst gesteuert werden."
+            "congrats": "Super gemacht!",
+            "textSummary": "Risiken gehören zum Investieren und sollten bewusst gesteuert werden."
           }
         },
         {
@@ -105,7 +109,7 @@
           "isCompleted": true,
           "isLastLesson": true,
           "intro": {
-            "text": "Warum langfristiges Denken wichtig ist."
+            "textIntro": "Warum langfristiges Denken wichtig ist."
           },
           "video": {
             "url": "https://example.com/video-investieren-5"
@@ -120,7 +124,8 @@
             "correctAnswer": 1
           },
           "summary": {
-            "text": "Langfristige Strategien helfen, Marktschwankungen auszugleichen."
+            "congrats": "Super gemacht!",
+            "textSummary": "Langfristige Strategien helfen, Marktschwankungen auszugleichen."
           }
         }
       ]
@@ -138,7 +143,7 @@
           "isCompleted": true,
           "isLastLesson": false,
           "intro": {
-            "text": "Warum Sparen wichtig ist."
+            "textIntro": "Warum Sparen wichtig ist."
           },
           "video": {
             "url": "https://example.com/video-sparen-1"
@@ -149,7 +154,8 @@
             "correctAnswer": 0
           },
           "summary": {
-            "text": "Sparen schafft finanzielle Sicherheit."
+            "congrats": "Super gemacht!",
+            "textSummary": "Sparen schafft finanzielle Sicherheit."
           }
         },
         {
@@ -159,7 +165,7 @@
           "isCompleted": true,
           "isLastLesson": false,
           "intro": {
-            "text": "Verschiedene Sparmethoden im Überblick."
+            "textIntro": "Verschiedene Sparmethoden im Überblick."
           },
           "video": {
             "url": "https://example.com/video-sparen-2"
@@ -174,7 +180,8 @@
             "correctAnswer": 2
           },
           "summary": {
-            "text": "Sparmethoden helfen, regelmäßig Geld beiseitezulegen."
+            "congrats": "Super gemacht!",
+            "textSummary": "Sparmethoden helfen, regelmäßig Geld beiseitezulegen."
           }
         },
         {
@@ -184,7 +191,7 @@
           "isCompleted": false,
           "isLastLesson": true,
           "intro": {
-            "text": "Grundlagen der Budgetplanung."
+            "textIntro": "Grundlagen der Budgetplanung."
           },
           "video": {
             "url": "https://example.com/video-sparen-3"
@@ -195,7 +202,8 @@
             "correctAnswer": 1
           },
           "summary": {
-            "text": "Ein Budget hilft, Einnahmen und Ausgaben im Blick zu behalten."
+            "congrats": "Super gemacht!",
+            "textSummary": "Ein Budget hilft, Einnahmen und Ausgaben im Blick zu behalten."
           }
         }
       ]
@@ -213,7 +221,7 @@
           "isCompleted": false,
           "isLastLesson": false,
           "intro": {
-            "text": "Überblick über verschiedene Rentenarten."
+            "textIntro": "Überblick über verschiedene Rentenarten."
           },
           "video": {
             "url": "https://example.com/video-rente-1"
@@ -224,7 +232,8 @@
             "correctAnswer": 1
           },
           "summary": {
-            "text": "Es gibt verschiedene Rentenarten mit unterschiedlichen Vorteilen."
+            "congrats": "Super gemacht!",
+            "textSummary": "Es gibt verschiedene Rentenarten mit unterschiedlichen Vorteilen."
           }
         },
         {
@@ -234,7 +243,7 @@
           "isCompleted": false,
           "isLastLesson": false,
           "intro": {
-            "text": "Warum private Vorsorge wichtig ist."
+            "textIntro": "Warum private Vorsorge wichtig ist."
           },
           "video": {
             "url": "https://example.com/video-rente-2"
@@ -245,7 +254,8 @@
             "correctAnswer": 1
           },
           "summary": {
-            "text": "Private Vorsorge ergänzt die gesetzliche Rente."
+            "congrats": "Super gemacht!",
+            "textSummary": "Private Vorsorge ergänzt die gesetzliche Rente."
           }
         },
         {
@@ -255,7 +265,7 @@
           "isCompleted": false,
           "isLastLesson": false,
           "intro": {
-            "text": "Welche staatlichen Hilfen es gibt."
+            "textIntro": "Welche staatlichen Hilfen es gibt."
           },
           "video": {
             "url": "https://example.com/video-rente-3"
@@ -266,7 +276,8 @@
             "correctAnswer": 1
           },
           "summary": {
-            "text": "Der Staat unterstützt die Altersvorsorge durch Förderungen."
+            "congrats": "Super gemacht!",
+            "textSummary": "Der Staat unterstützt die Altersvorsorge durch Förderungen."
           }
         },
         {
@@ -276,7 +287,7 @@
           "isCompleted": false,
           "isLastLesson": true,
           "intro": {
-            "text": "Tipps für die langfristige Rentenplanung."
+            "textIntro": "Tipps für die langfristige Rentenplanung."
           },
           "video": {
             "url": "https://example.com/video-rente-4"
@@ -287,7 +298,8 @@
             "correctAnswer": 1
           },
           "summary": {
-            "text": "Frühe Planung erhöht die finanzielle Sicherheit im Alter."
+            "congrats": "Super gemacht!",
+            "textSummary": "Frühe Planung erhöht die finanzielle Sicherheit im Alter."
           }
         }
       ]

@@ -43,10 +43,10 @@ function Lesson({ course, coursesData, setCourse }) {
 
   // Find the current course by ID and update parent state
   useEffect(() => {
-    const foundCourse = coursesData.courses.find(
+    const foundCurrentCourse = coursesData.courses.find(
       (c) => c.id === parseInt(courseId, 10)
     );
-    setCourse(foundCourse);
+    setCourse(foundCurrentCourse);
   }, [courseId]);
 
   // Save isVideoCompleted state to localStorage whenever it changes
@@ -74,7 +74,7 @@ function Lesson({ course, coursesData, setCourse }) {
       {/* Outlet is a placeholder for nested lesson routes from react-router.
       React Router renders the active sub-route here
       (intro, video, quiz, or summary).*/}
-      <div className="max-w-3xl w-full min-h-[400px] mx-auto px-4">
+      <div className="flex flex-col items-center justify-center w-full min-h-[400px] px-4">
         <Outlet
           context={{
             course,
