@@ -9,11 +9,24 @@ import { useNavigate, useLocation, useParams } from "react-router";
 import "../../App.css";
 import ButtonBack from "../ButtonBack/ButtonBack";
 
-function LessonFooter({ isVideoCompleted, isQuizCompleted }) {
+function LessonFooter({
+  isVideoCompleted,
+  isQuizCompleted,
+  coursesData,
+  course,
+}) {
   const location = useLocation();
   const navigate = useNavigate();
   console.log("👉 Location Pathname", location.pathname);
   const { courseId, lessonId } = useParams();
+  const currentLesson = course.lessons.find(
+    (lesson) => lesson.id === parseInt(lessonId)
+  );
+
+  // Get the current course object based on the current courseId from the URL
+  const currentCourse = coursesData.courses.find(
+    (c) => c.id === parseInt(courseId)
+  );
 
   // Get the current pathname from the router
   const currentPath = location.pathname;
@@ -22,7 +35,8 @@ function LessonFooter({ isVideoCompleted, isQuizCompleted }) {
   let nextPathname = null;
   let showButton = false;
 
-  // Determine logic based on current route and progress
+  // Determine navigation logic based on current route and progress
+  // Video → Quiz → Summary → Next Lesson Video or Dashboard
   if (currentPath.includes("video") && isVideoCompleted) {
     nextPathname = `/course/${courseId}/lesson/${lessonId}/quiz`;
     showButton = true;
@@ -30,7 +44,22 @@ function LessonFooter({ isVideoCompleted, isQuizCompleted }) {
     nextPathname = `/course/${courseId}/lesson/${lessonId}/summary`;
     showButton = true;
   } else if (currentPath.includes("summary")) {
-    nextPathname = `/course/${courseId}`;
+    showButton = true;
+
+    // Determine where to navigate after the lesson summary:
+    // - If it's not the last lesson in the current course → go to next lesson
+    // - If it's the last lesson but not the last course → go to next course, lesson 1
+    // - If it's the last lesson of the last course → go to dashboard
+    const isLastLesson = currentLesson.isLastLesson;
+    const isLastCourse = currentCourse.isLastCourse;
+
+    if (!isLastLesson) {
+      nextPathname = `/course/${courseId}/lesson/${Number(lessonId) + 1}/video`;
+    } else if (!isLastCourse) {
+      nextPathname = `/course/${Number(courseId) + 1}/lesson/1/video`;
+    } else {
+      nextPathname = `/dashboard`;
+    }
   }
 
   // TODO Debug: remove in production

@@ -4,13 +4,14 @@
       "id": 1,
       "title": "INVESTIEREN",
       "description": "Lerne die Grundlagen des Investierens.",
+      "isLastCourse": false,
       "lessons": [
         {
           "id": 1,
           "title": "Was ist Investieren?",
           "duration": 10,
           "isCompleted": true,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Einführung in das Thema Investieren."
           },
@@ -21,8 +22,7 @@
             "question": "Was bedeutet investieren?",
             "optionsAnswer": ["Geld ausgeben", "Geld anlegen", "Geld sparen"],
             "correctAnswer": 1
-          }
-          ,
+          },
           "summary": {
             "text": "Investieren bedeutet, Geld gezielt anzulegen, um langfristig Vermögen aufzubauen."
           }
@@ -32,7 +32,7 @@
           "title": "Aktien und Anleihen",
           "duration": 15,
           "isCompleted": true,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Überblick über Aktien und Anleihen."
           },
@@ -41,7 +41,11 @@
           },
           "quiz": {
             "question": "Was ist eine Aktie?",
-            "optionsAnswer": ["Ein Kredit", "Ein Unternehmensanteil", "Eine Versicherung"],
+            "optionsAnswer": [
+              "Ein Kredit",
+              "Ein Unternehmensanteil",
+              "Eine Versicherung"
+            ],
             "correctAnswer": 2
           },
           "summary": {
@@ -53,7 +57,7 @@
           "title": "Investmentfonds",
           "duration": 12,
           "isCompleted": true,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Was sind Investmentfonds?"
           },
@@ -62,7 +66,11 @@
           },
           "quiz": {
             "question": "Was macht ein Fonds?",
-            "optionsAnswer": ["Er spart Geld", "Er bündelt Anlagen", "Er vergibt Kredite"],
+            "optionsAnswer": [
+              "Er spart Geld",
+              "Er bündelt Anlagen",
+              "Er vergibt Kredite"
+            ],
             "correctAnswer": 0
           },
           "summary": {
@@ -74,7 +82,7 @@
           "title": "Risiken verstehen",
           "duration": 20,
           "isCompleted": true,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Risiken beim Investieren erkennen."
           },
@@ -95,7 +103,7 @@
           "title": "Langfristige Strategien",
           "duration": 18,
           "isCompleted": true,
-          "isLast": true,
+          "isLastLesson": true,
           "intro": {
             "text": "Warum langfristiges Denken wichtig ist."
           },
@@ -104,7 +112,11 @@
           },
           "quiz": {
             "question": "Was bedeutet langfristig investieren?",
-            "optionsAnswer": ["Schnell verkaufen", "Geduldig bleiben", "Alles riskieren"],
+            "optionsAnswer": [
+              "Schnell verkaufen",
+              "Geduldig bleiben",
+              "Alles riskieren"
+            ],
             "correctAnswer": 1
           },
           "summary": {
@@ -117,13 +129,14 @@
       "id": 2,
       "title": "SPAREN",
       "description": "Wie man effektiv spart.",
+      "isLastCourse": false,
       "lessons": [
         {
           "id": 1,
           "title": "Warum sparen?",
           "duration": 8,
           "isCompleted": true,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Warum Sparen wichtig ist."
           },
@@ -144,7 +157,7 @@
           "title": "Sparmethoden",
           "duration": 14,
           "isCompleted": true,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Verschiedene Sparmethoden im Überblick."
           },
@@ -153,7 +166,11 @@
           },
           "quiz": {
             "question": "Was ist eine Sparmethode?",
-            "optionsAnswer": ["Planlos ausgeben", "Gezielt zurücklegen", "Alles investieren"],
+            "optionsAnswer": [
+              "Planlos ausgeben",
+              "Gezielt zurücklegen",
+              "Alles investieren"
+            ],
             "correctAnswer": 2
           },
           "summary": {
@@ -165,7 +182,7 @@
           "title": "Budgetplanung",
           "duration": 16,
           "isCompleted": false,
-          "isLast": true,
+          "isLastLesson": true,
           "intro": {
             "text": "Grundlagen der Budgetplanung."
           },
@@ -187,13 +204,14 @@
       "id": 3,
       "title": "RENTE",
       "description": "Vorbereitung auf die Rente.",
+      "isLastCourse": true,
       "lessons": [
         {
           "id": 1,
           "title": "Rentenarten",
           "duration": 10,
           "isCompleted": false,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Überblick über verschiedene Rentenarten."
           },
@@ -214,7 +232,7 @@
           "title": "Private Vorsorge",
           "duration": 15,
           "isCompleted": false,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Warum private Vorsorge wichtig ist."
           },
@@ -235,7 +253,7 @@
           "title": "Staatliche Unterstützung",
           "duration": 12,
           "isCompleted": false,
-          "isLast": false,
+          "isLastLesson": false,
           "intro": {
             "text": "Welche staatlichen Hilfen es gibt."
           },
@@ -256,7 +274,7 @@
           "title": "Planung und Tipps",
           "duration": 20,
           "isCompleted": false,
-          "isLast": true,
+          "isLastLesson": true,
           "intro": {
             "text": "Tipps für die langfristige Rentenplanung."
           },

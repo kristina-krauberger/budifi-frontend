@@ -45,7 +45,7 @@ function Course({ course, coursesData, setCourse }) {
               title={lesson.title}
               duration={lesson.duration}
               isCompleted={lesson.isCompleted}
-              isLast={lesson.isLast}
+              isLastLesson={lesson.isLastLesson}
             />
           ))}
         </div>

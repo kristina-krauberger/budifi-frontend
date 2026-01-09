@@ -88,6 +88,8 @@ function Lesson({ course, coursesData, setCourse }) {
       <LessonFooter
         isVideoCompleted={isVideoCompleted}
         isQuizCompleted={isQuizCompleted}
+        coursesData={coursesData}
+        course={course}
       />
       <button
         onClick={() => navigate(`/course/${courseId}`)}
