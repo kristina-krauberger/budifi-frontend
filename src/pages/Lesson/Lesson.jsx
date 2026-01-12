@@ -14,6 +14,7 @@ import { Outlet, useParams, useNavigate } from "react-router";
 import "../../App.css";
 import LessonNavbar from "../../components/LessonNavbar/LessonNavbar";
 import LessonFooter from "../../components/LessonFooter/LessonFooter";
+import NotFound from "../NotFound/NotFound";
 
 function Lesson({ course, coursesData, setCourse }) {
   const { courseId, lessonId } = useParams();
@@ -71,7 +72,9 @@ function Lesson({ course, coursesData, setCourse }) {
   }, [isQuizCompleted, lessonId]);
   console.log("Lesson.jsx render:", { isQuizCompleted });
 
-  if (!course) return null;
+  if (!course || !foundCurrentLesson) {
+    return <NotFound />;
+  }
 
   return (
     <div className="main-content">

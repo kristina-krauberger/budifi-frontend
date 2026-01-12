@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import LessonCard from "../../components/LessonCard/LessonCard";
 import { useParams } from "react-router";
-import ButtonBack from "../../components/ButtonBack/ButtonBack";
 import ButtonDashboard from "../../components/ButtonDashboard/ButtonDashboard";
+import NotFound from "../NotFound/NotFound";
 
 /**
  * coursesData          = wrapper object from mock JSON
@@ -28,6 +28,10 @@ function Course({ course, coursesData, setCourse }) {
       setCourse(coursesData.courses[parseInt(courseId) - 1]);
     }
   }, [courseId]);
+
+  if (!course) {
+    return <NotFound />;
+  }
 
   return (
     <>
