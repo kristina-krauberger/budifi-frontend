@@ -15,6 +15,7 @@ function LessonQuiz({ course }) {
   const { lessonId, courseId } = useParams();
   const navigate = useNavigate();
   const { isQuizCompleted, setIsQuizCompleted } = useOutletContext();
+  const [showButton, setShowButton] = useState(false);
 
   // Local state for quiz data and answer tracking
   const [quiz, setQuiz] = useState();
@@ -35,6 +36,14 @@ function LessonQuiz({ course }) {
     setQuiz(foundLesson.quiz);
     setOptionsAnswer(foundLesson.quiz.optionsAnswer);
   }, []);
+
+  // Shows the answer buttons with a 4-second delay after the question is displayed
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  });
 
   // TODO Debug: Log changes to options and selected answer (remove in production)
   // useEffect(() => {
@@ -67,35 +76,39 @@ function LessonQuiz({ course }) {
   }
 
   return (
-    <div className="main-content">
-      <h2 className="text-3xl font-bold text-grey-800 mb-6 text-center tracking-wide">
-        {quiz.question}
-      </h2>
-      {optionsAnswer.map((optionAnswer, index) => (
-        <ButtonAnswer
-          index={index}
-          optionAnswer={optionAnswer}
-          onClick={() => {
-            setGivenAnswer(index);
-            if (index === correctAnswer) {
-              new Audio("/sound/correct.mp3").play();
-              setTimeout(() => {
-                navigate(`/course/${courseId}/lesson/${lessonId}/summary`);
-              }, 2000);
-              setIsCompleted(true);
-              setIsQuizCompleted(true);
-              console.log("✅ setIsQuizCompleted wurde ausgeführt!");
-            } else {
-              const audio = new Audio("/sound/wrong.mp3");
-              audio.volume = 0.4;
-              audio.play();
-            }
-          }}
-          wasClicked={index === givenAnswer}
-          isCorrect={index === correctAnswer}
-          givenAnswer={givenAnswer}
-        />
-      ))}
+    <div className="main-content flex flex-col justify-start min-h-[200px]">
+      <div>
+        <h2 className="text-3xl font-bold text-grey-800 mb-6 tracking-wide">
+          {quiz.question}
+        </h2>
+      </div>
+      <div>
+        {showButton &&
+          optionsAnswer.map((optionAnswer, index) => (
+            <ButtonAnswer
+              index={index}
+              optionAnswer={optionAnswer}
+              onClick={() => {
+                setGivenAnswer(index);
+                if (index === correctAnswer) {
+                  new Audio("/sound/correct.mp3").play();
+                  setTimeout(() => {
+                    navigate(`/course/${courseId}/lesson/${lessonId}/summary`);
+                  }, 2000);
+                  setIsCompleted(true);
+                  setIsQuizCompleted(true);
+                } else {
+                  const audio = new Audio("/sound/wrong.mp3");
+                  audio.volume = 0.4;
+                  audio.play();
+                }
+              }}
+              wasClicked={index === givenAnswer}
+              isCorrect={index === correctAnswer}
+              givenAnswer={givenAnswer}
+            />
+          ))}
+      </div>
     </div>
   );
 }
