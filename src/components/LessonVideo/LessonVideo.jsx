@@ -29,19 +29,14 @@ function LessonVideo({ course, coursesData, setCourse }) {
             <p className="text-center mt-2 text-gray-600">Loading Video...</p>
           </div>
         ) : (
-          <video controls className="w-full h-full object-cover rounded-md">
+          <video controls className="w-full h-full object-cover rounded-md"
+          onEnded ={()=> setIsVideoCompleted(true)}>
             <source src={videoUrl} type="video/mp4" />
           </video>
         )}
       </div>
 
-      <button
-        onClick={() => setIsVideoCompleted(!isVideoCompleted)}
-        className="border mt-10
-         bg-amber-400 hover:"
-      >
-        Click wenn Video abgeschlossen
-      </button>
+
     </div>
   );
 }
