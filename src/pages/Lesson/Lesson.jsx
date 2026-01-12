@@ -75,15 +75,18 @@ function Lesson({ course, coursesData, setCourse }) {
 
   return (
     <div className="main-content">
-      <div className="mt-6 mb-4 pt-5 flex items-baseline gap-4">
-        <h1 className="text-3xl font-bold text-gray-800 uppercase tracking-wide">
+      <div className="mt-6 mb-4 flex items-baseline gap-4">
+        <h1 className="text-3xl font-bold pt-2 text-gray-800 uppercase tracking-wide">
           {course?.title}
         </h1>
         <h2 className="text-lg text-gray-600 mt-2">
           {foundCurrentLesson?.title}
         </h2>
       </div>
-      <LessonNavbar />
+      <LessonNavbar
+        isVideoCompleted={isVideoCompleted}
+        isQuizCompleted={isQuizCompleted}
+      />
       {/* Outlet is a placeholder for nested lesson routes from react-router.
       React Router renders the active sub-route here
       (intro, video, quiz, or summary).*/}
