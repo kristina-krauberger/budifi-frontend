@@ -8,8 +8,7 @@ function NotFound() {
 
   const handleBack = () => {
     if (location.key === "default") {
-      // Fallback-Ziel (z. B. Dashboard oder Login)
-      navigate("/"); // oder "/dashboard", je nach App-Architektur
+      navigate("/"); 
     } else {
       navigate(-1);
     }
