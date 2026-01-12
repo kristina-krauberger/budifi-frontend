@@ -106,7 +106,7 @@ function Lesson({ course, coursesData, setCourse }) {
       />
       <button
         onClick={() => navigate(`/course/${courseId}`)}
-        className="px-6 py-2 border border-gray-200 bg-white rounded-md text-gray-700"
+        className="px-6 py-2 border border-gray-200 bg-white rounded-md text-gray-700  hover:bg-neutral-100 cursor-pointer transition"
       >
         ← Alle Lessons
       </button>

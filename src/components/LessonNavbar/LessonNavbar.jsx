@@ -12,20 +12,20 @@ function LessonNavbar() {
         <ul className="flex justify-between gap-2 text-sm">
           <Link
             to="video"
-            className={`w-full text-center px-3 py-2 border rounded-md bg-white text-gray-700 transition ${
+            className={`w-full text-center px-3 py-2 border rounded-md bg-white text-gray-700 transition hover:border-gray-400 ${
               location.pathname.includes("video")
                 ? " border-grey-300"
-                : " border-gray-200 hover:border-gray-400"
+                : " border-gray-200"
             }`}
           >
             Video
           </Link>
           <Link
             to="quiz"
-            className={`w-full text-center px-3 py-2 border bg-white rounded-md text-gray-700 transition ${
+            className={`w-full text-center px-3 py-2 border bg-white rounded-md text-gray-700 transition  hover:border-gray-400 ${
               location.pathname.includes("quiz")
                 ? " border-grey-300"
-                : " border-gray-200 hover:border-gray-400"
+                : " border-gray-200"
             }
           `}
           >
@@ -33,10 +33,10 @@ function LessonNavbar() {
           </Link>
           <Link
             to="summary"
-            className={`w-full text-center px-3 py-2 border bg-white rounded-md text-gray-700 transition ${
+            className={`w-full text-center px-3 py-2 border bg-white rounded-md text-gray-700 transition  hover:border-gray-400${
               location.pathname.includes("summary")
                 ? " border-grey-300"
-                : " border-gray-200 hover:border-gray-400"
+                : " border-gray-200"
             }`}
           >
             Fazit
