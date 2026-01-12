@@ -79,10 +79,6 @@ function LessonQuiz({ course }) {
             setGivenAnswer(index);
             if (index === correctAnswer) {
               new Audio("/sound/correct.mp3").play();
-              console.log(
-                "📍 Navigiere zu:",
-                `/course/${courseId}/lesson/${lessonId}/summary`
-              );
               setTimeout(() => {
                 navigate(`/course/${courseId}/lesson/${lessonId}/summary`);
               }, 2000);

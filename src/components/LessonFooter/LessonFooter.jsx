@@ -77,9 +77,9 @@ function LessonFooter({
   // );
 
   return (
-    <nav className="main-content">
-      <div className="bg-neutral-100 border border-gray-300 rounded-lg shadow px-4 py-1">
-        <ul className="flex justify-between gap-2 text-sm">
+    <nav className="py-5">
+      <div className="bg-neutral-100 border border-gray-300 rounded-lg shadow px-4 py-1 h-[55px]">
+        <ul className="h-full flex justify-between items-center gap-2 text-sm">
           <li>
             <ButtonBack />
           </li>
@@ -87,7 +87,7 @@ function LessonFooter({
             <li>
               <button
                 onClick={() => navigate(nextPathname)}
-                className="mb-6 inline-flex mr-7 self-start items-center justify-center w-10 h-10 rounded-full bg-neutral-200 hover:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 text-gray-700"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-emerald-400/60 text-emerald-600 hover:bg-emerald-50 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-300 transition"
               >
                 →
               </button>

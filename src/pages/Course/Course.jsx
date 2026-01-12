@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import LessonCard from "../../components/LessonCard/LessonCard";
 import { useParams } from "react-router";
 import ButtonBack from "../../components/ButtonBack/ButtonBack";
+import ButtonDashboard from "../../components/ButtonDashboard/ButtonDashboard";
 
 /**
  * coursesData          = wrapper object from mock JSON
@@ -32,9 +33,9 @@ function Course({ course, coursesData, setCourse }) {
     <>
       {course && (
         <div className="main-content text-left">
-          <div className="flex">
-            <ButtonBack />
-            <h1 className="mb-10 text-2xl font-semibold tracking-tight text-heading leading-8 text-left">
+          <div className="flex items-center min-h-[60px] gap-x-6 mb-10">
+            <ButtonDashboard />
+            <h1 className="text-2xl font-semibold tracking-tight text-heading leading-8">
               {course.title}{" "}
             </h1>
           </div>

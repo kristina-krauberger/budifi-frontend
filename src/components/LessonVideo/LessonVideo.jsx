@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useOutletContext } from "react-router";
+import { useNavigate, useParams, useOutletContext } from "react-router";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase"; // Pfad anpassen je nach Struktur
 
 function LessonVideo({ course, coursesData, setCourse }) {
   const { isVideoCompleted, setIsVideoCompleted } = useOutletContext();
   console.log("LESSON VIDEO📌", typeof isVideoCompleted, isVideoCompleted);
+  const navigate = useNavigate();
   const { courseId, lessonId } = useParams();
   const [videoUrl, setVideoUrl] = useState(null);
 
@@ -29,8 +30,15 @@ function LessonVideo({ course, coursesData, setCourse }) {
             <p className="text-center mt-2 text-gray-600">Loading Video...</p>
           </div>
         ) : (
-          <video controls className="w-full h-full object-cover rounded-md"
-          onEnded ={()=> setIsVideoCompleted(true)}>
+          <video 
+          controls 
+          className="w-full h-full object-cover rounded-md"
+          onEnded ={()=> {
+            setIsVideoCompleted(true);
+            setTimeout(() => {
+                navigate(`/course/${courseId}/lesson/${lessonId}/quiz`);
+              }, 3000);
+          }}>
             <source src={videoUrl} type="video/mp4" />
           </video>
         )}

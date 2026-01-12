@@ -19,6 +19,11 @@ function Lesson({ course, coursesData, setCourse }) {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
 
+  // Finds current Lesson
+  const foundCurrentLesson = course?.lessons.find(
+    (lesson) => lesson.id === parseInt(lessonId)
+  );
+
   // Track progress state for video and quiz
   // Initialized from localStorage to persist state across reloads
   const [isVideoCompleted, setIsVideoCompleted] = useState(() => {
@@ -70,6 +75,14 @@ function Lesson({ course, coursesData, setCourse }) {
 
   return (
     <div className="main-content">
+      <div className="mt-6 mb-4 pt-5 flex items-baseline gap-4">
+        <h1 className="text-3xl font-bold text-gray-800 uppercase tracking-wide">
+          {course?.title}
+        </h1>
+        <h2 className="text-lg text-gray-600 mt-2">
+          {foundCurrentLesson?.title}
+        </h2>
+      </div>
       <LessonNavbar />
       {/* Outlet is a placeholder for nested lesson routes from react-router.
       React Router renders the active sub-route here
