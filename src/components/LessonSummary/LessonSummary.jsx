@@ -11,9 +11,10 @@
  * on the route: /course/:courseId/lesson/:lessonId/summary
  */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import "../../App.css";
+import ButtonNextLesson from "../../ButtonNextLesson/ButtonNextLesson";
 
 function LessonSummary({ course }) {
   // Get the lessonId from the URL
@@ -28,6 +29,16 @@ function LessonSummary({ course }) {
   const congrats = foundCurrentLesson.summary.congrats;
   const textSummary = foundCurrentLesson.summary.textSummary;
 
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }),
+    [];
+
   return (
     <div className="main-content space-y-6 text-center">
       <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-700">
@@ -37,14 +48,13 @@ function LessonSummary({ course }) {
         {textSummary}
       </p>
       <div>
-        <p className="my-3 mt-10">Willst du mit der nächsten Lesson starten?</p>
+        <ButtonNextLesson />
         <div className="flex justify-center gap-4">
-          <button className="w-44 py-3 rounded-md font-semibold bg-blue-600 hover:bg-blue-700 text-white transition duration-200">
-            Los geht's!
-          </button>
-          <button className="w-44 py-3 rounded-md font-semibold bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300 transition duration-200">
-            Später fortfahren
-          </button>
+          {showButton && (
+            <button className="w-44 py-3 rounded-md font-semibold bg-emerald-400 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all duration-200">
+              Weiter geht's!
+            </button>
+          )}
         </div>
       </div>
     </div>
