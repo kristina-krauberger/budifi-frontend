@@ -18,23 +18,21 @@ function LessonQuiz({ course }) {
   const [showButton, setShowButton] = useState(false);
 
   // Local state for quiz data and answer tracking
-  const [quiz, setQuiz] = useState();
+  const [quizQuestion, setQuizQuestion] = useState();
   const [optionsAnswer, setOptionsAnswer] = useState();
   const [givenAnswer, setGivenAnswer] = useState();
+  const [correctAnswer, setCorrectAnswer] = useState();
   const [isCompleted, setIsCompleted] = useState(false);
-
-  // Optional chaining: avoids error if quiz is undefined or null
-  // Without this, accessing quiz.correctAnswer could crash the app on first render
-  const correctAnswer = quiz?.correctAnswer;
 
   // Loads quiz data and answer options based on lessonId
   useEffect(() => {
     const foundLesson = course.lessons.find(
-      (c) => c.id === parseInt(lessonId, 10)
+      (c) => c.id === parseInt(lessonId, 10),
     );
 
-    setQuiz(foundLesson.quiz);
-    setOptionsAnswer(foundLesson.quiz.optionsAnswer);
+    setQuizQuestion(foundLesson.quiz[0]?.question_text);
+    setOptionsAnswer(foundLesson.quiz[0]?.optionsAnswer);
+    setCorrectAnswer(foundLesson.quiz[0]?.correctAnswer);
   }, []);
 
   // Shows the answer buttons with a 4-second delay after the question is displayed
@@ -67,8 +65,8 @@ function LessonQuiz({ course }) {
   //   );
   // }, [isQuizCompleted]);
 
-  if (!quiz) {
-    return null;
+  if (!quizQuestion) {
+    return <p>Keine Quizfrage vorhanden.</p>;
   }
 
   if (!optionsAnswer || optionsAnswer.length === 0) {
@@ -79,13 +77,14 @@ function LessonQuiz({ course }) {
     <div className="main-content flex flex-col justify-start min-h-[200px]">
       <div>
         <h2 className="text-3xl font-bold text-grey-800 mb-6 tracking-wide">
-          {quiz.question}
+          {quizQuestion}
         </h2>
       </div>
       <div>
         {showButton &&
           optionsAnswer.map((optionAnswer, index) => (
             <ButtonAnswer
+              key={index}
               index={index}
               optionAnswer={optionAnswer}
               onClick={() => {

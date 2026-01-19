@@ -16,13 +16,13 @@ import LessonNavbar from "../../components/LessonNavbar/LessonNavbar";
 import LessonFooter from "../../components/LessonFooter/LessonFooter";
 import NotFound from "../NotFound/NotFound";
 
-function Lesson({ course, coursesData, setCourse }) {
+function Lesson({ course, allCourses, setCourse }) {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
 
   // Finds current Lesson
   const foundCurrentLesson = course?.lessons.find(
-    (lesson) => lesson.id === parseInt(lessonId)
+    (lesson) => lesson.id === parseInt(lessonId),
   );
 
   // Track progress state for video and quiz
@@ -49,8 +49,8 @@ function Lesson({ course, coursesData, setCourse }) {
 
   // Find the current course by ID and update parent state
   useEffect(() => {
-    const foundCurrentCourse = coursesData.courses.find(
-      (c) => c.id === parseInt(courseId, 10)
+    const foundCurrentCourse = allCourses?.courses?.find(
+      (c) => c.course_number === parseInt(courseId, 10),
     );
     setCourse(foundCurrentCourse);
   }, [courseId]);
@@ -59,7 +59,7 @@ function Lesson({ course, coursesData, setCourse }) {
   useEffect(() => {
     localStorage.setItem(
       `lesson-${lessonId}-video`,
-      JSON.stringify(isVideoCompleted)
+      JSON.stringify(isVideoCompleted),
     );
   }, [isVideoCompleted, lessonId]);
 
@@ -67,12 +67,14 @@ function Lesson({ course, coursesData, setCourse }) {
   useEffect(() => {
     localStorage.setItem(
       `lesson-${lessonId}-quiz`,
-      JSON.stringify(isQuizCompleted)
+      JSON.stringify(isQuizCompleted),
     );
   }, [isQuizCompleted, lessonId]);
   console.log("Lesson.jsx render:", { isQuizCompleted });
 
-  if (!course || !foundCurrentLesson) {
+  if (!allCourses || !allCourses.courses) return <p>Lädt...</p>;
+
+  if (allCourses && !course) {
     return <NotFound />;
   }
 
@@ -107,7 +109,7 @@ function Lesson({ course, coursesData, setCourse }) {
       <LessonFooter
         isVideoCompleted={isVideoCompleted}
         isQuizCompleted={isQuizCompleted}
-        coursesData={coursesData}
+        allCourses={allCourses}
         course={course}
       />
       <button

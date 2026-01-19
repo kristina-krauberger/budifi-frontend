@@ -11,7 +11,7 @@ import { useNavigate, useParams, useOutletContext } from "react-router";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase";
 
-function LessonVideo({ course, coursesData, setCourse }) {
+function LessonVideo({ course, allCourses, setCourse }) {
   const { isVideoCompleted, setIsVideoCompleted } = useOutletContext();
   const navigate = useNavigate();
   const { courseId, lessonId } = useParams();

@@ -12,18 +12,18 @@ import PrivateLayout from "./layouts/PrivateLayout";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import Imprint from "./pages/Imprint/Imprint.jsx";
 // Static mock data containing all courses and their lessons
-import { getAllCourses } from "./api/course.api.js"
+import { getAllCourses } from "./api/course.api.js";
 import LessonVideo from "./components/LessonVideo/LessonVideo.jsx";
 import LessonQuiz from "./components/LessonQuiz/LessonQuiz.jsx";
 import LessonSummary from "./components/LessonSummary/LessonSummary.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
-
 
 function App() {
   // Holds the currently selected course.
   // Shared across Dashboard, Course and Lesson pages.
   const [course, setCourse] = useState(null);
   const [allCourses, setAllCourses] = useState(null);
+  console.log("ALL COURSES", allCourses, typeof(allCourses))
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -38,6 +38,10 @@ function App() {
 
     fetchCourses();
   }, []);
+
+  if (!allCourses) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
@@ -59,7 +63,7 @@ function App() {
             element={
               <Dashboard
                 course={course}
-                coursesData={allCourses}
+                allCourses={allCourses}
                 setCourse={setCourse}
               />
             }
@@ -69,7 +73,7 @@ function App() {
             element={
               <Course
                 course={course}
-                coursesData={allCourses}
+                allCourses={allCourses}
                 setCourse={setCourse}
               />
             }
@@ -84,7 +88,7 @@ function App() {
             element={
               <Lesson
                 course={course}
-                coursesData={allCourses}
+                allCourses={allCourses}
                 setCourse={setCourse}
               />
             }
@@ -95,7 +99,7 @@ function App() {
               element={
                 <LessonVideo
                   course={course}
-                  coursesData={allCourses}
+                  allCourses={allCourses}
                   setCourse={setCourse}
                 />
               }
@@ -105,7 +109,7 @@ function App() {
               element={
                 <LessonQuiz
                   course={course}
-                  coursesData={allCourses}
+                  allCourses={allCourses}
                   setCourse={setCourse}
                 />
               }
@@ -115,7 +119,7 @@ function App() {
               element={
                 <LessonSummary
                   course={course}
-                  coursesData={allCourses}
+                  allCourses={allCourses}
                   setCourse={setCourse}
                 />
               }

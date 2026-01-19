@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// Backend-URL von Render:
 //TODO: update deployed project URL
 const API_BASE_URL = "";
 const API_BASE_URL_DEV = "http://127.0.0.1:5003";

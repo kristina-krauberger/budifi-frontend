@@ -21,23 +21,27 @@ function LessonSummary({ course }) {
   const { lessonId } = useParams();
 
   // Find the current lesson based on the lessonId
-  const foundCurrentLesson = course.lessons.find(
-    (c) => c.id == parseInt(lessonId, 10)
+  const foundCurrentLesson = course?.lessons?.find(
+    (lesson) => lesson.lesson_number === parseInt(lessonId, 10),
   );
 
+  if (!foundCurrentLesson) {
+    return <p>Lädt Zusammenfassung...</p>;
+  }
+
   // Extract the congratulation message and the summary text
-  const congrats = foundCurrentLesson.summary.congrats;
-  const textSummary = foundCurrentLesson.summary.textSummary;
+  const congrats = foundCurrentLesson.summaryCongrats;
+  const textSummary = foundCurrentLesson.summaryText;
 
   const [showButton, setShowButton] = useState(false);
 
-  useEffect(() => {
+  (useEffect(() => {
     const timer = setTimeout(() => {
       setShowButton(true);
     }, 4000);
     return () => clearTimeout(timer);
   }),
-    [];
+    []);
 
   return (
     <div className="main-content space-y-6 text-center">

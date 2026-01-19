@@ -5,29 +5,30 @@ import ButtonDashboard from "../../components/ButtonDashboard/ButtonDashboard";
 import NotFound from "../NotFound/NotFound";
 
 /**
- * coursesData          = wrapper object from mock JSON
- * coursesData.courses  = full list (array) of all courses
+ * allCourses          = wrapper object from backend API
+ * allCourses.courses  = full list (array) of all courses
  * course               = currently selected course (based on URL param)
  *
- * coursesData.courses is used to FIND a course
+ * allCourses.courses is used to FIND a course
  * course is used to RENDER lessons
  */
 
 // TODO: delete all console.logs
 
-function Course({ course, coursesData, setCourse }) {
+function Course({ course, allCourses, setCourse }) {
   // Get the course id from URL parameter (e.g., /course/:id)
   const { courseId } = useParams();
 
   console.log(`courseId ${courseId}`);
 
   useEffect(() => {
-    if (courseId) {
-      // `id` comes from the URL as a string (e.g. "2"), so we convert it to a number
-      // to safely use it as an index for our mock data array
-      setCourse(coursesData.courses[parseInt(courseId) - 1]);
+    if (courseId && allCourses?.courses?.length > 0) {
+      const foundCourse = allCourses.courses.find(
+        (c) => c.course_number === parseInt(courseId),
+      );
+      setCourse(foundCourse);
     }
-  }, [courseId]);
+  }, [courseId, allCourses]);
 
   if (!course) {
     return <NotFound />;

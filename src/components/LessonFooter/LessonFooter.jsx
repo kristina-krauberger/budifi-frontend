@@ -12,20 +12,24 @@ import ButtonBack from "../ButtonBack/ButtonBack";
 function LessonFooter({
   isVideoCompleted,
   isQuizCompleted,
-  coursesData,
+  allCourses,
   course,
 }) {
   const location = useLocation();
   const navigate = useNavigate();
   console.log("👉 Location Pathname", location.pathname);
   const { courseId, lessonId } = useParams();
-  const currentLesson = course.lessons.find(
-    (lesson) => lesson.id === parseInt(lessonId)
+  const currentLesson = course?.lessons?.find(
+    (lesson) => lesson.lesson_number === parseInt(lessonId),
   );
 
+  if (!currentLesson) {
+    return <p>Lädt Footer...</p>;
+  }
+
   // Get the current course object based on the current courseId from the URL
-  const currentCourse = coursesData.courses.find(
-    (c) => c.id === parseInt(courseId)
+  const currentCourse = allCourses.courses.find(
+    (c) => c.id === parseInt(courseId),
   );
 
   // Get the current pathname from the router

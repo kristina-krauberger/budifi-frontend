@@ -17,7 +17,7 @@ function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-center bg-white px-4 py-12">
       <h1 className="text-4xl font-bold text-gray-800 mb-4">
-        Oops! Seite nicht gefunden
+        404 - Oops! Seite nicht gefunden
       </h1>
       <p className="text-lg text-gray-600 mb-6">
         Die Seite, die du suchst, scheint sich versteckt zu haben – oder sie
