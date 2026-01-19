@@ -12,12 +12,12 @@
           "duration": 10,
           "isCompleted": true,
           "isLastLesson": false,
-          "intro": {
+          "intro": { 
             "textIntro": "Einführung in das Thema Investieren."
           },
           "video": {
             "url": "https://example.com/video-investieren-1"
-          },
+          }, 
           "quiz": {
             "question": "Was bedeutet investieren?",
             "optionsAnswer": ["Geld ausgeben", "Geld anlegen", "Geld sparen"],
