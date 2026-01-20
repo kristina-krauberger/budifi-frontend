@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import { loginUser } from "../../api/auth.api";
-import "./Login.css";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 export default function Login() {
   // e.g. {
@@ -8,16 +9,31 @@ export default function Login() {
   //     password: "123",
   // }
 
+  const navigate = useNavigate();
+
+  // Local state for form input fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState(false);
 
+  // Access the global context to set the currently logged-in user
+  const { setLoggedInUser } = useContext(LoggedInUserContext);
+
+  // Handle login form submission
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
+      // Send login request to backend
       const response = await loginUser(email, password);
       console.log("Login erfolgreich, Token:", response.token);
-      //TODO: Token im local storage speichern
+
+      // Save user email to global context
+      setLoggedInUser(email);
+      // Store JWT token in local storage for authentication
+      localStorage.setItem("authToken", response.token);
+      navigate("/dashboard");
     } catch (error) {
+      setLoginError(true);
       console.error("Login fehlgeschlagen", error);
     }
   };
@@ -55,6 +71,9 @@ export default function Login() {
               className="w-full px-4 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300"
             />
           </div>
+          {loginError && (
+            <p className="text-red-600 text-sm italic text- text-center">E-Mail oder Passwort falsch.</p>
+          )}
           <button
             type="submit"
             className="px-4 py-2 w-full max-w-md font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 cursor-pointer"

@@ -4,11 +4,14 @@ import { BrowserRouter } from "react-router";
 
 import "./index.css";
 import App from "./App.jsx";
+import { LoggedInUserProvider } from "./context/LoggedInUserProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <LoggedInUserProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-  </StrictMode>
+    </LoggedInUserProvider>
+  </StrictMode>,
 );
