@@ -53,7 +53,9 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/datenschutz" element={<PrivacyPolicy />} />
           <Route path="/impressum" element={<Imprint />} />
+          <Route path="/login" element={<Login/>} />
           <Route path="*" element={<NotFound />} />
+        
         </Route>
 
         {/* Private layout */}

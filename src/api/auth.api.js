@@ -1,9 +1,9 @@
 import api from "./axiosConfig";
 
 // Sends login request with username and password
-export async function loginUser(username, password) {
+export async function loginUser(email, password) {
   const res = await api.post("/login", {
-    username,
+    email,
     password,
   });
   return res.data;
