@@ -23,7 +23,7 @@ function App() {
   // Shared across Dashboard, Course and Lesson pages.
   const [course, setCourse] = useState(null);
   const [allCourses, setAllCourses] = useState(null);
-  console.log("ALL COURSES", allCourses, typeof(allCourses))
+  console.log("ALL COURSES", allCourses, typeof allCourses);
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -53,12 +53,12 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/datenschutz" element={<PrivacyPolicy />} />
           <Route path="/impressum" element={<Imprint />} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
-        
         </Route>
 
         {/* Private layout */}
+
         <Route element={<PrivateLayout />}>
           <Route
             path="/dashboard"

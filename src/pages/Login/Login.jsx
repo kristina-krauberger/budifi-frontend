@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
-import { loginUser } from "../../api/auth.api";
+import { loginUser, fetchLoggedInUser } from "../../api/auth.api";
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 export default function Login() {
@@ -29,8 +29,13 @@ export default function Login() {
 
       // Save user email to global context
       setLoggedInUser(email);
+
       // Store JWT token in local storage for authentication
       localStorage.setItem("authToken", response.token);
+
+      const user = await fetchLoggedInUser();
+      setLoggedInUser(user);
+
       navigate("/dashboard");
     } catch (error) {
       setLoginError(true);
@@ -56,7 +61,7 @@ export default function Login() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required
-              autocomplete="email"
+              autoComplete="email"
               className="w-full px-4 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300"
             />
             <input
@@ -72,7 +77,9 @@ export default function Login() {
             />
           </div>
           {loginError && (
-            <p className="text-red-600 text-sm italic text- text-center">E-Mail oder Passwort falsch.</p>
+            <p className="text-red-600 text-sm italic text- text-center">
+              E-Mail oder Passwort falsch.
+            </p>
           )}
           <button
             type="submit"
