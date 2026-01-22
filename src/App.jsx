@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { useState, useEffect } from "react";
 import Login from "./pages/Login/Login.jsx";
+import RegisterUser from "./pages/RegisterUser/RegisterUser.jsx";
 import PublicLayout from "./layouts/PublicLayout";
 import Lesson from "./pages/Lesson/Lesson";
 import PrivateLayout from "./layouts/PrivateLayout";
@@ -54,6 +55,7 @@ function App() {
           <Route path="/datenschutz" element={<PrivacyPolicy />} />
           <Route path="/impressum" element={<Imprint />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registrieren" element={<RegisterUser />} />
           <Route path="*" element={<NotFound />} />
         </Route>
 

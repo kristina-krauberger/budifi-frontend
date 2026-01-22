@@ -16,7 +16,7 @@ export default function PrivateLayout() {
   }
   return (
     <div className="flex flex-col min-h-screen">
-      <HeaderPrivate /> {/* später ersetzt durch UserHeaderPrivate */}
+      <HeaderPrivate /> 
       <main className="flex-grow">
         <Outlet />
       </main>
