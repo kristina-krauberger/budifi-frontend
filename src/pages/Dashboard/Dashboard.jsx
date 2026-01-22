@@ -1,10 +1,10 @@
 import "../../App.css";
 import CourseCard from "../../components/CourseCard/CourseCard";
-import { LoggedInUserContext } from "../../context/LoggedInUserContext"
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import { useContext } from "react";
 
 function Dashboard({ course, allCourses, setCourse }) {
-  const { loggedInUser } = useContext(LoggedInUserContext) 
+  const { loggedInUser } = useContext(LoggedInUserContext);
 
   return (
     <div className="main-content">
@@ -18,7 +18,11 @@ function Dashboard({ course, allCourses, setCourse }) {
             key={course.id}
             title={course.title}
             lessons={course.lessons.length}
-            progress={45}
+            progress={Math.round(
+              (course.lessons.filter((lesson) => lesson.isCompleted).length /
+                course.lessons.length) *
+                100,
+            )}
           />
         ))}
       </div>
