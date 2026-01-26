@@ -15,7 +15,7 @@ import NotFound from "../NotFound/NotFound";
 
 // TODO: delete all console.logs
 
-function Course({ course, allCourses, setCourse }) {
+function Course({ course, allCourses, setCourse, userProgress }) {
   // Get the course id from URL parameter (e.g., /course/:id)
   const { courseId } = useParams();
 

@@ -1,30 +1,38 @@
+// Dashboard.jsx - Displays the user's personalized dashboard with a greeting and list of courses,
+// including their individual progress data.
 import "../../App.css";
-import CourseCard from "../../components/CourseCard/CourseCard";
-import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import { useContext } from "react";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
+import CourseCard from "../../components/CourseCard/CourseCard";
 
-function Dashboard({ course, allCourses, setCourse }) {
+function Dashboard({ course, allCourses, setCourse, userProgress }) {
   const { loggedInUser } = useContext(LoggedInUserContext);
 
   return (
     <div className="main-content">
       <h1>DEIN DASHBOARD</h1>
       <h2>{JSON.stringify(loggedInUser)}</h2>
+      <h2>{JSON.stringify(userProgress)}</h2>
       <h2>Hallo {loggedInUser?.first_name}, willkommen zurück!</h2>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 max-w-4xl mx-auto mt-10">
-        {allCourses.courses.map((course) => (
-          <CourseCard
-            to={`/course/${course.id}`}
-            key={course.id}
-            title={course.title}
-            lessons={course.lessons.length}
-            progress={Math.round(
-              (course.lessons.filter((lesson) => lesson.isCompleted).length /
-                course.lessons.length) *
-                100,
-            )}
-          />
-        ))}
+        {/* Loop through all available courses and match them with the user's progress data */}
+        {allCourses.courses.map((course) => {
+          // Find the user's progress for the current course by matching course IDs
+          const progressObj = userProgress.courses.find(
+            (p) => p.course_id === course.id,
+          );
+          const progressPercentage = progressObj?.completed_percentage ?? 0;
+
+          return (
+            <CourseCard
+              to={`/course/${course.id}`}
+              key={course.id}
+              title={course.title}
+              lessons={course.lessons.length}
+              progress={progressPercentage}
+            />
+          );
+        })}
       </div>
     </div>
   );

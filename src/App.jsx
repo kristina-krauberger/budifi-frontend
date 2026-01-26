@@ -1,46 +1,75 @@
+// Main application component with routing setup.
+// Fetches course data and user progress once logged in.
 import "./App.css";
-import NotFound from "./pages/NotFound/NotFound.jsx";
-import Dashboard from "./pages/Dashboard/Dashboard.jsx";
-import Course from "./pages/Course/Course.jsx";
-import LandingPage from "./pages/LandingPage/LandingPage.jsx";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+
 import { useState, useEffect } from "react";
-import Login from "./pages/Login/Login.jsx";
-import RegisterUser from "./pages/RegisterUser/RegisterUser.jsx";
-import PublicLayout from "./layouts/PublicLayout";
+import { useContext } from "react";
+import { Routes, Route, Navigate } from "react-router";
+
+import { getAllCourses } from "./api/course.api.js";
+import { getLessonProgress } from "./api/lesson_progress.api.js";
+import { LoggedInUserContext } from "./context/LoggedInUserContext";
+
+import Course from "./pages/Course/Course.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
+import Imprint from "./pages/Imprint/Imprint.jsx";
+import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import Lesson from "./pages/Lesson/Lesson";
+import Login from "./pages/Login/Login.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
 import PrivateLayout from "./layouts/PrivateLayout";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
-import Imprint from "./pages/Imprint/Imprint.jsx";
-// Static mock data containing all courses and their lessons
-import { getAllCourses } from "./api/course.api.js";
+import PublicLayout from "./layouts/PublicLayout";
+import RegisterUser from "./pages/RegisterUser/RegisterUser.jsx";
+
 import LessonVideo from "./components/LessonVideo/LessonVideo.jsx";
 import LessonQuiz from "./components/LessonQuiz/LessonQuiz.jsx";
 import LessonSummary from "./components/LessonSummary/LessonSummary.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
-  // Holds the currently selected course.
+  const { loggedInUser } = useContext(LoggedInUserContext);
+
+  // Holds the currently selected course and progress.
   // Shared across Dashboard, Course and Lesson pages.
   const [course, setCourse] = useState(null);
   const [allCourses, setAllCourses] = useState(null);
   console.log("ALL COURSES", allCourses, typeof allCourses);
+  const [userProgress, setUserProgress] = useState(null);
 
+  // Fetch all courses from the backend when the component mounts
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const data = await getAllCourses();
         setAllCourses(data);
-        console.log(data);
       } catch (err) {
         console.error("Fehler beim Laden:", err);
       }
     };
-
     fetchCourses();
   }, []);
 
-  if (!allCourses) {
+
+  // Fetch the progress of the currently logged-in user
+  // This is triggered only once the user is available in context
+  useEffect(() => {
+    const fetchUserProgress = async () => {
+      try {
+        const data = await getLessonProgress(loggedInUser.id);
+        setUserProgress(data);
+        console.log("Progress for User (ID):", data);
+      } catch (err) {
+        console.error("Fehler beim Laden:", err);
+      }
+    };
+    if (loggedInUser) {
+      fetchUserProgress();
+    }
+  }, [loggedInUser]);
+
+  // Show loading screen until both course data and user progress have loaded
+  if (!allCourses || !userProgress) {
     return <p>Loading...</p>;
   }
 
@@ -60,7 +89,6 @@ function App() {
         </Route>
 
         {/* Private layout */}
-
         <Route element={<PrivateLayout />}>
           <Route
             path="/dashboard"
@@ -69,6 +97,7 @@ function App() {
                 course={course}
                 allCourses={allCourses}
                 setCourse={setCourse}
+                userProgress={userProgress}
               />
             }
           />
@@ -79,6 +108,7 @@ function App() {
                 course={course}
                 allCourses={allCourses}
                 setCourse={setCourse}
+                userProgress={userProgress}
               />
             }
           />
@@ -94,6 +124,7 @@ function App() {
                 course={course}
                 allCourses={allCourses}
                 setCourse={setCourse}
+                userProgress={userProgress}
               />
             }
           >
