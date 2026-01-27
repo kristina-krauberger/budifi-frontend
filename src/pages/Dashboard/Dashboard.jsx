@@ -16,17 +16,18 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
       <h2>Hallo {loggedInUser?.first_name}, willkommen zurück!</h2>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 max-w-4xl mx-auto mt-10">
         {/* Loop through all available courses and match them with the user's progress data */}
+        {/* Joining Course ↔ Progress */}
         {allCourses.courses.map((course) => {
           // Find the user's progress for the current course by matching course IDs
           const progressObj = userProgress.courses.find(
-            (p) => p.course_id === course.id,
+            (progressItem) => progressItem.course_id === course.course_id,
           );
           const progressPercentage = progressObj?.completed_percentage ?? 0;
 
           return (
             <CourseCard
-              to={`/course/${course.id}`}
-              key={course.id}
+              to={`/course/${course.course_id}`}
+              key={course.course_id}
               title={course.title}
               lessons={course.lessons.length}
               progress={progressPercentage}

@@ -28,7 +28,7 @@ function LessonCard({ to, title, duration, isCompleted, isLastLesson }) {
         <p className="text-body text-left italic">Dauer: {duration} Minuten</p>
         {isCompleted ? (
           <div className="mt-4 text-green-600 font-light text-left">
-            ✓ Abgeschlossen 100%
+            ✓ Abgeschlossen
           </div>
         ) : (
           <div className="mt-4 text-gray-400 font-light text-left">

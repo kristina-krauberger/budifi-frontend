@@ -21,6 +21,7 @@ function Course({ course, allCourses, setCourse, userProgress }) {
 
   console.log(`courseId ${courseId}`);
 
+  // When courseId changes and allCourses is loaded, find the course by course_number
   useEffect(() => {
     if (courseId && allCourses?.courses?.length > 0) {
       const foundCourse = allCourses.courses.find(
@@ -44,16 +45,33 @@ function Course({ course, allCourses, setCourse, userProgress }) {
               {course.title}{" "}
             </h1>
           </div>
-          {course.lessons.map((lesson) => (
-            <LessonCard
-              key={lesson.id}
-              to={`/course/${courseId}/lesson/${lesson.id}`}
-              title={lesson.title}
-              duration={lesson.duration}
-              isCompleted={lesson.isCompleted}
-              isLastLesson={lesson.isLastLesson}
-            />
-          ))}
+          {/* Map over lessons and enrich each with progress from userProgress */}
+          {course.lessons.map((lesson) => {
+            // Get user's progress for the current course (matching course_id)
+            const progressCourseObj = userProgress.courses.find(
+              (progressItemCourse) =>
+                progressItemCourse.course_id === course.course_id,
+            );
+
+            // From that course progress, find lesson progress by lesson_id
+            const progressLessonsObj = progressCourseObj?.lessons.find(
+              (progressItemLesson) =>
+                progressItemLesson.lesson_id === lesson.lesson_id,
+            );
+            // Determine if this lesson is marked as completed
+            const lessonIsCompleted = progressLessonsObj?.is_completed ?? false;
+
+            return (
+              <LessonCard
+                key={lesson.lesson_id}
+                to={`/course/${courseId}/lesson/${lesson.lesson_id}`}
+                title={lesson.title}
+                duration={lesson.duration}
+                isCompleted={lessonIsCompleted}
+                isLastLesson={lesson.isLastLesson}
+              />
+            );
+          })}
         </div>
       )}
     </>

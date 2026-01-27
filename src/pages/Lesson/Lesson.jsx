@@ -9,8 +9,8 @@
  * - Developer mode for testing/resetting progress (toggle isDevMode)
  */
 
-import { useEffect, useState } from "react";
-import { Outlet, useParams, useNavigate } from "react-router";
+import { useEffect, useState } from "react"; 
+import { Outlet, useParams, useNavigate } from "react-router"; 
 import "../../App.css";
 import LessonNavbar from "../../components/LessonNavbar/LessonNavbar";
 import LessonFooter from "../../components/LessonFooter/LessonFooter";
@@ -20,9 +20,10 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
 
+
   // Finds current Lesson
   const foundCurrentLesson = course?.lessons.find(
-    (lesson) => lesson.id === parseInt(lessonId),
+    (lesson) => lesson.lesson_id === parseInt(lessonId),
   );
 
   // Track progress state for video and quiz
