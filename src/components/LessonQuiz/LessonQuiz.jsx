@@ -6,10 +6,13 @@
  * - Navigates to summary on correct answer
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router";
+import { updateLessonProgress } from "../../api/lesson_progress.api";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import "../../App.css";
 import ButtonAnswer from "../ButtonAnswer/ButtonAnswer";
+
 
 function LessonQuiz({ course }) {
   const { lessonId, courseId } = useParams();
@@ -23,6 +26,10 @@ function LessonQuiz({ course }) {
   const [givenAnswer, setGivenAnswer] = useState();
   const [correctAnswer, setCorrectAnswer] = useState();
   const [isCompleted, setIsCompleted] = useState(false);
+
+  // Global State "User"
+  const { loggedInUser } = useContext(LoggedInUserContext);
+  
 
   // Loads quiz data and answer options based on lessonId
   useEffect(() => {
@@ -96,6 +103,7 @@ function LessonQuiz({ course }) {
                   }, 2000);
                   setIsCompleted(true);
                   setIsQuizCompleted(true);
+                  updateLessonProgress(loggedInUser.id, lessonId, 1)
                 } else {
                   const audio = new Audio("/sound/wrong.mp3");
                   audio.volume = 0.4;
