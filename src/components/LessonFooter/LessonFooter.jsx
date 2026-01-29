@@ -19,10 +19,15 @@ function LessonFooter({
   const navigate = useNavigate();
   console.log("👉 Location Pathname", location.pathname);
   const { courseId, lessonId } = useParams();
+  console.log("🚨 COURSE ID", courseId)
+  console.log("🚨 LESSON ID", lessonId)
+  console.log("COURSE", course)
+  console.log("🚨 COURSE.LESSONS", course.lessons)
   const currentLesson = course?.lessons?.find(
-    (lesson) => lesson.lesson_number === parseInt(lessonId),
+    (lesson) => lesson.lesson_id === parseInt(lessonId),
   );
 
+  console.log("🚨 CurrentLesson", currentLesson)
   if (!currentLesson) {
     return <p>Lädt Footer...</p>;
   }
