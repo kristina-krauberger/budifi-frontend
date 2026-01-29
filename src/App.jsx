@@ -51,7 +51,6 @@ function App() {
     fetchCourses();
   }, []);
 
-
   // Fetch the progress of the currently logged-in user
   // This is triggered only once the user is available in context
   useEffect(() => {
@@ -69,8 +68,15 @@ function App() {
     }
   }, [loggedInUser, location.pathname]);
 
-  // Show loading screen until both course data and user progress have loaded
-  if (!allCourses || !userProgress) {
+  // Wait until course data has been loaded from the backend.
+  // Until then, do not render the app to avoid accessing undefined data.
+  if (!allCourses) {
+    return <p>Loading...</p>;
+  }
+
+  // If a user is logged in, wait until their progress data is loaded.
+  // This prevents private pages from rendering before progress is available.
+  if (loggedInUser && !userProgress) {
     return <p>Loading...</p>;
   }
 

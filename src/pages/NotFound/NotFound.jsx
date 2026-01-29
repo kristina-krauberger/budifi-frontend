@@ -1,16 +1,26 @@
+/**
+ * NotFound component displays a 404 error page when a user navigates to a non-existent route.
+ * It redirects the user back to the appropriate home page depending on their authentication status.
+ * - Logged-in users are redirected to '/dashboard'
+ * - Visitors are redirected to the public landing page '/'
+ */
 import React from "react";
 import "../../App.css";
 import { useLocation, useNavigate } from "react-router";
+import { useContext } from "react";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
 function NotFound() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { loggedInUser } = useContext(LoggedInUserContext);
 
+  // Navigate to dashboard or home depending on auth state of user
   const handleBack = () => {
-    if (location.key === "default") {
-      navigate("/"); 
+    if (loggedInUser) {
+      navigate("/dashboard");
     } else {
-      navigate(-1);
+      navigate("/");
     }
   };
 
