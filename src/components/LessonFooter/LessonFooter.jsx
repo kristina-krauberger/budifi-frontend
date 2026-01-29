@@ -29,7 +29,7 @@ function LessonFooter({
 
   // Get the current course object based on the current courseId from the URL
   const currentCourse = allCourses.courses.find(
-    (c) => c.id === parseInt(courseId),
+    (c) => c.course_id === parseInt(courseId),
   );
 
   // Get the current pathname from the router

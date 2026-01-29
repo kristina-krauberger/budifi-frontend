@@ -16,15 +16,15 @@ function HeaderPrivate() {
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
-          to="/dashboard"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="flex items-center space-x-3 rtl:space-x-reverse cursor-pointer"
         >
           <img src={logo} className="h-8" alt="Flowbite Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Buddy.Fi
           </span>
-        </Link>
+        </button>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button
             onClick={handleLogout}

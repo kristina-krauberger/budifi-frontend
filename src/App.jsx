@@ -4,7 +4,7 @@ import "./App.css";
 
 import { useState, useEffect } from "react";
 import { useContext } from "react";
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, useLocation } from "react-router";
 
 import { getAllCourses } from "./api/course.api.js";
 import { getLessonProgress } from "./api/lesson_progress.api.js";
@@ -29,6 +29,7 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 
 function App() {
   const { loggedInUser } = useContext(LoggedInUserContext);
+  const location = useLocation();
 
   // Holds the currently selected course and progress.
   // Shared across Dashboard, Course and Lesson pages.
@@ -66,7 +67,7 @@ function App() {
     if (loggedInUser) {
       fetchUserProgress();
     }
-  }, [loggedInUser]);
+  }, [loggedInUser, location.pathname]);
 
   // Show loading screen until both course data and user progress have loaded
   if (!allCourses || !userProgress) {

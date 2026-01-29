@@ -34,7 +34,7 @@ function LessonQuiz({ course }) {
   // Loads quiz data and answer options based on lessonId
   useEffect(() => {
     const foundLesson = course.lessons.find(
-      (c) => c.id === parseInt(lessonId, 10),
+      (c) => c.lesson_id === parseInt(lessonId, 10),
     );
 
     setQuizQuestion(foundLesson.quiz[0]?.question_text);

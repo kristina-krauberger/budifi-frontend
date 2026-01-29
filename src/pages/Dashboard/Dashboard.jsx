@@ -11,8 +11,6 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
   return (
     <div className="main-content">
       <h1>DEIN DASHBOARD</h1>
-      <h2>{JSON.stringify(loggedInUser)}</h2>
-      <h2>{JSON.stringify(userProgress)}</h2>
       <h2>Hallo {loggedInUser?.first_name}, willkommen zurück!</h2>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 max-w-4xl mx-auto mt-10">
         {/* Loop through all available courses and match them with the user's progress data */}
