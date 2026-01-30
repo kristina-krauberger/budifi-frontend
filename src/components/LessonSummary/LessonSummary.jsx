@@ -52,7 +52,6 @@ function LessonSummary({ course }) {
         {textSummary}
       </p>
       <div>
-        <ButtonNextLesson />
         <div className="flex justify-center gap-4">
           {showButton && (
             <button className="w-44 py-3 rounded-md font-semibold bg-emerald-400 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all duration-200">

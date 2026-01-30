@@ -89,12 +89,6 @@ export default function Login() {
           </button>
           {/* form in kombi mit button vom typ "submit" kann ich auch per enter eingeben */}
         </form>
-        <a
-          href="#"
-          className="text-sm text-indigo-600 hover:underline text-center block"
-        >
-          Passwort vergessen?
-        </a>
       </div>
     </div>
   );

@@ -2,25 +2,26 @@ import api from "./axiosConfig";
 
 // Sends login request with username and password
 export async function loginUser(email, password) {
-  const res = await api.post("/login", {
+  const response = await api.post("/api/login", {
     email,
     password,
   });
-  return res.data;
+  return response.data;
 }
 
 // Fetches logged in user data
 export async function fetchLoggedInUser() {
-    const res = await api.get("/me");
-    return res.data
+  const response = await api.get("/api/me");
+  return response.data;
 }
 
-
-// Registers a new user with given username and password
-// TODO: pass on more detais of new user (name, email,..)
-export async function registerUser(username, passowrd) {
-  const res = await api.post("/register", {
-    username,
-    password,
+// Registers a new user with given first name, last name, email and password 
+export async function registerUser(userData) {
+  const response = await api.post("/api/register", {
+    first_name: userData.firstName,
+    last_name: userData.lastName,
+    email: userData.email,
+    password: userData.password,
   });
+  return response.data;
 }
