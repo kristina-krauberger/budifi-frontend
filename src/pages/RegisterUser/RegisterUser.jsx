@@ -13,7 +13,7 @@ export default function Register() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  // Handle register form submission
+    // Handle register form submission and display validation errors (e.g. duplicate email)
   const handleRegister = async (event) => {
     event.preventDefault();
     try {
@@ -24,12 +24,14 @@ export default function Register() {
         email,
         password,
       });
-
+      if (response.error) {
+        if (response.error.toLowerCase().includes("email")) {
+          setErrorEmail("Unter dieser Email existiert bereits ein User.");
+        }
+        return;
+      }
       navigate("/login");
-    } catch (error) {
-      setLoginError(true);
-      console.error("Registration fehlgeschlagen", error);
-    }
+    } catch (error) {}
   };
 
   // Email input validation through regex
@@ -41,10 +43,12 @@ export default function Register() {
       );
     if (!validEmail) {
       setErrorEmail("Richtige Email angeben");
+    } else {
+      setErrorEmail("");
     }
-    else { setErrorEmail("")}
   }
 
+  // Password input validation through regex
   function validatePassword(password) {
     if (password.length < 3) {
       setErrorPassword("Passwort muss mind 3 Zeichen lang sein.");
@@ -92,10 +96,12 @@ export default function Register() {
               placeholder="Email Adresse"
               value={email}
               onChange={(event) => {
-                (setEmail(event.target.value), validateEmail(email));
+                const value = event.target.value;
+                setEmail(value);
+                validateEmail(value);
               }}
               required
-              style={{ border: errorEmail && "1px solid red", outline:"none" }}
+              style={{ border: errorEmail && "1px solid red", outline: "none" }}
               className="w-full px-4 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300"
             />
             <input
@@ -105,10 +111,15 @@ export default function Register() {
               placeholder="Passwort"
               value={password}
               onChange={(event) => {
-                (setPassword(event.target.value), validatePassword(password));
+                const value = event.target.value;
+                setPassword(value);
+                validatePassword(value);
               }}
               required
-              style={{ border: errorPassword && "1px solid red", outline:"none" }}
+              style={{
+                border: errorPassword && "1px solid red",
+                outline: "none",
+              }}
               className="w-full px-4 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300"
             />
           </div>
