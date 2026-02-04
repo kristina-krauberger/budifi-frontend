@@ -13,7 +13,7 @@ export default function Register() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-    // Handle register form submission and display validation errors (e.g. duplicate email)
+  // Handles form submission, sends user data to backend, and shows validation errors (e.g., duplicate email)
   const handleRegister = async (event) => {
     event.preventDefault();
     try {
