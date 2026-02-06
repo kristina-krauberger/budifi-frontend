@@ -13,14 +13,21 @@ import axios from "axios";
 const API_BASE_URL = "https://buddyfi-backend.onrender.com"; //TODO: update deployed project URL
 const API_BASE_URL_DEV = "http://127.0.0.1:5003";
 
-const isLocalHost =
-  window.location.hostname === "localhost" ||
-  window.location.hostname === "127.0.0.1";
+// const isLocalHost =
+//   window.location.hostname === "localhost" ||
+//   window.location.hostname === "127.0.0.1";
 
 // Create an Axios instance with default configuration
 
+// const api = axios.create({
+//   baseURL: isLocalHost ? API_BASE_URL_DEV : API_BASE_URL,
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
+
 const api = axios.create({
-  baseURL: isLocalHost ? API_BASE_URL_DEV : API_BASE_URL,
+  baseURL: API_BASE_URL_DEV,
   headers: {
     "Content-Type": "application/json",
   },
