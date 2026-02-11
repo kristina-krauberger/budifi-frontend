@@ -9,9 +9,15 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
   const { loggedInUser } = useContext(LoggedInUserContext);
 
   return (
-    <div className="main-content">
-      <h1>DEIN DASHBOARD</h1>
-      <h2>Hallo {loggedInUser?.first_name}, willkommen zurück!</h2>
+    <div className="main-content pt-10 pb-10">
+      <div className="text-center my-10">
+        <h1 className="text-4xl font-bold text-primary-600">
+          Hey {loggedInUser?.first_name}!
+        </h1>
+        <p className="text-md text-gray-600 mt-2">
+          Hier ist dein persönliches Dashboard
+        </p>
+      </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 max-w-4xl mx-auto mt-10">
         {/* Loop through all available courses and match them with the user's progress data */}
         {/* Joining Course ↔ Progress */}

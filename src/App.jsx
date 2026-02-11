@@ -35,7 +35,7 @@ function App() {
   // Shared across Dashboard, Course and Lesson pages.
   const [course, setCourse] = useState(null);
   const [allCourses, setAllCourses] = useState(null);
-  console.log("ALL COURSES", allCourses, typeof allCourses);
+  console.log("ALL COURSES", allCourses, typeof allCourses); 
   const [userProgress, setUserProgress] = useState(null);
 
   // Fetch all courses from the backend when the component mounts
@@ -43,6 +43,7 @@ function App() {
     const fetchCourses = async () => {
       try {
         const data = await getAllCourses();
+        console.log("TEST 🔥", data)
         setAllCourses(data);
       } catch (err) {
         console.error("Fehler beim Laden:", err);
@@ -56,6 +57,9 @@ function App() {
   useEffect(() => {
     const fetchUserProgress = async () => {
       try {
+        if (!loggedInUser || !loggedInUser.id) {
+          return <p>Loading...</p>;
+        }
         const data = await getLessonProgress(loggedInUser.id);
         setUserProgress(data);
         console.log("Progress for User (ID):", data);

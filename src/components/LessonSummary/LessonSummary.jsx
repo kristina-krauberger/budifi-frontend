@@ -12,13 +12,13 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate, useLocation } from "react-router";
 import "../../App.css";
-import ButtonNextLesson from "../../ButtonNextLesson/ButtonNextLesson";
 
-function LessonSummary({ course }) {
-  // Get the lessonId from the URL
-  const { lessonId } = useParams();
+function LessonSummary({ course, allCourses }) {
+  const navigate = useNavigate();
+  // Get the lessonId & courseId from the URL
+  const { lessonId, courseId } = useParams();
 
   // Find the current lesson based on the lessonId
   const foundCurrentLesson = course?.lessons?.find(
@@ -54,7 +54,31 @@ function LessonSummary({ course }) {
       <div>
         <div className="flex justify-center gap-4">
           {showButton && (
-            <button className="w-44 py-3 rounded-md font-semibold bg-emerald-400 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all duration-200">
+            <button
+              onClick={() => {
+                const currentCourse = allCourses.courses.find(
+                  (c) => c.course_id === parseInt(courseId),
+                );
+
+                const currentLesson = course?.lessons?.find(
+                  (lesson) => lesson.lesson_id === parseInt(lessonId),
+                );
+
+                const isLastLesson = currentLesson?.isLastLesson;
+                const isLastCourse = currentCourse?.isLastCourse;
+
+                if (!isLastLesson) {
+                  navigate(
+                    `/course/${courseId}/lesson/${Number(lessonId) + 1}/video`,
+                  );
+                } else if (!isLastCourse) {
+                  navigate(`/course/${Number(courseId) + 1}/lesson/1/video`);
+                } else {
+                  navigate("/dashboard");
+                }
+              }}
+              className="w-44 py-3 rounded-md font-semibold bg-emerald-400 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all duration-200"
+            >
               Weiter geht's!
             </button>
           )}
