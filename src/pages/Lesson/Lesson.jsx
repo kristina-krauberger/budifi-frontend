@@ -9,8 +9,8 @@
  * - Developer mode for testing/resetting progress (toggle isDevMode)
  */
 
-import { useEffect, useState } from "react"; 
-import { Outlet, useParams, useNavigate } from "react-router"; 
+import { useEffect, useState } from "react";
+import { Outlet, useParams, useNavigate } from "react-router";
 import "../../App.css";
 import LessonNavbar from "../../components/LessonNavbar/LessonNavbar";
 import LessonFooter from "../../components/LessonFooter/LessonFooter";
@@ -19,7 +19,6 @@ import NotFound from "../NotFound/NotFound";
 function Lesson({ course, allCourses, setCourse, userProgress }) {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
-
 
   // Finds current Lesson
   const foundCurrentLesson = course?.lessons.find(
@@ -96,7 +95,7 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
       {/* Outlet is a placeholder for nested lesson routes from react-router.
       React Router renders the active sub-route here
       (intro, video, quiz, or summary).*/}
-      <div className="flex flex-col items-center justify-center w-full min-h-[400px] max-h-[400px] px-2 overflow-y-auto">
+      <div className="flex flex-col items-center justify-center w-full min-h-[380px] max-h-[380px] px-2">
         <Outlet
           context={{
             course,

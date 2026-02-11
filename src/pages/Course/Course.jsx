@@ -64,7 +64,7 @@ function Course({ course, allCourses, setCourse, userProgress }) {
             return (
               <LessonCard
                 key={lesson.lesson_id}
-                to={`/course/${courseId}/lesson/${lesson.lesson_id}`}
+                to={`/course/${courseId}/lesson/${lesson.lesson_number}`}
                 title={lesson.title}
                 duration={lesson.duration}
                 isCompleted={lessonIsCompleted}

@@ -10,7 +10,11 @@ function HeaderPublic() {
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img src={logo} className="h-8" alt="Flowbite Logo" />
+          <img
+            src={logo}
+            className="h-12 w-12 rounded-full"
+            alt="Buddy.Fi Logo"
+          />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Buddy.Fi
           </span>

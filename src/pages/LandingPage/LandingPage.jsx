@@ -28,7 +28,7 @@ function LandingPage() {
             JETZT LOSLEGEN
           </Link>
         </div>
-        <img src={hero1} className="w-1/2" alt="Hero" />
+        <img src={hero1} className="w-1/2 rounded-xl" alt="Hero" />
       </main>
     </div>
   );

@@ -24,7 +24,7 @@ function LessonFooter({
   console.log("COURSE", course)
   console.log("🚨 COURSE.LESSONS", course.lessons)
   const currentLesson = course?.lessons?.find(
-    (lesson) => lesson.lesson_id === parseInt(lessonId),
+    (lesson) => lesson.lesson_number === parseInt(lessonId),
   );
 
   console.log("🚨 CurrentLesson", currentLesson)
