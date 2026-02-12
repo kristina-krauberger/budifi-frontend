@@ -13,7 +13,6 @@ import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import "../../App.css";
 import ButtonAnswer from "../ButtonAnswer/ButtonAnswer";
 
-
 function LessonQuiz({ course }) {
   const { lessonId, courseId } = useParams();
   const navigate = useNavigate();
@@ -29,13 +28,14 @@ function LessonQuiz({ course }) {
 
   // Global State "User"
   const { loggedInUser } = useContext(LoggedInUserContext);
-  
 
   // Loads quiz data and answer options based on lessonId
   useEffect(() => {
     const foundLesson = course.lessons.find(
-      (c) => c.lesson_id === parseInt(lessonId, 10),
+      (c) => c.lesson_number === parseInt(lessonId, 10),
     );
+    console.log("✅ LESSON FOUND", foundLesson)
+
 
     setQuizQuestion(foundLesson.quiz[0]?.question_text);
     setOptionsAnswer(foundLesson.quiz[0]?.optionsAnswer);
@@ -103,7 +103,7 @@ function LessonQuiz({ course }) {
                   }, 2000);
                   setIsCompleted(true);
                   setIsQuizCompleted(true);
-                  updateLessonProgress(loggedInUser.id, lessonId, 1)
+                  updateLessonProgress(loggedInUser.id, lessonId, 1);
                 } else {
                   const audio = new Audio("/sound/wrong.mp3");
                   audio.volume = 0.4;
