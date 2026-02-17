@@ -17,22 +17,22 @@ import LessonFooter from "../../components/LessonFooter/LessonFooter";
 import NotFound from "../NotFound/NotFound";
 
 function Lesson({ course, allCourses, setCourse, userProgress }) {
-  const { courseId, lessonId } = useParams();
+  const { courseId, lessonNumber } = useParams();
   const navigate = useNavigate();
 
   // Finds current Lesson
   const foundCurrentLesson = course?.lessons.find(
-    (lesson) => lesson.lesson_id === parseInt(lessonId),
+    (lesson) => lesson.lesson_number === parseInt(lessonNumber),
   );
 
   // Track progress state for video and quiz
   // Initialized from localStorage to persist state across reloads
   const [isVideoCompleted, setIsVideoCompleted] = useState(() => {
-    const stored = localStorage.getItem(`lesson-${lessonId}-video`);
+    const stored = localStorage.getItem(`lesson-${lessonNumber}-video`);
     return stored ? JSON.parse(stored) : false;
   });
   const [isQuizCompleted, setIsQuizCompleted] = useState(() => {
-    const stored = localStorage.getItem(`lesson-${lessonId}-quiz`);
+    const stored = localStorage.getItem(`lesson-${lessonNumber}-quiz`);
     return stored ? JSON.parse(stored) : false;
   });
 
@@ -41,10 +41,10 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
   // It runs on every render — not inside useEffect — to ensure data is cleared each time.
   const isDevMode = true;
   if (isDevMode) {
-    localStorage.removeItem(`lesson-${lessonId}-video`);
-    localStorage.removeItem(`lesson-${lessonId}-quiz`);
+    localStorage.removeItem(`lesson-${lessonNumber}-video`);
+    localStorage.removeItem(`lesson-${lessonNumber}-quiz`);
     console.log("🧹 Dev-Modus: localStorage wurde zurückgesetzt");
-    console.log("🔎 DevMode Reset für lessonId:", lessonId);
+    console.log("🔎 DevMode Reset für lessonNumber:", lessonNumber);
   }
 
   // Find the current course by ID and update parent state
@@ -58,18 +58,18 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
   // Save isVideoCompleted state to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(
-      `lesson-${lessonId}-video`,
+      `lesson-${lessonNumber}-video`,
       JSON.stringify(isVideoCompleted),
     );
-  }, [isVideoCompleted, lessonId]);
+  }, [isVideoCompleted, lessonNumber]);
 
   // Save isQuizCompleted state to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(
-      `lesson-${lessonId}-quiz`,
+      `lesson-${lessonNumber}-quiz`,
       JSON.stringify(isQuizCompleted),
     );
-  }, [isQuizCompleted, lessonId]);
+  }, [isQuizCompleted, lessonNumber]);
   console.log("Lesson.jsx render:", { isQuizCompleted });
 
   if (!allCourses || !allCourses.courses) return <p>Lädt...</p>;

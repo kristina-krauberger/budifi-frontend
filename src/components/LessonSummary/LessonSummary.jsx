@@ -5,10 +5,10 @@
  * 2. Shows a short summary of the lesson content
  *
  * The data is extracted from the current lesson object inside the course.
- * The lessonId is taken from the URL using `useParams`.
+ * The lessonNumber is taken from the URL using `useParams`.
  *
  * This component is displayed inside the <Outlet /> of Lesson.jsx
- * on the route: /course/:courseId/lesson/:lessonId/summary
+ * on the route: /course/:courseId/lesson/:lessonNumber/summary
  */
 
 import React, { useEffect, useState } from "react";
@@ -17,12 +17,12 @@ import "../../App.css";
 
 function LessonSummary({ course, allCourses }) {
   const navigate = useNavigate();
-  // Get the lessonId & courseId from the URL
-  const { lessonId, courseId } = useParams();
+  // Get the lessonNumber & courseId from the URL
+  const { lessonNumber, courseId } = useParams();
 
-  // Find the current lesson based on the lessonId
+  // Find the current lesson based on the lessonNumber
   const foundCurrentLesson = course?.lessons?.find(
-    (lesson) => lesson.lesson_number === parseInt(lessonId, 10),
+    (lesson) => lesson.lesson_number === parseInt(lessonNumber, 10),
   );
 
   if (!foundCurrentLesson) {
@@ -61,7 +61,7 @@ function LessonSummary({ course, allCourses }) {
                 );
 
                 const currentLesson = course?.lessons?.find(
-                  (lesson) => lesson.lesson_id === parseInt(lessonId),
+                  (lesson) => lesson.lesson_id === parseInt(lessonNumber),
                 );
 
                 const isLastLesson = currentLesson?.isLastLesson;
@@ -69,7 +69,7 @@ function LessonSummary({ course, allCourses }) {
 
                 if (!isLastLesson) {
                   navigate(
-                    `/course/${courseId}/lesson/${Number(lessonId) + 1}/video`,
+                    `/course/${courseId}/lesson/${Number(lessonNumber) + 1}/video`,
                   );
                 } else if (!isLastCourse) {
                   navigate(`/course/${Number(courseId) + 1}/lesson/1/video`);

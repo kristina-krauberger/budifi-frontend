@@ -14,12 +14,12 @@ import { storage } from "../../firebase";
 function LessonVideo({ course, allCourses, setCourse }) {
   const { isVideoCompleted, setIsVideoCompleted } = useOutletContext();
   const navigate = useNavigate();
-  const { courseId, lessonId } = useParams();
+  const { courseId, lessonNumber } = useParams();
   const [videoUrl, setVideoUrl] = useState(null);
 
   // Load video URL from Firebase storage when component mounts
   useEffect(() => {
-    const videoRef = ref(storage, `course${courseId}_lesson${lessonId}.mp4`);
+    const videoRef = ref(storage, `course${courseId}_lesson${lessonNumber}.mp4`);
     getDownloadURL(videoRef)
       .then((url) => {
         setVideoUrl(url);
@@ -46,7 +46,7 @@ function LessonVideo({ course, allCourses, setCourse }) {
             onEnded={() => {
               setIsVideoCompleted(true);
               setTimeout(() => {
-                navigate(`/course/${courseId}/lesson/${lessonId}/quiz`);
+                navigate(`/course/${courseId}/lesson/${lessonNumber}/quiz`);
               }, 3000);
             }}
           >

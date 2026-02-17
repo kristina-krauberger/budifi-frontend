@@ -18,13 +18,13 @@ function LessonFooter({
   const location = useLocation();
   const navigate = useNavigate();
   console.log("👉 Location Pathname", location.pathname);
-  const { courseId, lessonId } = useParams();
+  const { courseId, lessonNumber } = useParams();
   console.log("🚨 COURSE ID", courseId)
-  console.log("🚨 LESSON ID", lessonId)
+  console.log("🚨 LESSON ID", lessonNumber)
   console.log("COURSE", course)
   console.log("🚨 COURSE.LESSONS", course.lessons)
   const currentLesson = course?.lessons?.find(
-    (lesson) => lesson.lesson_number === parseInt(lessonId),
+    (lesson) => lesson.lesson_number === parseInt(lessonNumber),
   );
 
   console.log("🚨 CurrentLesson", currentLesson)
@@ -47,10 +47,10 @@ function LessonFooter({
   // Determine navigation logic based on current route and progress
   // Video → Quiz → Summary → Next Lesson Video or Dashboard
   if (currentPath.includes("video") && isVideoCompleted) {
-    nextPathname = `/course/${courseId}/lesson/${lessonId}/quiz`;
+    nextPathname = `/course/${courseId}/lesson/${lessonNumber}/quiz`;
     showButton = true;
   } else if (currentPath.includes("quiz") && isQuizCompleted) {
-    nextPathname = `/course/${courseId}/lesson/${lessonId}/summary`;
+    nextPathname = `/course/${courseId}/lesson/${lessonNumber}/summary`;
     showButton = true;
   } else if (currentPath.includes("summary")) {
     showButton = true;
@@ -63,7 +63,7 @@ function LessonFooter({
     const isLastCourse = currentCourse.isLastCourse;
 
     if (!isLastLesson) {
-      nextPathname = `/course/${courseId}/lesson/${Number(lessonId) + 1}/video`;
+      nextPathname = `/course/${courseId}/lesson/${Number(lessonNumber) + 1}/video`;
     } else if (!isLastCourse) {
       nextPathname = `/course/${Number(courseId) + 1}/lesson/1/video`;
     } else {

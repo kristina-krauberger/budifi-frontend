@@ -14,7 +14,7 @@ import "../../App.css";
 import ButtonAnswer from "../ButtonAnswer/ButtonAnswer";
 
 function LessonQuiz({ course }) {
-  const { lessonId, courseId } = useParams();
+  const { lessonNumber, courseId } = useParams();
   const navigate = useNavigate();
   const { isQuizCompleted, setIsQuizCompleted } = useOutletContext();
   const [showButton, setShowButton] = useState(false);
@@ -29,13 +29,19 @@ function LessonQuiz({ course }) {
   // Global State "User"
   const { loggedInUser } = useContext(LoggedInUserContext);
 
+  const foundLesson = course.lessons.find(
+    (c) => c.lesson_number === parseInt(lessonNumber, 10),
+  );
+  // console.log("✅ LESSON Number from URL", lessonNumber);
+  // console.log("✅ LESSON FOUND", foundLesson);
+  // console.log("2️⃣ foundLesson.id", foundLesson.lesson_id);
+
   // Loads quiz data and answer options based on lessonId
   useEffect(() => {
-    const foundLesson = course.lessons.find(
-      (c) => c.lesson_number === parseInt(lessonId, 10),
-    );
-    console.log("✅ LESSON FOUND", foundLesson)
-
+    if (!foundLesson || !foundLesson.quiz || foundLesson.quiz.length === 0) {
+      console.warn("❌ Lesson oder Quiz nicht gefunden");
+      return;
+    }
 
     setQuizQuestion(foundLesson.quiz[0]?.question_text);
     setOptionsAnswer(foundLesson.quiz[0]?.optionsAnswer);
@@ -97,13 +103,27 @@ function LessonQuiz({ course }) {
               onClick={() => {
                 setGivenAnswer(index);
                 if (index === correctAnswer) {
+                  console.log("👉 index:", index);
+                  console.log("👉 correctAnswer:", correctAnswer);
                   new Audio("/sound/correct.mp3").play();
                   setTimeout(() => {
-                    navigate(`/course/${courseId}/lesson/${lessonId}/summary`);
+                    navigate(
+                      `/course/${courseId}/lesson/${lessonNumber}/summary`,
+                    );
                   }, 2000);
                   setIsCompleted(true);
                   setIsQuizCompleted(true);
-                  updateLessonProgress(loggedInUser.id, lessonId, 1);
+                  // console.log("🔥 CLICKED CORRECT ANSWER");
+                  // console.log(
+                  //   "🔥 calling updateLessonProgress with:",
+                  //   loggedInUser?.id,
+                  //   foundLesson?.lesson_id,
+                  // );
+                  updateLessonProgress(
+                    loggedInUser.id,
+                    foundLesson.lesson_id,
+                    1,
+                  );
                 } else {
                   const audio = new Audio("/sound/wrong.mp3");
                   audio.volume = 0.4;

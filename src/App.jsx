@@ -129,7 +129,7 @@ function App() {
           (video → quiz → summary).
           The content is rendered inside the <Outlet /> of Lesson.jsx.*/}
           <Route
-            path="/course/:courseId/lesson/:lessonId"
+            path="/course/:courseId/lesson/:lessonNumber"
             element={
               <Lesson
                 course={course}
