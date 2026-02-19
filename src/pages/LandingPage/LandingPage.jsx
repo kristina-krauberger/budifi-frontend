@@ -6,8 +6,8 @@ import hero1 from "../../assets/hero1.png";
 
 function LandingPage() {
   return (
-    <div className="main-content">
-      <main className="flex items-center justify-between px-20 py-12">
+    <div className="main-content max-w-7xl mx-auto px-6 py-16">
+      <main className="flex items-center gap-16 px-20 py-12">
         <div className="w-1/2 pr-10">
           <h1 className="text-5xl font-extrabold text-mint-500 mb-8 leading-snug max-w-3xl">
             Master money. Empower yourself.

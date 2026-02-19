@@ -1,7 +1,7 @@
-import HeaderPrivate from "../components/HeaderPrivate/HeaderPrivate";
-import Footer from "../components/Footer/Footer";
+import HeaderPrivate from "../../components/HeaderPrivate/HeaderPrivate";
+import Footer from "../../components/Footer/Footer";
 import { Outlet, Navigate } from "react-router";
-import { LoggedInUserContext } from "../context/LoggedInUserContext";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import { useContext } from "react";
 
 export default function PrivateLayout() {

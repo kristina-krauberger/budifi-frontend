@@ -35,10 +35,18 @@ function Course({ course, allCourses, setCourse, userProgress }) {
     return <NotFound />;
   }
 
+  const courseColorMap = {
+    Investieren: "bg-[#FDD0BF]",
+    Sparen: "bg-[#3D7BCA]",
+    Rente: "bg-[#ACC8E5]",
+  };
+
+  const currentCourseColor = courseColorMap[course.title] || "bg-[#FDD0BF]";
+
   return (
     <>
       {course && (
-        <div className="main-content text-left">
+        <div className="main-content text-left max-w-3xl mx-auto px-6 pt-12 pb-16">
           <div className="flex items-center min-h-[60px] gap-x-6 mb-10">
             <ButtonDashboard />
             <h1 className="text-2xl font-semibold tracking-tight text-heading leading-8">
@@ -69,6 +77,7 @@ function Course({ course, allCourses, setCourse, userProgress }) {
                 duration={lesson.duration}
                 isCompleted={lessonIsCompleted}
                 isLastLesson={lesson.isLastLesson}
+                cardColor={currentCourseColor}
               />
             );
           })}

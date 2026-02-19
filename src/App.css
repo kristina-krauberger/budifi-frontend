@@ -1,11 +1,12 @@
-#root {
+/* .root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+  background-color: #fbf6f4;
+} */ 
 
-.main-content{
-    margin-top: 80px;
-    margin-bottom: 80px;
+.main-content {
+  margin-top: 80px;
+  margin-bottom: 80px;
 }

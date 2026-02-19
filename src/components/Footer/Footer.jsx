@@ -3,8 +3,8 @@ import { Link } from "react-router";
 
 function Footer() {
   return (
-    <footer className="bg-white rounded-lg shadow-sm w-full dark:bg-gray-800">
-      <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+    <footer className="w-full px-6 pb-6">
+      <div className="w-full mx-auto max-w-screen-xl p-6 md:flex md:items-center md:justify-between bg-white/70 backdrop-blur-sm shadow-sm rounded-2xl">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2025 Buddy.Fi – Alle Rechte vorbehalten.
         </span>

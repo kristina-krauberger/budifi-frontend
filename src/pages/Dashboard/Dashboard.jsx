@@ -7,6 +7,7 @@ import CourseCard from "../../components/CourseCard/CourseCard";
 
 function Dashboard({ course, allCourses, setCourse, userProgress }) {
   const { loggedInUser } = useContext(LoggedInUserContext);
+  const cardColors = ["bg-[#FDD0BF]", "bg-[#3D7BCA]", "bg-[#ACC8E5]"];
 
   return (
     <div className="main-content pt-10 pb-10">
@@ -18,10 +19,10 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
           Hier ist dein persönliches Dashboard
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 max-w-4xl mx-auto mt-10">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 max-w-6xl mx-auto mt-12">
         {/* Loop through all available courses and match them with the user's progress data */}
         {/* Joining Course ↔ Progress */}
-        {allCourses.courses.map((course) => {
+        {allCourses.courses.map((course, index) => {
           // Find the user's progress for the current course by matching course IDs
           const progressObj = userProgress.courses.find(
             (progressItem) => progressItem.course_id === course.course_id,
@@ -35,6 +36,7 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
               title={course.title}
               lessons={course.lessons.length}
               progress={progressPercentage}
+              cardColor={cardColors[index % cardColors.length]}
             />
           );
         })}

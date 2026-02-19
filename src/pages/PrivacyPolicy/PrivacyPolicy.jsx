@@ -3,8 +3,8 @@ import "../../App.css";
 
 function PrivacyPolicy() {
   return (
-    <div className="main-content text-left space-y-6">
-      <h1 className="text-2xl font-semibold tracking-tight text-heading mb-6">
+    <div className="max-w-6xl mx-auto pt-40 pb-20 text-left space-y-8 leading-relaxed">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900 mb-8">
         Datenschutz
       </h1>
 

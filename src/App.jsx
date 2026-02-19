@@ -17,9 +17,9 @@ import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import Lesson from "./pages/Lesson/Lesson";
 import Login from "./pages/Login/Login.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
-import PrivateLayout from "./layouts/PrivateLayout";
+import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
-import PublicLayout from "./layouts/PublicLayout";
+import PublicLayout from "./layouts/PublicLayout/PublicLayout";
 import RegisterUser from "./pages/RegisterUser/RegisterUser.jsx";
 
 import LessonVideo from "./components/LessonVideo/LessonVideo.jsx";

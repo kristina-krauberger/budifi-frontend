@@ -28,21 +28,25 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
   // Track progress state for video and quiz
   // Initialized from localStorage to persist state across reloads
   const [isVideoCompleted, setIsVideoCompleted] = useState(() => {
-    const stored = localStorage.getItem(`lesson-${lessonNumber}-video`);
+    const stored = localStorage.getItem(
+      `course-${courseId}-lesson-${lessonNumber}-video`,
+    );
     return stored ? JSON.parse(stored) : false;
   });
   const [isQuizCompleted, setIsQuizCompleted] = useState(() => {
-    const stored = localStorage.getItem(`lesson-${lessonNumber}-quiz`);
+    const stored = localStorage.getItem(
+      `course-${courseId}-lesson-${lessonNumber}-quiz`,
+    );
     return stored ? JSON.parse(stored) : false;
   });
 
   // TODO DEV MODE RESET (for development only - Remove this before deploying to production.)
   // This block resets the localStorage for video and quiz completion.
   // It runs on every render — not inside useEffect — to ensure data is cleared each time.
-  const isDevMode = true;
+  const isDevMode = false;
   if (isDevMode) {
-    localStorage.removeItem(`lesson-${lessonNumber}-video`);
-    localStorage.removeItem(`lesson-${lessonNumber}-quiz`);
+    localStorage.removeItem(`course-${courseId}-lesson-${lessonNumber}-video`);
+    localStorage.removeItem(`course-${courseId}-lesson-${lessonNumber}-quiz`);
     console.log("🧹 Dev-Modus: localStorage wurde zurückgesetzt");
     console.log("🔎 DevMode Reset für lessonNumber:", lessonNumber);
   }
@@ -58,18 +62,18 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
   // Save isVideoCompleted state to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(
-      `lesson-${lessonNumber}-video`,
+      `course-${courseId}-lesson-${lessonNumber}-video`,
       JSON.stringify(isVideoCompleted),
     );
-  }, [isVideoCompleted, lessonNumber]);
+  }, [isVideoCompleted, lessonNumber, courseId]);
 
   // Save isQuizCompleted state to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(
-      `lesson-${lessonNumber}-quiz`,
+      `course-${courseId}-lesson-${lessonNumber}-quiz`,
       JSON.stringify(isQuizCompleted),
     );
-  }, [isQuizCompleted, lessonNumber]);
+  }, [isQuizCompleted, lessonNumber, courseId]);
   console.log("Lesson.jsx render:", { isQuizCompleted });
 
   if (!allCourses || !allCourses.courses) return <p>Lädt...</p>;

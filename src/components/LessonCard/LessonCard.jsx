@@ -2,9 +2,16 @@ import React from "react";
 import { Link } from "react-router";
 import "./LessonCard.css";
 
-function LessonCard({ to, title, duration, isCompleted, isLastLesson }) {
+function LessonCard({
+  to,
+  title,
+  duration,
+  isCompleted,
+  isLastLesson,
+  cardColor,
+}) {
   return (
-    <div className="flex items-stretch ml-3 gap-6 w-full">
+    <div className="flex items-stretch gap-6 w-full justify-center">
       {/* Timeline: circle + vertical line, last lesson shows only a final circle */}
       <div className="relative flex flex-col items-center">
         {!isLastLesson ? (
@@ -20,20 +27,17 @@ function LessonCard({ to, title, duration, isCompleted, isLastLesson }) {
       {/* Lesson Card */}
       <Link
         to={to}
-        className="block w-full max-w-sm mb-20 p-6 bg-neutral-100 border border-gray-300 rounded-lg shadow hover:bg-neutral-200"
+        className={`block w-full max-w-xl mb-16 p-8 rounded-2xl shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${cardColor}`}
       >
-        <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8 text-left">
+        <h5 className="mb-4 text-3xl font-bold tracking-tight leading-tight text-black">
+          {" "}
           {title}
         </h5>
-        <p className="text-body text-left italic">Dauer: {duration} Minuten</p>
+        <p className="text-slate-800 italic">Dauer: {duration} Minuten</p>{" "}
         {isCompleted ? (
-          <div className="mt-4 text-green-600 font-light text-left">
-            ✓ Abgeschlossen
-          </div>
+          <div className="mt-6 text-green-700 font-medium">✓ Abgeschlossen</div>
         ) : (
-          <div className="mt-4 text-gray-400 font-light text-left">
-            Ausstehend
-          </div>
+          <div className="mt-6 text-slate-600 font-medium">Ausstehend</div>
         )}
       </Link>
     </div>
