@@ -83,8 +83,8 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
   }
 
   return (
-    <div className="main-content">
-      <div className="mt-6 mb-4 flex items-baseline gap-4">
+    <div className="main-content max-w-5xl mx-auto px-6">
+      <div className="mt-28 mb-1 flex items-baseline gap-4">
         <h1 className="text-3xl font-bold pt-2 text-gray-800 uppercase tracking-wide">
           {course?.title}
         </h1>
@@ -99,7 +99,7 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
       {/* Outlet is a placeholder for nested lesson routes from react-router.
       React Router renders the active sub-route here
       (intro, video, quiz, or summary).*/}
-      <div className="flex flex-col items-center justify-center w-full min-h-[380px] max-h-[380px] px-2">
+      <div className="flex flex-col items-center justify-center w-full min-h-[380px] max-h-[380px] px-4">
         <Outlet
           context={{
             course,
@@ -116,12 +116,14 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
         allCourses={allCourses}
         course={course}
       />
-      <button
-        onClick={() => navigate(`/course/${courseId}`)}
-        className="px-6 py-2 border border-gray-200 bg-white rounded-md text-gray-700  hover:bg-neutral-100 cursor-pointer transition"
-      >
-        ← Alle Lessons
-      </button>
+      <div className="flex justify-center mt-4">
+        <button
+          onClick={() => navigate(`/course/${courseId}`)}
+          className="px-6 py-2  border border-gray-200 bg-white rounded-md text-gray-700  hover:bg-neutral-100 cursor-pointer transition"
+        >
+          ← Alle Lessons
+        </button>
+      </div>
     </div>
   );
 }

@@ -19,15 +19,15 @@ function LessonFooter({
   const navigate = useNavigate();
   console.log("👉 Location Pathname", location.pathname);
   const { courseId, lessonNumber } = useParams();
-  console.log("🚨 COURSE ID", courseId)
-  console.log("🚨 LESSON ID", lessonNumber)
-  console.log("COURSE", course)
-  console.log("🚨 COURSE.LESSONS", course.lessons)
+  console.log("🚨 COURSE ID", courseId);
+  console.log("🚨 LESSON ID", lessonNumber);
+  console.log("COURSE", course);
+  console.log("🚨 COURSE.LESSONS", course.lessons);
   const currentLesson = course?.lessons?.find(
     (lesson) => lesson.lesson_number === parseInt(lessonNumber),
   );
 
-  console.log("🚨 CurrentLesson", currentLesson)
+  console.log("🚨 CurrentLesson", currentLesson);
   if (!currentLesson) {
     return <p>Lädt Footer...</p>;
   }
@@ -96,7 +96,7 @@ function LessonFooter({
             <li>
               <button
                 onClick={() => navigate(nextPathname)}
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-emerald-400/60 text-emerald-600 hover:bg-emerald-50 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-300 transition"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#4F8A6B] text-white shadow-sm hover:bg-[#3E7258] cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4F8A6B]/40 transition"
               >
                 →
               </button>

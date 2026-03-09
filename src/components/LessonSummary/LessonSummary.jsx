@@ -44,7 +44,7 @@ function LessonSummary({ course, allCourses }) {
     []);
 
   return (
-    <div className="main-content space-y-6 text-center">
+    <div className="main-content space-y-6 text-center min-h-[72px] items-center">
       <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-700">
         {congrats}
       </p>
@@ -52,36 +52,34 @@ function LessonSummary({ course, allCourses }) {
         {textSummary}
       </p>
       <div>
-        <div className="flex justify-center gap-4">
-          {showButton && (
-            <button
-              onClick={() => {
-                const currentCourse = allCourses.courses.find(
-                  (c) => c.course_id === parseInt(courseId),
+        <div className="flex justify-center gap-4 min-h-[72px] items-center">
+          <button
+            onClick={() => {
+              const currentCourse = allCourses.courses.find(
+                (c) => c.course_id === parseInt(courseId),
+              );
+
+              const currentLesson = course?.lessons?.find(
+                (lesson) => lesson.lesson_id === parseInt(lessonNumber),
+              );
+
+              const isLastLesson = currentLesson?.isLastLesson;
+              const isLastCourse = currentCourse?.isLastCourse;
+
+              if (!isLastLesson) {
+                navigate(
+                  `/course/${courseId}/lesson/${Number(lessonNumber) + 1}/video`,
                 );
-
-                const currentLesson = course?.lessons?.find(
-                  (lesson) => lesson.lesson_id === parseInt(lessonNumber),
-                );
-
-                const isLastLesson = currentLesson?.isLastLesson;
-                const isLastCourse = currentCourse?.isLastCourse;
-
-                if (!isLastLesson) {
-                  navigate(
-                    `/course/${courseId}/lesson/${Number(lessonNumber) + 1}/video`,
-                  );
-                } else if (!isLastCourse) {
-                  navigate(`/course/${Number(courseId) + 1}/lesson/1/video`);
-                } else {
-                  navigate("/dashboard");
-                }
-              }}
-              className="w-44 py-3 rounded-md font-semibold bg-emerald-400 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all duration-200"
-            >
-              Weiter geht's!
-            </button>
-          )}
+              } else if (!isLastCourse) {
+                navigate(`/course/${Number(courseId) + 1}/lesson/1/video`);
+              } else {
+                navigate("/dashboard");
+              }
+            }}
+            className={`w-44 py-3 rounded-md font-semibold bg-[#5E9C73] hover:bg-[#4A8460] text-white shadow-sm transition-all duration-200 ${showButton ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          >
+            Weiter geht's!
+          </button>
         </div>
       </div>
     </div>

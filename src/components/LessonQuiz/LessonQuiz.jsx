@@ -87,7 +87,7 @@ function LessonQuiz({ course }) {
   }
 
   return (
-    <div className="main-content flex flex-col justify-start min-h-[200px]">
+    <div className="main-content flex flex-col justify-start min-h-[250px]">
       <div>
         <h2 className="text-3xl font-bold text-grey-800 mb-6 tracking-wide">
           {quizQuestion}
