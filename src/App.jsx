@@ -12,6 +12,7 @@ import { LoggedInUserContext } from "./context/LoggedInUserContext";
 
 import Course from "./pages/Course/Course.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
+import FAQ from "./pages/FAQ/faq.jsx";
 import Imprint from "./pages/Imprint/Imprint.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import Lesson from "./pages/Lesson/Lesson";
@@ -35,7 +36,7 @@ function App() {
   // Shared across Dashboard, Course and Lesson pages.
   const [course, setCourse] = useState(null);
   const [allCourses, setAllCourses] = useState(null);
-  console.log("ALL COURSES", allCourses, typeof allCourses); 
+  console.log("ALL COURSES", allCourses, typeof allCourses);
   const [userProgress, setUserProgress] = useState(null);
 
   // Fetch all courses from the backend when the component mounts
@@ -43,7 +44,7 @@ function App() {
     const fetchCourses = async () => {
       try {
         const data = await getAllCourses();
-        console.log("TEST 🔥", data)
+        console.log("TEST 🔥", data);
         setAllCourses(data);
       } catch (err) {
         console.error("Fehler beim Laden:", err);
@@ -112,6 +113,7 @@ function App() {
               />
             }
           />
+          <Route path="/faq" element={<FAQ />}></Route>
           <Route
             path="/course/:courseId"
             element={

@@ -6,11 +6,9 @@ import App from "./App.jsx";
 import { LoggedInUserProvider } from "./context/LoggedInUserProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <BrowserRouter>
-      <LoggedInUserProvider>
-        <App />
-      </LoggedInUserProvider>
-    </BrowserRouter>
-  </StrictMode>,
+  <BrowserRouter>
+    <LoggedInUserProvider>
+      <App />
+    </LoggedInUserProvider>
+  </BrowserRouter>,
 );

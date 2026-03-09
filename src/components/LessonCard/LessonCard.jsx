@@ -27,13 +27,22 @@ function LessonCard({
       {/* Lesson Card */}
       <Link
         to={to}
-        className={`block w-full max-w-xl mb-16 p-8 rounded-2xl shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${cardColor}`}
+        className={`relative block w-full max-w-xl mb-16 p-8 rounded-2xl shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${cardColor}`}
       >
-        <h5 className="mb-4 text-3xl font-bold tracking-tight leading-tight text-black">
+        <div className="absolute -top-5 -right-5">
+          {isCompleted ? (
+            <div className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center ring-2 ring-white/60">
+              <div className="w-5 h-5 bg-green-600 rounded-full"></div>
+            </div>
+          ) : (
+            <div className="w-12 h-12 rounded-full border-2 border-white/60 bg-white/10 backdrop-blur-sm"></div>
+          )}
+        </div>
+        <h5 className="mb-4 text-3xl font-bold tracking-tight leading-tight text-white">
           {" "}
           {title}
         </h5>
-        <p className="text-slate-800 italic">Dauer: {duration} Minuten</p>{" "}
+        <p className="text-white/80 italic">Dauer: {duration} Minuten</p>{" "}
         {isCompleted ? (
           <div className="mt-6 text-green-700 font-medium">✓ Abgeschlossen</div>
         ) : (
