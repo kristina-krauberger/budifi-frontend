@@ -9,25 +9,9 @@
 
 import axios from "axios";
 
-// Define base URLs for production and development environments
-// const API_BASE_URL = "https://buddyfi-backend.onrender.com"; //TODO: update deployed project URL
-// const API_BASE_URL_DEV = "http://127.0.0.1:5003";
 
 // Define base URL from environment variable
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-// const isLocalHost =
-//   window.location.hostname === "localhost" ||
-//   window.location.hostname === "127.0.0.1";
-
-// Create an Axios instance with default configuration
-
-// const api = axios.create({
-//   baseURL: isLocalHost ? API_BASE_URL_DEV : API_BASE_URL,
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// });
 
 const api = axios.create({
   baseURL: API_BASE_URL,
