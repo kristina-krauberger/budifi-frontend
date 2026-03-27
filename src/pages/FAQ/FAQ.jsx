@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { generateOpenAiResponse } from "../../api/openAI_response.api";
+import { generateOpenAiResponse } from "../../api/openAI_response.api.js";
 
 function faq() {
   const [question, setQuestion] = useState("");
