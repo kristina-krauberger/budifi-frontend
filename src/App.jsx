@@ -12,7 +12,7 @@ import { LoggedInUserContext } from "./context/LoggedInUserContext";
 
 import Course from "./pages/Course/Course.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
-import FAQ from "./pages/FAQ/faq.jsx";
+import FAQ from "./pages/FAQ/FAQ.jsx";
 import Imprint from "./pages/Imprint/Imprint.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import Lesson from "./pages/Lesson/Lesson";
