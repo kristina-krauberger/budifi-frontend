@@ -27,7 +27,7 @@ const API_BASE_URL_DEV = "http://127.0.0.1:5003";
 // });
 
 const api = axios.create({
-  baseURL: API_BASE_URL_DEV,
+  baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
