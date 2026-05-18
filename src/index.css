@@ -1,10 +1,23 @@
 @import "tailwindcss";
 @source "../.flowbite-react/class-list.json";
 
-/* TODO: Dark Mode - for local preference, delete? */
-@custom-variant dark (&:where(.dark, .dark *));
-
 /* Tailwind Themes */
 @theme {
-  --color-brand: oklch(0.72 0.11 178);
+  /* Brand */
+  --color-brand:      oklch(0.72 0.11 178);   /* #0EB689 mint green */
+  --color-brand-dark: oklch(0.64 0.11 178);   /* #0c9d76 */
+
+  /* Neutral surface palette */
+  --color-surface:    #F8FAFC;
+  --color-border:     #E2E8F0;
+
+  /* Text */
+  --color-text-primary:   #1A202C;
+  --color-text-secondary: #64748B;
+  --color-text-muted:     #94A3B8;
+
+  /* Course card palette – kept intentionally warm/playful */
+  --color-course-salmon: #FDD0BF;
+  --color-course-blue:   #3D7BCA;
+  --color-course-sky:    #ACC8E5;
 }

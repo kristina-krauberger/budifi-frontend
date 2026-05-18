@@ -1,12 +1,6 @@
-/* .root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  background-color: #fbf6f4;
-} */ 
-
+/* Global layout helper — applied to every private page's root wrapper.
+   The fixed nav is ~72 px tall; we give 80 px so content never hides behind it. */
 .main-content {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  padding-top: 5rem;   /* 80px — space for fixed nav */
+  padding-bottom: 4rem; /* 64px */
 }

@@ -1,53 +1,55 @@
 import React from "react";
 import { Link } from "react-router";
-import "./LessonCard.css";
 
+/**
+ * LessonCard — neutral white card with a timeline indicator.
+ * Completed lessons show a brand-mint filled circle; pending lessons are gray.
+ */
 function LessonCard({
   to,
   title,
   duration,
   isCompleted,
   isLastLesson,
-  cardColor,
+  lessonNumber,
 }) {
   return (
-    <div className="flex items-stretch gap-6 w-full justify-center">
-      {/* Timeline: circle + vertical line, last lesson shows only a final circle */}
-      <div className="relative flex flex-col items-center">
-        {!isLastLesson ? (
-          <>
-            <div className="w-4 h-4 rounded-full border-2 border-gray-400 bg-white z-10"></div>
-            <div className="flex-1 w-[2px] bg-gray-300 mt-1"></div>
-          </>
-        ) : (
-          <div className="w-5 h-5 rounded-full border-2 border-gray-400 bg-neutral-100 mt-0.5"></div>
+    <div className="flex items-stretch gap-5 w-full justify-center">
+      {/* Timeline indicator */}
+      <div className="relative flex flex-col items-center pt-1">
+        <div
+          className={`w-3.5 h-3.5 rounded-full border-2 z-10 transition-colors duration-300 ${
+            isCompleted
+              ? "bg-[#0EB689] border-[#0EB689]"
+              : "bg-white border-gray-300"
+          }`}
+        />
+        {!isLastLesson && (
+          <div className="flex-1 w-px bg-gray-200 mt-1" />
         )}
       </div>
 
       {/* Lesson Card */}
       <Link
         to={to}
-        className={`relative block w-full max-w-xl mb-16 p-8 rounded-2xl shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${cardColor}`}
+        className="relative block w-full max-w-xl mb-8 p-5 bg-white border border-gray-100 rounded-2xl shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 group"
       >
-        <div className="absolute -top-5 -right-5">
-          {isCompleted ? (
-            <div className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center ring-2 ring-white/60">
-              <div className="w-5 h-5 bg-green-600 rounded-full"></div>
-            </div>
-          ) : (
-            <div className="w-12 h-12 rounded-full border-2 border-white/60 bg-white/10 backdrop-blur-sm"></div>
-          )}
-        </div>
-        <h5 className="mb-4 text-3xl font-bold tracking-tight leading-tight text-white">
-          {" "}
+        {/* Completion badge */}
+        {isCompleted && (
+          <span className="absolute top-4 right-4 text-xs font-semibold text-[#0EB689] bg-[#F0FAF6] px-2.5 py-1 rounded-full">
+            ✓ Abgeschlossen
+          </span>
+        )}
+
+        <p className="text-xs text-gray-400 mb-1">
+          Lektion {lessonNumber}
+        </p>
+        <h5 className="text-base font-bold text-gray-800 tracking-tight leading-snug group-hover:text-[#0EB689] transition-colors duration-200 pr-28">
           {title}
         </h5>
-        <p className="text-white/80 italic">Dauer: {duration} Minuten</p>{" "}
-        {isCompleted ? (
-          <div className="mt-6 text-green-700 font-medium">✓ Abgeschlossen</div>
-        ) : (
-          <div className="mt-6 text-slate-600 font-medium">Ausstehend</div>
-        )}
+        <p className="text-xs text-gray-400 mt-2">
+          Dauer: {duration} Min.
+        </p>
       </Link>
     </div>
   );

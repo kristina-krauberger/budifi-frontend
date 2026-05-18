@@ -84,11 +84,11 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
 
   return (
     <div className="main-content max-w-5xl mx-auto px-6">
-      <div className="mt-28 mb-1 flex items-baseline gap-4">
-        <h1 className="text-3xl font-bold pt-2 text-gray-800 uppercase tracking-wide">
+      <div className="mb-1 flex items-baseline gap-4">
+        <h1 className="text-2xl font-bold pt-2 text-gray-800 uppercase tracking-wide">
           {course?.title}
         </h1>
-        <h2 className="text-lg text-gray-600 mt-2">
+        <h2 className="text-base text-gray-500 mt-2">
           {foundCurrentLesson?.title}
         </h2>
       </div>
@@ -119,7 +119,7 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
       <div className="flex justify-center mt-4">
         <button
           onClick={() => navigate(`/course/${courseId}`)}
-          className="px-6 py-2  border border-gray-200 bg-white rounded-md text-gray-700  hover:bg-neutral-100 cursor-pointer transition"
+          className="px-5 py-2 border border-gray-200 bg-white rounded-full text-sm text-gray-600 hover:bg-gray-50 cursor-pointer transition"
         >
           ← Alle Lessons
         </button>

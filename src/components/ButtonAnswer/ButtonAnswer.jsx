@@ -15,15 +15,15 @@ function ButtonAnswer({
     : "";
 
   if (wasClicked && isCorrect) {
-    colorClass = "bg-[#DCEFE3] border-[#7FAF95]";
+    colorClass = "bg-[#F0FAF6] border-[#0EB689] text-[#0a7a5c]";
   } else if (wasClicked && !isCorrect) {
-    colorClass = "bg-[#F5EFEF] border-[#B86A6A] text-[#7A2E2E]";
+    colorClass = "bg-red-50 border-red-300 text-red-700";
   }
 
   return (
     <div>
       <button
-        className={`w-full mb-4 px-6 py-3 rounded-md border ${colorClass} text-gray-800 shadow-sm ${hoverClass} transition duration-200 ease-in-out`}
+        className={`w-full mb-3 px-5 py-3 rounded-xl border ${colorClass} text-gray-800 text-sm shadow-sm ${hoverClass} transition duration-200 ease-in-out`}
         onClick={onClick}
       >
         {optionAnswer}

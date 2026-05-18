@@ -31,12 +31,10 @@ Deine Prioritäten (Rendite: ${formData.priorityReturn}%, Sicherheit: ${formData
   };
 
   return (
-    <div className="w-full min-h-screen pt-28 pb-12 px-4 sm:px-6" style={{ backgroundColor: '#fbf6f4' }}>
-      <div className="max-w-[480px] mx-auto">
+    <div className="main-content">
+      <div className="max-w-[500px] mx-auto px-4">
         <header className="mb-7 text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight mb-2 text-[#0EB689]">
-            Money Compass
-          </h1>
+          <h1 className="text-2xl font-bold text-[#0EB689] tracking-tight mb-1.5">Money Compass</h1>
           <p className="text-sm text-gray-500">Finde deinen persönlichen Startpunkt fürs Investieren.</p>
         </header>
 

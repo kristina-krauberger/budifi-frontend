@@ -10,20 +10,21 @@ export default function CourseCard({
   return (
     <Link
       to={to}
-      className={`relative block max-w-sm p-8 rounded-2xl shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${cardColor}`}
+      className={`relative block p-7 rounded-2xl shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${cardColor}`}
     >
-      <h5 className="mb-4 text-3xl font-extrabold tracking-tight leading-tight">
+      <h5 className="mb-2 text-3xl font-extrabold tracking-tight leading-tight text-white">
         {title}
       </h5>
-      <p className="text-sm text-white/80">{lessons} Lektionen</p>
-      <div className="mt-6">
-        <div className="flex justify-between text-sm font-medium text-white/80 mb-2">
-          <span>Progress</span>
-          <span>{progress}%</span>
+      <p className="text-sm text-white/70 mb-6">{lessons} Lektionen</p>
+
+      <div>
+        <div className="flex justify-between text-xs font-medium text-white/70 mb-1.5">
+          <span>Fortschritt</span>
+          <span className="text-white font-semibold">{progress}%</span>
         </div>
-        <div className="w-full h-2 rounded-full bg-white/30">
+        <div className="w-full h-1.5 rounded-full bg-white/25">
           <div
-            className="h-2 rounded-full bg-[#E1F563] transition-all duration-500"
+            className="h-1.5 rounded-full bg-white/80 transition-all duration-500"
             style={{ width: progress + "%" }}
           />
         </div>

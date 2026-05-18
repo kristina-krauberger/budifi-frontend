@@ -35,22 +35,14 @@ function Course({ course, allCourses, setCourse, userProgress }) {
     return <NotFound />;
   }
 
-  const courseColorMap = {
-    Investieren: "bg-[#FDD0BF]",
-    Sparen: "bg-[#3D7BCA]",
-    Rente: "bg-[#ACC8E5]",
-  };
-
-  const currentCourseColor = courseColorMap[course.title] || "bg-[#FDD0BF]";
-
   return (
     <>
       {course && (
-        <div className="main-content text-left max-w-3xl mx-auto px-6 pt-12 pb-16">
-          <div className="flex items-center min-h-[60px] gap-x-6 mb-10">
+        <div className="main-content text-left max-w-3xl mx-auto px-6">
+          <div className="flex items-center min-h-[48px] gap-x-4 mb-8">
             <ButtonDashboard />
-            <h1 className="text-2xl font-semibold tracking-tight text-heading leading-8">
-              {course.title}{" "}
+            <h1 className="text-xl font-bold tracking-tight text-gray-800">
+              {course.title}
             </h1>
           </div>
           {/* Map over lessons and enrich each with progress from userProgress */}
@@ -77,7 +69,7 @@ function Course({ course, allCourses, setCourse, userProgress }) {
                 duration={lesson.duration}
                 isCompleted={lessonIsCompleted}
                 isLastLesson={lesson.isLastLesson}
-                cardColor={currentCourseColor}
+                lessonNumber={lesson.lesson_number}
               />
             );
           })}

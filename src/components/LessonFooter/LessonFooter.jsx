@@ -86,23 +86,17 @@ function LessonFooter({
   // );
 
   return (
-    <nav className="py-5">
-      <div className="bg-neutral-100 border border-gray-300 rounded-lg shadow px-4 py-1 h-[55px]">
-        <ul className="h-full flex justify-between items-center gap-2 text-sm">
-          <li>
-            <ButtonBack />
-          </li>
+    <nav className="py-4">
+      <div className="bg-gray-100 rounded-xl px-4 py-2 h-[52px] flex items-center justify-between">
+          <ButtonBack />
           {showButton && (
-            <li>
-              <button
-                onClick={() => navigate(nextPathname)}
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#4F8A6B] text-white shadow-sm hover:bg-[#3E7258] cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4F8A6B]/40 transition"
-              >
-                →
-              </button>
-            </li>
+            <button
+              onClick={() => navigate(nextPathname)}
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#0EB689] text-white shadow-sm hover:bg-[#0c9d76] cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0EB689]/40 transition text-base"
+            >
+              →
+            </button>
           )}
-        </ul>
       </div>
     </nav>
   );

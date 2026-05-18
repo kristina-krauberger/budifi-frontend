@@ -8,19 +8,25 @@ import CourseCard from "../../components/CourseCard/CourseCard";
 
 function Dashboard({ course, allCourses, setCourse, userProgress }) {
   const { loggedInUser } = useContext(LoggedInUserContext);
-  const cardColors = ["bg-[#FDD0BF]", "bg-[#3D7BCA]", "bg-[#ACC8E5]"];
+  // Green-family palette: cohesive but distinct tints
+  const cardColors = ["bg-[#0B7A5E]", "bg-[#0EB689]", "bg-[#3DC4A0]"];
 
   return (
-    <div className="main-content pt-10 pb-10">
-      <div className="text-center my-10">
-        <h1 className="text-4xl font-bold text-primary-600">
+    <div className="main-content">
+      <div className="text-center mb-10 max-w-6xl mx-auto px-6">
+        <h1 className="text-3xl font-bold text-gray-800">
           Hey {loggedInUser?.first_name}!
         </h1>
-        <p className="text-md text-gray-600 mt-2">
-          Hier ist dein persönliches Dashboard
+        <p className="text-sm text-gray-500 mt-2">
+          Schön, dass du wieder da bist.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 max-w-6xl mx-auto mt-12">
+      {/* Section label */}
+      <div className="flex items-center gap-3 mb-6 max-w-6xl mx-auto px-6">
+        <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase">Dein Lernpfad</span>
+        <div className="flex-1 h-px bg-gray-100" />
+      </div>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 max-w-6xl mx-auto px-6">
         {/* Loop through all available courses and match them with the user's progress data */}
         {/* Joining Course ↔ Progress */}
         {allCourses.courses.map((course, index) => {
@@ -44,19 +50,19 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
       </div>
 
       {/* AI Tools Section */}
-      <div className="max-w-6xl mx-auto mt-16">
+      <div className="max-w-6xl mx-auto mt-12 px-6">
         <div className="flex items-center gap-3 mb-5">
-          <span className="text-xs font-semibold tracking-widest text-[#0EB689] uppercase">
-            Dein Persönlicher Finanz-Coach
+          <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+            Persönlicher Finanz-Coach
           </span>
           <div className="flex-1 h-px bg-gray-100" />
         </div>
 
-        <div className="flex items-center justify-between gap-6 bg-white rounded-2xl border border-[#E6F6F1] shadow-sm px-7 py-6 max-w-2xl">
+        <div className="flex items-center justify-between gap-6 bg-white rounded-2xl border border-gray-100 shadow-sm px-7 py-6 max-w-2xl">
           {/* Left: Icon + Text */}
           <div className="flex items-start gap-5">
             {/* Compass icon */}
-            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#F0FAF6] flex items-center justify-center">
+            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6 text-[#0EB689]"
