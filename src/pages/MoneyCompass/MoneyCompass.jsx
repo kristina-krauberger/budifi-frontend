@@ -31,14 +31,16 @@ Deine Prioritäten (Rendite: ${formData.priorityReturn}%, Sicherheit: ${formData
   };
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
-        <header className="mb-10 text-center">
-          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight mb-3">Money Compass</h1>
-          <p className="text-lg text-gray-600">Finde deinen persönlichen Startpunkt fürs Investieren.</p>
+    <div className="w-full min-h-screen pt-28 pb-12 px-4 sm:px-6" style={{ backgroundColor: '#fbf6f4' }}>
+      <div className="max-w-[480px] mx-auto">
+        <header className="mb-7 text-center">
+          <h1 className="text-3xl font-extrabold tracking-tight mb-2 text-[#0EB689]">
+            Money Compass
+          </h1>
+          <p className="text-sm text-gray-500">Finde deinen persönlichen Startpunkt fürs Investieren.</p>
         </header>
 
-        <div className="mb-8">
+        <div className="mb-6">
           <MoneyCompassForm 
             onSubmit={handleGenerateRecommendation} 
             isLoading={loading} 
@@ -52,9 +54,9 @@ Deine Prioritäten (Rendite: ${formData.priorityReturn}%, Sicherheit: ${formData
 
         {/* Display loading state */}
         {loading && (
-          <div className="flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-sm border border-gray-100 mt-6">
-            <div className="w-10 h-10 border-4 border-gray-200 border-t-[#0EB689] rounded-full animate-spin mb-4"></div>
-            <p className="text-gray-600 font-medium">Dein finanzieller Kompass wird erstellt...</p>
+          <div className="flex flex-col items-center justify-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100 mt-4">
+            <div className="w-8 h-8 border-4 border-gray-200 border-t-[#0EB689] rounded-full animate-spin mb-3"></div>
+            <p className="text-sm text-gray-600 font-medium">Dein finanzieller Kompass wird erstellt...</p>
           </div>
         )}
       </div>

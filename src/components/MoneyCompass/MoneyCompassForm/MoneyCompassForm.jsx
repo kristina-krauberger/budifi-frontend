@@ -97,8 +97,8 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
 
   return (
     <>
-      <form className="bg-white rounded-2xl p-4 md:p-6 shadow-sm flex flex-col gap-3" onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-1.5 mb-3">
+      <form className="bg-white rounded-2xl p-4 md:p-5 shadow-md border border-gray-100 flex flex-col gap-2.5" onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-1 mb-2">
           <label htmlFor="age" className="text-sm font-semibold text-gray-800">Alter</label>
           <input 
             type="number" 
@@ -110,11 +110,11 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
             min="18"
             max="120"
             required
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#0EB689] focus:border-[#0EB689] transition-all outline-none"
+            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#0EB689]/30 focus:border-[#0EB689] transition-all outline-none"
           />
         </div>
 
-        <div className="flex flex-col gap-1.5 mb-3">
+        <div className="flex flex-col gap-1 mb-2">
           <label htmlFor="monthlySavings" className="text-sm font-semibold text-gray-800">Monatliche Sparrate (€)</label>
           <input 
             type="number" 
@@ -126,11 +126,11 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
             min="0"
             step="10"
             required
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#0EB689] focus:border-[#0EB689] transition-all outline-none"
+            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#0EB689]/30 focus:border-[#0EB689] transition-all outline-none"
           />
         </div>
 
-        <div className="flex flex-col gap-1.5 mb-3">
+        <div className="flex flex-col gap-1 mb-2">
           <label htmlFor="investmentHorizon" className="text-sm font-semibold text-gray-800">Anlagehorizont</label>
           <select 
             id="investmentHorizon" 
@@ -138,7 +138,7 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
             value={formData.investmentHorizon}
             onChange={handleChange}
             disabled={isLoading}
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#0EB689] focus:border-[#0EB689] transition-all outline-none appearance-none"
+            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#0EB689]/30 focus:border-[#0EB689] transition-all outline-none appearance-none"
           >
             <option value="" disabled>Bitte wählen</option>
             <option value="kurzfristig">Unter 5 Jahre</option>
@@ -147,11 +147,11 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
           </select>
         </div>
 
-        <div className="flex flex-col gap-2 mt-2 mb-2">
-          <p className="m-0 font-bold text-gray-800 text-[15px]">
+        <div className="flex flex-col gap-2 mt-1 mb-1">
+          <p className="m-0 font-bold text-gray-800 text-[14px]">
             Deine Investment-Prioritäten
           </p>
-          <p className="m-0 text-[13px] text-gray-500 mb-2.5">
+          <p className="m-0 text-[13px] text-gray-500 mb-2">
             Was ist dir beim Investieren am wichtigsten?<br />
             Verteile 100 % auf diese drei Prioritäten.
           </p>
@@ -210,10 +210,10 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
 
         <button 
           type="submit" 
-          className="mt-1.5 w-full bg-[#0EB689] hover:bg-[#0c9d76] text-white font-bold py-3 px-6 rounded-md shadow-sm transition duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed" 
+          className="mt-2 w-full bg-[#0EB689] hover:bg-[#0c9d76] text-white font-bold py-3 px-6 rounded-full shadow-sm transition-all duration-200 ease-in-out hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed" 
           disabled={isLoading}
         >
-          {isLoading ? 'Wird erstellt...' : 'Empfehlung generieren'}
+          {isLoading ? 'Wird erstellt...' : 'Ergebnis anzeigen'}
         </button>
       </form>
     </>
