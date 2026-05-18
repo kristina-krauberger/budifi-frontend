@@ -17,6 +17,7 @@ import Imprint from "./pages/Imprint/Imprint.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import Lesson from "./pages/Lesson/Lesson";
 import Login from "./pages/Login/Login.jsx";
+import MoneyCompass from "./pages/MoneyCompass/MoneyCompass.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.jsx";
@@ -113,6 +114,7 @@ function App() {
               />
             }
           />
+          <Route path="/money-compass" element={<MoneyCompass />} />
           <Route path="/faq" element={<FAQ />}></Route>
           <Route
             path="/course/:courseId"
