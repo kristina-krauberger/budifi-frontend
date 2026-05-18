@@ -31,8 +31,8 @@ function LessonVideo({ course, allCourses, setCourse }) {
 
   // Render video player or loading placeholder
   return (
-    <div className="main-content">
-      <div className="w-[640px] h-[360px] bg-gray-200 flex bg-gray-200 flex items-center justify-center rounded-md shadow-md overflow-hidden">
+    <div className="w-full flex items-center justify-center min-h-[380px]">
+      <div className="w-full max-w-[640px] aspect-video bg-gray-200 flex items-center justify-center rounded-md shadow-md overflow-hidden">
         {!videoUrl ? (
           <div className="w-full h-full flex flex-col items-center justify-center">
             <span className="text-4xl text-gray-500">▶</span>

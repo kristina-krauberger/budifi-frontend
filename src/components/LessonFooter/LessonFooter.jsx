@@ -87,7 +87,7 @@ function LessonFooter({
 
   return (
     <nav className="py-4">
-      <div className="bg-gray-100 rounded-xl px-4 py-2 h-[52px] flex items-center justify-between">
+      <div className="bg-white border border-gray-100/80 shadow-sm rounded-2xl px-4 py-2 h-[56px] flex items-center justify-between">
           <ButtonBack />
           {showButton && (
             <button

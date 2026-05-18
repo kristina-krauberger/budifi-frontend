@@ -1,6 +1,7 @@
 /* Global layout helper — applied to every private page's root wrapper.
-   The fixed nav is ~72 px tall; we give 80 px so content never hides behind it. */
+   Nav is ~72px tall. 8rem (128px) top padding gives ~56px of breathing room
+   so content feels visually centered rather than attached to the header. */
 .main-content {
-  padding-top: 5rem;   /* 80px — space for fixed nav */
-  padding-bottom: 4rem; /* 64px */
+  padding-top: 8rem;    /* 128px */
+  padding-bottom: 6rem; /* 96px — balanced with top */
 }

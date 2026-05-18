@@ -99,7 +99,7 @@ function Lesson({ course, allCourses, setCourse, userProgress }) {
       {/* Outlet is a placeholder for nested lesson routes from react-router.
       React Router renders the active sub-route here
       (intro, video, quiz, or summary).*/}
-      <div className="flex flex-col items-center justify-center w-full min-h-[380px] max-h-[380px] px-4">
+      <div className="w-full px-4">
         <Outlet
           context={{
             course,

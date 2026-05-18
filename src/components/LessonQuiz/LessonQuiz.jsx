@@ -87,13 +87,13 @@ function LessonQuiz({ course }) {
   }
 
   return (
-    <div className="main-content flex flex-col justify-start min-h-[250px]">
-      <div>
-        <h2 className="text-3xl font-bold text-grey-800 mb-6 tracking-wide">
+    <div className="w-full flex flex-col items-center justify-start text-center pt-16 pb-4 min-h-[380px]">
+      <div className="max-w-2xl w-full px-4 mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight leading-tight">
           {quizQuestion}
         </h2>
       </div>
-      <div>
+      <div className="w-full max-w-md flex flex-col gap-3 px-4">
         {showButton &&
           optionsAnswer.map((optionAnswer, index) => (
             <ButtonAnswer

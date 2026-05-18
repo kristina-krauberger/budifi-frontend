@@ -44,11 +44,11 @@ function LessonSummary({ course, allCourses }) {
     []);
 
   return (
-    <div className="main-content space-y-6 text-center min-h-[72px] items-center">
-      <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-700">
+    <div className="w-full flex flex-col items-center justify-center text-center min-h-[380px] space-y-6">
+      <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0EB689] tracking-tight">
         {congrats}
       </p>
-      <p className="text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed max-w-2xl mx-auto">
+      <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto px-4">
         {textSummary}
       </p>
       <div>
@@ -76,7 +76,7 @@ function LessonSummary({ course, allCourses }) {
                 navigate("/dashboard");
               }
             }}
-            className={`w-44 py-3 rounded-md font-semibold bg-[#5E9C73] hover:bg-[#4A8460] text-white shadow-sm transition-all duration-200 ${showButton ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            className={`w-full sm:w-auto px-10 py-3 rounded-full font-semibold bg-[#0EB689] hover:bg-[#0c9e77] text-white shadow-sm transition-all duration-200 ${showButton ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           >
             Weiter geht's!
           </button>

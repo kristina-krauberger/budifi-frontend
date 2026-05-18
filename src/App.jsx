@@ -40,7 +40,7 @@ function App() {
   console.log("ALL COURSES", allCourses, typeof allCourses);
   const [userProgress, setUserProgress] = useState(null);
 
-  // Fetch all courses from the backend when the component mounts
+  // Fetch all courses from the backend when logged in
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -51,8 +51,10 @@ function App() {
         console.error("Fehler beim Laden:", err);
       }
     };
-    fetchCourses();
-  }, []);
+    if (loggedInUser) {
+      fetchCourses();
+    }
+  }, [loggedInUser]);
 
   // Fetch the progress of the currently logged-in user
   // This is triggered only once the user is available in context
@@ -60,7 +62,7 @@ function App() {
     const fetchUserProgress = async () => {
       try {
         if (!loggedInUser || !loggedInUser.id) {
-          return <p>Loading...</p>;
+          return;
         }
         const data = await getLessonProgress(loggedInUser.id);
         setUserProgress(data);
@@ -74,16 +76,20 @@ function App() {
     }
   }, [loggedInUser, location.pathname]);
 
-  // Wait until course data has been loaded from the backend.
-  // Until then, do not render the app to avoid accessing undefined data.
-  if (!allCourses) {
-    return <p>Loading...</p>;
-  }
+  // Block rendering of private routes ONLY when authenticated but data is still loading
+  const isPublicRoute = ["/", "/login", "/registrieren", "/datenschutz", "/impressum"].includes(location.pathname);
 
-  // If a user is logged in, wait until their progress data is loaded.
-  // This prevents private pages from rendering before progress is available.
-  if (loggedInUser && !userProgress) {
-    return <p>Loading...</p>;
+  if (loggedInUser && !isPublicRoute) {
+    if (!allCourses || !userProgress) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-[#F7F5F2]">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-10 h-10 border-4 border-[#0EB689] border-t-transparent rounded-full animate-spin" />
+            <p className="text-sm text-gray-500 font-semibold font-sans">Lade dein Dashboard...</p>
+          </div>
+        </div>
+      );
+    }
   }
 
   return (

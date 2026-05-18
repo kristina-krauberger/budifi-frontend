@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import { Link, useNavigate } from "react-router";
 import logo from "../../assets/logo.png";
@@ -6,6 +6,7 @@ import logo from "../../assets/logo.png";
 function HeaderPrivate() {
   const navigate = useNavigate();
   const { setLoggedInUser } = useContext(LoggedInUserContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -29,14 +30,49 @@ function HeaderPrivate() {
             Buddy.Fi
           </span>
         </button>
-        <button
-          onClick={handleLogout}
-          type="button"
-          className="py-2 px-4 text-sm font-medium text-gray-600 bg-white rounded-full border border-gray-200 hover:bg-gray-50 hover:text-gray-900 transition cursor-pointer"
+        
+        {/* Desktop Button */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={handleLogout}
+            type="button"
+            className="py-2 px-4 text-sm font-medium text-gray-600 bg-white rounded-full border border-gray-200 hover:bg-gray-50 hover:text-gray-900 transition cursor-pointer"
+          >
+            Logout
+          </button>
+        </div>
+
+        {/* Mobile Hamburger Button */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)} 
+          className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg focus:outline-none"
+          aria-label="Toggle Menu"
         >
-          Logout
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
         </button>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMenuOpen && (
+        <div className="md:hidden border-t border-gray-100 bg-white px-6 py-4 flex flex-col gap-3 shadow-md">
+          <button
+            onClick={() => {
+              setIsMenuOpen(false);
+              handleLogout();
+            }}
+            type="button"
+            className="w-full py-3 px-4 text-sm font-medium text-gray-600 bg-white rounded-full border border-gray-200 hover:bg-gray-50 transition cursor-pointer"
+          >
+            Logout
+          </button>
+        </div>
+      )}
     </nav>
   );
 }

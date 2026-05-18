@@ -8,16 +8,14 @@ import CourseCard from "../../components/CourseCard/CourseCard";
 
 function Dashboard({ course, allCourses, setCourse, userProgress }) {
   const { loggedInUser } = useContext(LoggedInUserContext);
-  // Green-family palette: cohesive but distinct tints
-  const cardColors = ["bg-[#0B7A5E]", "bg-[#0EB689]", "bg-[#3DC4A0]"];
 
   return (
     <div className="main-content">
-      <div className="text-center mb-10 max-w-6xl mx-auto px-6">
-        <h1 className="text-3xl font-bold text-gray-800">
-          Hey {loggedInUser?.first_name}!
+      <div className="text-center mb-12 max-w-6xl mx-auto px-6">
+        <h1 className="text-4xl font-extrabold text-gray-800 tracking-tight">
+          Hey {loggedInUser?.first_name}! 
         </h1>
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="text-base text-gray-400 font-medium mt-2">
           Schön, dass du wieder da bist.
         </p>
       </div>
@@ -43,7 +41,6 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
               title={course.title}
               lessons={course.lessons.length}
               progress={progressPercentage}
-              cardColor={cardColors[index % cardColors.length]}
             />
           );
         })}
