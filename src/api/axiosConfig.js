@@ -29,9 +29,27 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Helper function to dynamically determine the Money Compass API URL
+const getMoneyCompassBaseUrl = () => {
+  // Check if we are running in a deployed environment (production mode or custom flags, or hosted hostname)
+  const isDeployed =
+    import.meta.env.PROD ||
+    import.meta.env.VITE_RENDER ||
+    (typeof window !== "undefined" &&
+      window.location.hostname !== "localhost" &&
+      window.location.hostname !== "127.0.0.1");
+
+  if (isDeployed) {
+    return "https://money-compass-api.onrender.com";
+  }
+
+  // Local URL fallback
+  return import.meta.env.VITE_MONEY_COMPASS_API_URL || "http://localhost:5004";
+};
+
 // Dedicated axios instance for the Money Compass API (running on a different port/service)
 export const moneyCompassApi = axios.create({
-  baseURL: import.meta.env.VITE_MONEY_COMPASS_API_URL || "http://127.0.0.1:5004",
+  baseURL: getMoneyCompassBaseUrl(),
   headers: {
     "Content-Type": "application/json",
   },
