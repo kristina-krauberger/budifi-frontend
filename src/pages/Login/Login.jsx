@@ -44,7 +44,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full min-h-[calc(100vh-160px)] px-4 py-8 sm:px-6 lg:px-8">
+    <div className="flex-grow flex items-center justify-center w-full px-4 pt-[72px] pb-8 sm:px-6 lg:px-8">
       <div className="max-w-md w-full bg-white border border-gray-100 rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 hover:shadow-md">
         <h2 className="text-center text-2xl sm:text-3xl font-extrabold text-gray-800 tracking-tight mb-8">
           Zurück zu deiner Lernreise
