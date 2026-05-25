@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import MoneyCompassForm from '../../components/MoneyCompass/MoneyCompassForm/MoneyCompassForm';
 import RecommendationCard from '../../components/MoneyCompass/RecommendationCard/RecommendationCard';
+import { generatePortfolioRecommendation } from '../../api/moneyCompass.api';
 
 function MoneyCompass() {
   const navigate = useNavigate();
@@ -14,18 +15,19 @@ function MoneyCompass() {
     setRecommendation('');
     setError('');
 
-    try {
-      // Mock the recommendation response
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      
-      const mockResult = {
-        recommendation: `Basierend auf deinem Profil (Alter: ${formData.age}, Sparrate: ${formData.monthlySavings}€, Horizont: ${formData.investmentHorizon}) empfehlen wir ein ausgewogenes Portfolio. 
-        
-Deine Prioritäten (Rendite: ${formData.priorityReturn}%, Sicherheit: ${formData.prioritySecurity}%, Liquidität: ${formData.priorityLiquidity}%) passen gut zu einer diversifizierten ETF-Strategie. Beginne mit einem globalen Aktien-ETF und einem Anteil an sicheren Anleihen.`
-      };
+    // Log the data being sent to the console
+    console.log("Sende Daten an die Money Compass API:", formData);
 
-      setRecommendation(mockResult.recommendation);
+    try {
+      // Call the API endpoint on the backend
+      const response = await generatePortfolioRecommendation(formData);
+      
+      // Log the response from the API to the console
+      console.log("Antwort von der Money Compass API:", response);
+
+      setRecommendation(response);
     } catch (err) {
+      console.error("Fehler bei der Anfrage an die Money Compass API:", err);
       setError(err.message || 'Etwas ist bei der Erstellung deiner Empfehlung schiefgelaufen. Bitte versuche es später noch einmal.');
     } finally {
       setLoading(false);

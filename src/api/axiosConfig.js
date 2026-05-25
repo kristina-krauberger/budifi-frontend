@@ -29,4 +29,12 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Dedicated axios instance for the Money Compass API (running on a different port/service)
+export const moneyCompassApi = axios.create({
+  baseURL: import.meta.env.VITE_MONEY_COMPASS_API_URL || "http://127.0.0.1:5004",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 export default api;
