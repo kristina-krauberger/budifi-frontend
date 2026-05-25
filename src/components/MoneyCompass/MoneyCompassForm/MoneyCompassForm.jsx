@@ -9,8 +9,8 @@ import React, { useState, useRef } from 'react';
  */
 function MoneyCompassForm({ onSubmit, isLoading }) {
   const [formData, setFormData] = useState({
-    age: 0,
-    monthlySavings: 0,
+    age: '',
+    monthlySavings: '',
     priorityReturn: 0,
     prioritySecurity: 0,
     priorityLiquidity: 0,
@@ -19,7 +19,10 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const parsedValue = (name === 'age' || name === 'monthlySavings') ? Number(value) : value;
+    let parsedValue = value;
+    if (name === 'age' || name === 'monthlySavings') {
+      parsedValue = value === '' ? '' : Number(value);
+    }
     
     setFormData(prev => ({
       ...prev,
@@ -106,6 +109,7 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
             name="age" 
             value={formData.age} 
             onChange={handleChange}
+            placeholder="z.B. 30"
             disabled={isLoading}
             min="18"
             max="120"
@@ -122,6 +126,7 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
             name="monthlySavings" 
             value={formData.monthlySavings} 
             onChange={handleChange}
+            placeholder="z.B. 100"
             disabled={isLoading}
             min="0"
             step="10"
