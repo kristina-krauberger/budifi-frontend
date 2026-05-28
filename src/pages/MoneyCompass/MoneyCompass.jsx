@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import MoneyCompassForm from '../../components/MoneyCompass/MoneyCompassForm/MoneyCompassForm';
 import RecommendationCard from '../../components/MoneyCompass/RecommendationCard/RecommendationCard';
 import { generatePortfolioRecommendation, getCoachWelcome } from '../../api/moneyCompass.api';
+import { LoggedInUserContext } from '../../context/LoggedInUserContext';
 
 function MoneyCompass() {
   const navigate = useNavigate();
+  const { loggedInUser } = useContext(LoggedInUserContext);
+  const userName = loggedInUser?.first_name || '';
+
   const [loading, setLoading] = useState(false);
   const [recommendation, setRecommendation] = useState('');
   const [error, setError] = useState('');
@@ -19,7 +23,8 @@ function MoneyCompass() {
   });
 
   useEffect(() => {
-    getCoachWelcome()
+    const name = loggedInUser?.first_name || '';
+    getCoachWelcome(name)
       .then(data => {
         if (data) {
           setWelcomeData(data);
@@ -28,7 +33,7 @@ function MoneyCompass() {
       .catch(err => {
         console.error("Fehler beim Laden des Coach-Willkommenstextes:", err);
       });
-  }, []);
+  }, [loggedInUser]);
 
   const handleGenerateRecommendation = async (formData) => {
     setLoading(true);
@@ -98,7 +103,7 @@ function MoneyCompass() {
               </div>
             ) : recommendation || error ? (
               /* Generated Result State */
-              <RecommendationCard recommendation={recommendation} error={error} />
+              <RecommendationCard recommendation={recommendation} error={error} userName={userName} />
             ) : (
               /* Initial Welcome State from Clara */
               <div className="bg-white rounded-2xl p-6 shadow-md border border-[#0EB689]/15 min-h-[350px] flex flex-col justify-between">
@@ -111,7 +116,9 @@ function MoneyCompass() {
                       className="w-16 h-16 rounded-full object-cover bg-[#E1E8ED] border-[3px] border-[#EAF5F1]"
                     />
                     <div>
-                      <h3 className="m-0 text-lg text-gray-800 font-bold">Hi, ich bin {welcomeData.name}</h3>
+                      <h3 className="m-0 text-lg text-gray-800 font-bold">
+                        Hi{userName ? ` ${userName}` : ''}, ich bin {welcomeData.name}
+                      </h3>
                       <p className="text-xs text-[#0EB689] font-semibold uppercase tracking-wider m-0">{welcomeData.role}</p>
                     </div>
                   </div>
