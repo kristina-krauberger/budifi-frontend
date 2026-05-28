@@ -29,38 +29,16 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Helper function to dynamically determine the Money Compass API URL
-let determinedBaseUrl = null;
+const getMoneyCompassBaseUrl = () => {
+  const isLocal =
+    typeof window !== "undefined" &&
+    (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
 
-const getMoneyCompassBaseUrl = async () => {
-  if (determinedBaseUrl) return determinedBaseUrl;
-
-  const localUrl = import.meta.env.VITE_MONEY_COMPASS_API_URL || "http://localhost:5004";
-  const deployedUrl = "https://money-compass-api.onrender.com";
-
-  // Check if we are running in a deployed environment (production mode or custom flags, or hosted hostname)
-  const isFrontendDeployed =
-    import.meta.env.PROD ||
-    import.meta.env.VITE_RENDER ||
-    (typeof window !== "undefined" &&
-      window.location.hostname !== "localhost" &&
-      window.location.hostname !== "127.0.0.1");
-
-  if (isFrontendDeployed) {
-    determinedBaseUrl = deployedUrl;
-    return determinedBaseUrl;
+  if (isLocal) {
+    return import.meta.env.VITE_MONEY_COMPASS_API_URL || "http://127.0.0.1:5004";
   }
 
-  // If local, check if the local backend is running by pinging the health endpoint
-  try {
-    await axios.get(`${localUrl}/health`, { timeout: 800 });
-    determinedBaseUrl = localUrl;
-  } catch (err) {
-    // If the local server is not running, fall back to the deployed URL
-    determinedBaseUrl = deployedUrl;
-  }
-
-  return determinedBaseUrl;
+  return "https://money-compass-api.onrender.com";
 };
 
 // Dedicated axios instance for the Money Compass API (running on a different port/service)
@@ -70,8 +48,8 @@ export const moneyCompassApi = axios.create({
   },
 });
 
-moneyCompassApi.interceptors.request.use(async (config) => {
-  config.baseURL = await getMoneyCompassBaseUrl();
+moneyCompassApi.interceptors.request.use((config) => {
+  config.baseURL = getMoneyCompassBaseUrl();
   return config;
 });
 
