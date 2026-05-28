@@ -23,7 +23,7 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
     if (name === 'age' || name === 'monthlySavings') {
       parsedValue = value === '' ? '' : Number(value);
     }
-    
+
     setFormData(prev => ({
       ...prev,
       [name]: parsedValue
@@ -103,11 +103,11 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
       <form className="bg-white rounded-2xl p-4 md:p-5 shadow-md border border-gray-100 flex flex-col gap-2.5" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-1 mb-2">
           <label htmlFor="age" className="text-sm font-semibold text-gray-800">Alter</label>
-          <input 
-            type="number" 
-            id="age" 
-            name="age" 
-            value={formData.age} 
+          <input
+            type="number"
+            id="age"
+            name="age"
+            value={formData.age}
             onChange={handleChange}
             placeholder="z.B. 30"
             disabled={isLoading}
@@ -120,11 +120,11 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
 
         <div className="flex flex-col gap-1 mb-2">
           <label htmlFor="monthlySavings" className="text-sm font-semibold text-gray-800">Monatliche Sparrate (€)</label>
-          <input 
-            type="number" 
-            id="monthlySavings" 
-            name="monthlySavings" 
-            value={formData.monthlySavings} 
+          <input
+            type="number"
+            id="monthlySavings"
+            name="monthlySavings"
+            value={formData.monthlySavings}
             onChange={handleChange}
             placeholder="z.B. 100"
             disabled={isLoading}
@@ -137,9 +137,9 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
 
         <div className="flex flex-col gap-1 mb-2">
           <label htmlFor="investmentHorizon" className="text-sm font-semibold text-gray-800">Anlagehorizont</label>
-          <select 
-            id="investmentHorizon" 
-            name="investmentHorizon" 
+          <select
+            id="investmentHorizon"
+            name="investmentHorizon"
             value={formData.investmentHorizon}
             onChange={handleChange}
             disabled={isLoading}
@@ -213,9 +213,9 @@ function MoneyCompassForm({ onSubmit, isLoading }) {
           </div>
         </div>
 
-        <button 
-          type="submit" 
-          className="mt-2 w-full bg-[#0EB689] hover:bg-[#0c9d76] text-white font-bold py-3 px-6 rounded-full shadow-sm transition-all duration-200 ease-in-out hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed" 
+        <button
+          type="submit"
+          className="mt-2 w-full bg-[#0EB689] hover:bg-[#0c9d76] text-white font-bold py-3 px-6 rounded-full shadow-sm transition-all duration-200 ease-in-out hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={isLoading}
         >
           {isLoading ? 'Wird erstellt...' : 'Ergebnis anzeigen'}

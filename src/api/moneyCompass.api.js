@@ -10,3 +10,12 @@ export async function generatePortfolioRecommendation(formData) {
   const response = await moneyCompassApi.post("/api/ai-coach", formData);
   return response.data;
 }
+
+/**
+ * Fetches the coach welcome details from the backend.
+ * @returns {Promise<Object>} The welcome data including name, avatar, role and text paragraphs
+ */
+export async function getCoachWelcome() {
+  const response = await moneyCompassApi.get("/api/ai-coach/welcome");
+  return response.data;
+}

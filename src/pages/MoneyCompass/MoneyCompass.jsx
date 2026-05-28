@@ -1,14 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import MoneyCompassForm from '../../components/MoneyCompass/MoneyCompassForm/MoneyCompassForm';
 import RecommendationCard from '../../components/MoneyCompass/RecommendationCard/RecommendationCard';
-import { generatePortfolioRecommendation } from '../../api/moneyCompass.api';
+import { generatePortfolioRecommendation, getCoachWelcome } from '../../api/moneyCompass.api';
 
 function MoneyCompass() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [recommendation, setRecommendation] = useState('');
   const [error, setError] = useState('');
+  const [welcomeData, setWelcomeData] = useState({
+    name: "Clara",
+    role: "Dein Money Compass Coach",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    title: "Hi, ich bin Clara! Lass uns dein Geld wachsen lassen! 🚀",
+    paragraph1: "Ich helfe dir dabei, das absolute Maximum aus deinen Finanzen herauszuholen! Lass uns keine Zeit verschwenden. Trage links einfach deine Daten ein (deine Sparrate, dein Alter, Anlagehorizont und deine Prioritäten) und klicke auf \"Ergebnis anzeigen\".",
+    paragraph2: "Ich erstelle dir dann umgehend eine rendite- und wachstumsoptimierte ETF- und Anlagestrategie, die perfekt zu deiner Lebenssituation passt. Lass uns loslegen!"
+  });
+
+  useEffect(() => {
+    getCoachWelcome()
+      .then(data => {
+        if (data) {
+          setWelcomeData(data);
+        }
+      })
+      .catch(err => {
+        console.error("Fehler beim Laden des Coach-Willkommenstextes:", err);
+      });
+  }, []);
 
   const handleGenerateRecommendation = async (formData) => {
     setLoading(true);
@@ -21,7 +41,7 @@ function MoneyCompass() {
     try {
       // Call the API endpoint on the backend
       const response = await generatePortfolioRecommendation(formData);
-      
+
       // Log the response from the API to the console
       console.log("Antwort von der Money Compass API:", response);
 
@@ -39,8 +59,8 @@ function MoneyCompass() {
       {/* Header and Back Button Container */}
       <div className="max-w-6xl mx-auto px-4 mb-8">
         <div className="flex items-center gap-4">
-          <button 
-            onClick={() => navigate('/dashboard')} 
+          <button
+            onClick={() => navigate('/dashboard')}
             className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-600 hover:bg-gray-50 transition shadow-sm shrink-0"
             title="Zurück zum Dashboard"
           >
@@ -58,12 +78,12 @@ function MoneyCompass() {
       {/* Main Two-Column Layout */}
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          
+
           {/* Left Column: Input Form (5/12 grid-span on desktop) */}
           <div className="md:col-span-5">
-            <MoneyCompassForm 
-              onSubmit={handleGenerateRecommendation} 
-              isLoading={loading} 
+            <MoneyCompassForm
+              onSubmit={handleGenerateRecommendation}
+              isLoading={loading}
             />
           </div>
 
@@ -86,29 +106,30 @@ function MoneyCompass() {
                   {/* Clara Header */}
                   <div className="flex items-center gap-3 mb-6">
                     <img
-                      src="https://randomuser.me/api/portraits/women/44.jpg"
-                      alt="Clara - Money Compass Coach"
+                      src={welcomeData.avatar}
+                      alt={`${welcomeData.name} - Money Compass Coach`}
                       className="w-16 h-16 rounded-full object-cover bg-[#E1E8ED] border-[3px] border-[#EAF5F1]"
                     />
                     <div>
-                      <h3 className="m-0 text-lg text-gray-800 font-bold">Hi, ich bin Clara</h3>
-                      <p className="text-xs text-[#0EB689] font-semibold uppercase tracking-wider m-0">Dein Money Compass Coach</p>
+                      <h3 className="m-0 text-lg text-gray-800 font-bold">Hi, ich bin {welcomeData.name}</h3>
+                      <p className="text-xs text-[#0EB689] font-semibold uppercase tracking-wider m-0">{welcomeData.role}</p>
                     </div>
                   </div>
 
                   {/* Bubble content */}
                   <div className="p-5 rounded-2xl rounded-tl-sm text-[15px] leading-relaxed bg-[#F0F9F6] text-gray-800 border border-[#0EB689]/10">
-                    <p className="m-0 font-medium text-gray-800 mb-2">Herzlich willkommen beim Money Compass! 👋</p>
+                    <p className="m-0 font-medium text-gray-800 mb-2">{welcomeData.title}</p>
                     <p className="m-0 text-gray-600">
-                      Ich helfe dir dabei, deinen optimalen Startpunkt für den Vermögensaufbau zu finden. 
-                      Trage links einfach deine Daten ein (deine Sparrate, dein Alter, Anlagehorizont und deine Prioritäten) und klicke auf <strong className="text-gray-800">"Ergebnis anzeigen"</strong>.
+                      {welcomeData.paragraph1}
                     </p>
-                    <p className="m-0 text-gray-600 mt-3">
-                      Ich erstelle dir dann umgehend eine maßgeschneiderte ETF- und Anlagestrategie, die perfekt zu deiner Lebenssituation passt!
-                    </p>
+                    {welcomeData.paragraph2 && (
+                      <p className="m-0 text-gray-600 mt-3">
+                        {welcomeData.paragraph2}
+                      </p>
+                    )}
                   </div>
                 </div>
-                
+
                 {/* Decorative footer */}
                 <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 font-medium">
                   <span>🔒 Deine Daten werden nur lokal verarbeitet</span>
@@ -117,7 +138,7 @@ function MoneyCompass() {
               </div>
             )}
           </div>
-          
+
         </div>
       </div>
     </div>
