@@ -16,6 +16,21 @@ This frontend is built with **React**, **Vite**, and **Tailwind CSS**, and commu
 - Final summary screen to reinforce key concepts
 - Audio feedback using sound effects (Pixabay)
 
+---
+
+## Dynamic Learning Experience
+
+Courses and lessons are dynamically rendered from backend data fetched via REST API.
+
+Features include:
+
+- Course metadata (title, description, order)
+- Associated lessons
+- User-specific completion tracking
+- Dynamic routing via `/course/:courseId`
+- Persistent learning progress
+
+This architecture allows new courses and lessons to be added through the backend without requiring frontend changes.
 
 ---
 
@@ -84,14 +99,17 @@ budifi-frontend/
 
 ## State Management
 
-The application uses React Context to manage the authenticated user globally.
+The application uses React Context for global user state management and local component state for lesson-specific logic.
 
-- `LoggedInUserProvider` wraps the application.
-- After login, user data is stored in the context.
-- Components can access user data without prop drilling.
-- Authentication token is stored in `localStorage`.
+Key concepts:
 
-This ensures consistent session handling across all protected routes.
+- React Context API for authenticated user data
+- localStorage for session persistence
+- Local component state for lesson flow and UI interactions
+- Centralized Axios configuration
+- Clean separation between UI and API communication
+
+This architecture improves scalability and avoids excessive prop drilling.
 
 ---
 
@@ -114,18 +132,23 @@ Navigation logic ensures a smooth learning experience:
 
 ## API Communication
 
-The frontend communicates with the Flask backend via REST API using Axios.
+The frontend communicates with multiple backend services via Axios.
 
-Key interactions:
+### Buddy.Fi Backend
 
-- `POST /api/login`
-- `POST /api/register`
-- `GET /api/me`
-- `GET /api/courses`
-- `GET /api/user/<id>/progress`
-- `PUT /api/user/<id>/progress`
+- POST `/api/login`
+- POST `/api/register`
+- GET `/api/me`
+- GET `/api/courses`
+- GET `/api/user/<id>/progress`
+- PUT `/api/user/<id>/progress`
 
-Axios is configured centrally in `axiosConfig.js`.
+### Money Compass API
+
+- POST `/api/ai-coach`
+- GET `/api/ai-coach/welcome`
+
+Axios is configured centrally through reusable API service modules.
 
 ---
 ## Media & Assets
