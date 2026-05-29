@@ -1,10 +1,18 @@
 # Buddy.Fi Frontend
 
+This is the **frontend** for *Buddy.Fi* – a microlearning finance app inspired by Duolingo, designed to make learning about ETFs, investing, and financial literacy fun and interactive.
+
+The app guides users through short lessons, embedded videos, quizzes, and summaries – all presented in a clean and motivating user interface.
+
+This frontend is built with **React**, **Vite**, and **Tailwind CSS**, and communicates with a **Flask-based backend** via REST API.
+
+---
+
 ## Frontend Demo
 
 <p align="center">
   <a href="https://www.loom.com/share/4dc296236b0a428f9e260c6a97c34576">
-    <img src="assets/demo_budifi.gif" width="900" />
+    <img src="src/assets/demo_budifi.gif" width="900" />
   </a>
 </p>
 
@@ -15,13 +23,6 @@
 </p>
 
 ---
-
-This is the **frontend** for *Buddy.Fi* – a microlearning finance app inspired by Duolingo, designed to make learning about ETFs, investing, and financial literacy fun and interactive.
-
-The app guides users through short lessons, embedded videos, quizzes, and summaries – all presented in a clean and motivating user interface.
-
-This frontend is built with **React**, **Vite**, and **Tailwind CSS**, and communicates with a **Flask-based backend** via REST API.
-
 
 ## Features
 
