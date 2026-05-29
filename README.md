@@ -161,7 +161,7 @@ budifi-frontend/
 │   │   ├── RegisterUser/
 │   │   ├── Dashboard/
 │   │   ├── Course/
-│   │   └── Lesson/
+│   │   ├── Lesson/
 │   │   └── …  
 │   │
 │   ├── App.jsx                 # Main routing configuration
@@ -177,8 +177,7 @@ budifi-frontend/
 
 ## Deployment
 
-Frontend:
-https://buddyfi-2.vercel.app/
+[Live Frontend Demo](https://buddyfi-2.vercel.app/)
 
 ---
 
