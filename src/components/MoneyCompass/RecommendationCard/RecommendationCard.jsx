@@ -11,14 +11,15 @@ function RecommendationCard({ recommendation, error, userName }) {
   const nameSuffix = userName ? ` ${userName}` : '';
   const welcomeText = `Hey${nameSuffix}! Lass uns dein Wissen aus den Buddy.Fi Lektionen direkt in die Praxis umsetzen. Hier ist dein persönlicher Fahrplan, um dein Geld für dich arbeiten zu lassen:`;
   const [typedText, setTypedText] = useState('');
+  const [showRawResponse, setShowRawResponse] = useState(false);
 
   useEffect(() => {
     if (error) return;
     setTypedText('');
-    
+
     let currentText = '';
     let index = 0;
-    
+
     const interval = setInterval(() => {
       if (index < welcomeText.length) {
         currentText += welcomeText.charAt(index);
@@ -28,7 +29,7 @@ function RecommendationCard({ recommendation, error, userName }) {
         clearInterval(interval);
       }
     }, 15);
-    
+
     return () => clearInterval(interval);
   }, [error]);
 
@@ -49,7 +50,7 @@ function RecommendationCard({ recommendation, error, userName }) {
     }
 
     const investorType = investorTypeMatch ? investorTypeMatch[1].trim() : '';
-    
+
     // Parse portfolio lines
     const portfolioText = portfolioMatch ? portfolioMatch[1].trim() : '';
     const portfolioItems = portfolioText
@@ -90,7 +91,7 @@ function RecommendationCard({ recommendation, error, userName }) {
             alt="Clara - Money Compass Coach"
             className="w-16 h-16 rounded-full object-cover bg-[#E1E8ED] border-[3px] border-[#EAF5F1] shrink-0"
           />
-          
+
           {/* Clara Speech Bubble with Typing Effect */}
           <div className="p-4 rounded-2xl rounded-tl-sm bg-[#F0F9F6] text-gray-800 border border-[#0EB689]/10 flex-1">
             <p className="text-sm font-semibold text-gray-800 m-0 leading-relaxed min-h-[2.5rem]">
@@ -116,6 +117,29 @@ function RecommendationCard({ recommendation, error, userName }) {
                 <p className="text-lg font-bold text-gray-800 m-0 leading-snug">
                   {parsedData.investorType}
                 </p>
+                {(() => {
+                  const type = parsedData.investorType.toLowerCase();
+                  if (type.includes('wachstum') || type.includes('growth')) {
+                    return (
+                      <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                        Dir ist Rendite und langfristiger Vermögensaufbau am wichtigsten. Du willst dein Geld arbeiten lassen und nimmst dafür kurzfristige Schwankungen in Kauf, um die beste Performance zu erzielen.
+                      </p>
+                    );
+                  } else if (type.includes('ausgewogen') || type.includes('balanced') || type.includes('neutral')) {
+                    return (
+                      <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                        Dir ist eine gesunde Balance wichtig. Du willst von den Renditen des Aktienmarkts profitieren, legst aber gleichzeitig Wert auf einen soliden Puffer, um ruhig schlafen zu können.
+                      </p>
+                    );
+                  } else if (type.includes('sicher') || type.includes('security') || type.includes('konservativ')) {
+                    return (
+                      <p className="text-xs text-gray-500 mt-2 leading-relaxed">
+                        Dir ist der Schutz deines Kapitals am wichtigsten. Du möchtest kein unnötiges Risiko eingehen und nimmst dafür geringere Renditen in Kauf. Sicherheit und schnelle Verfügbarkeit stehen an erster Stelle.
+                      </p>
+                    );
+                  }
+                  return null;
+                })()}
               </div>
             )}
 
@@ -123,10 +147,10 @@ function RecommendationCard({ recommendation, error, userName }) {
             {parsedData.portfolioItems && parsedData.portfolioItems.length > 0 && (
               <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
                 <span className="text-[11px] font-bold text-[#0EB689] uppercase tracking-wider block mb-4">Empfohlene Aufteilung</span>
-                
+
                 {/* Responsive 3-Column Layout surrounding the larger Donut Chart */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch">
-                  
+
                   {/* Left Card: ETFs (Index 0) */}
                   {parsedData.portfolioItems[0] && (() => {
                     const match = parsedData.portfolioItems[0].label.match(/^(.*?)\s*\((.*)\)$/);
@@ -142,8 +166,8 @@ function RecommendationCard({ recommendation, error, userName }) {
 
                   {/* Center: Large Donut Chart (conic-gradient) */}
                   <div className="flex justify-center items-center order-first sm:order-none">
-                    <div 
-                      className="relative w-36 h-36 rounded-full shadow-inner flex items-center justify-center shrink-0" 
+                    <div
+                      className="relative w-36 h-36 rounded-full shadow-inner flex items-center justify-center shrink-0"
                       style={{
                         background: `conic-gradient(
                           #4F46E5 0% ${parsedData.portfolioItems[1]?.percentage || 0}%,
@@ -212,16 +236,21 @@ function RecommendationCard({ recommendation, error, userName }) {
             <p className="m-0 whitespace-pre-wrap">{recommendation}</p>
           </div>
         )}
-        
-        {/* Raw Response (Always Visible for Testing) */}
+
+        {/* Raw Response (Toggleable for Testing) */}
         {!error && recommendation && (
           <div className="mt-4 border-t border-gray-150 pt-4">
-            <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-2">
-              Rohe API-Antwort (Test-Ansicht)
-            </span>
-            <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-xs font-mono text-gray-600 whitespace-pre-wrap leading-relaxed">
-              {recommendation}
-            </div>
+            <button
+              onClick={() => setShowRawResponse(!showRawResponse)}
+              className="text-[11px] font-bold text-gray-400 hover:text-gray-600 uppercase tracking-wider flex items-center gap-1.5 focus:outline-none transition-colors mb-2"
+            >
+              <span>{showRawResponse ? '▼' : '▶'} Rohe API-Antwort (Test-Ansicht)</span>
+            </button>
+            {showRawResponse && (
+              <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-xs font-mono text-gray-600 whitespace-pre-wrap leading-relaxed">
+                {recommendation}
+              </div>
+            )}
           </div>
         )}
       </div>

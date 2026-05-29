@@ -15,9 +15,7 @@ export async function generatePortfolioRecommendation(formData) {
  * Fetches the coach welcome details from the backend.
  * @returns {Promise<Object>} The welcome data including name, avatar, role and text paragraphs
  */
-export async function getCoachWelcome(name) {
-  const response = await moneyCompassApi.get("/api/ai-coach/welcome", {
-    params: name ? { name } : {}
-  });
+export async function getCoachWelcome() {
+  const response = await moneyCompassApi.get("/api/ai-coach/welcome");
   return response.data;
 }

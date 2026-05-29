@@ -23,8 +23,7 @@ function MoneyCompass() {
   });
 
   useEffect(() => {
-    const name = loggedInUser?.first_name || '';
-    getCoachWelcome(name)
+    getCoachWelcome()
       .then(data => {
         if (data) {
           setWelcomeData(data);
@@ -33,7 +32,7 @@ function MoneyCompass() {
       .catch(err => {
         console.error("Fehler beim Laden des Coach-Willkommenstextes:", err);
       });
-  }, [loggedInUser]);
+  }, []);
 
   const handleGenerateRecommendation = async (formData) => {
     setLoading(true);
