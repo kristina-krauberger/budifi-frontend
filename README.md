@@ -114,7 +114,7 @@ budifi-frontend/
 ├── src/
 │   ├── api/                    # API communication layer
 │   │   ├── auth.api.js 
-│   │   └── axiosConfig.js
+│   │   ├── axiosConfig.js
 │   │   ├── course.api.js
 │   │   ├── lesson_progress.api.js
 │   │   └── moneyCompass.api.js
