@@ -55,10 +55,11 @@ budifi-frontend/
 │
 ├── src/
 │   ├── api/                    # API communication layer
-│   │   ├── auth.api.js
+│   │   ├── auth.api.js 
+│   │   └── axiosConfig.js
 │   │   ├── course.api.js
 │   │   ├── lesson_progress.api.js
-│   │   └── axiosConfig.js
+│   │   └── moneyCompass.api.js
 │   │
 │   ├── assets/                 # Images & media files
 │   │   ├── logo.png
@@ -86,6 +87,7 @@ budifi-frontend/
 │   │   ├── Dashboard/
 │   │   ├── Course/
 │   │   └── Lesson/
+│   │   └── …  
 │   │
 │   ├── App.jsx                 # Main routing configuration
 │   └── main.jsx                # Entry point
@@ -148,9 +150,43 @@ The frontend communicates with multiple backend services via Axios.
 - POST `/api/ai-coach`
 - GET `/api/ai-coach/welcome`
 
+The AI service is consumed through a dedicated API layer and rendered as part of the Buddy.Fi learning experience.
+
 Axios is configured centrally through reusable API service modules.
 
 ---
+
+## Deployment
+
+Frontend:
+https://buddyfi-2.vercel.app/
+
+---
+
+## Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+The application runs locally at:
+
+```text
+http://localhost:5173
+```
+
+Required services:
+
+- Buddy.Fi Backend API
+- Money Compass API
+
+Both services must be running locally or deployed for full functionality.
+
+---
+
+## Media & Assets
+
 ## Media & Assets
 
 **Sound Effects** are licensed under [Pixabay Free License](https://pixabay.com/service/license-summary/):
