@@ -46,59 +46,6 @@ This architecture allows new courses and lessons to be added through the backend
 
 ---
 
-## Project Structure
-
-<pre>
-budifi-frontend/
-│
-├── public/
-│
-├── src/
-│   ├── api/                    # API communication layer
-│   │   ├── auth.api.js 
-│   │   └── axiosConfig.js
-│   │   ├── course.api.js
-│   │   ├── lesson_progress.api.js
-│   │   └── moneyCompass.api.js
-│   │
-│   ├── assets/                 # Images & media files
-│   │   ├── logo.png
-│   │   └── hero1.png
-│   │
-│   ├── components/             # Reusable UI components
-│   │   ├── CourseCard/
-│   │   ├── LessonCard/
-│   │   ├── ButtonAnswer/
-│   │   ├── LessonNavbar/
-│   │   └── …
-│   │
-│   ├── context/                # Global state management
-│   │   ├── LoggedInUserContext.jsx
-│   │   └── LoggedInUserProvider.jsx
-│   │
-│   ├── layouts/                # Public & Private layout structure
-│   │   ├── PublicLayout.jsx
-│   │   └── PrivateLayout.jsx
-│   │
-│   ├── pages/                  # Main route components
-│   │   ├── LandingPage/
-│   │   ├── Login/
-│   │   ├── RegisterUser/
-│   │   ├── Dashboard/
-│   │   ├── Course/
-│   │   └── Lesson/
-│   │   └── …  
-│   │
-│   ├── App.jsx                 # Main routing configuration
-│   └── main.jsx                # Entry point
-│
-├── index.html
-├── package.json
-└── README.md
-</pre>
-
----
-
 ## State Management
 
 The application uses React Context for global user state management and local component state for lesson-specific logic.
@@ -153,6 +100,61 @@ The frontend communicates with multiple backend services via Axios.
 The AI service is consumed through a dedicated API layer and rendered as part of the Buddy.Fi learning experience.
 
 Axios is configured centrally through reusable API service modules.
+
+---
+
+
+## Project Structure
+
+<pre>
+budifi-frontend/
+│
+├── public/
+│
+├── src/
+│   ├── api/                    # API communication layer
+│   │   ├── auth.api.js 
+│   │   └── axiosConfig.js
+│   │   ├── course.api.js
+│   │   ├── lesson_progress.api.js
+│   │   └── moneyCompass.api.js
+│   │
+│   ├── assets/                 # Images & media files
+│   │   ├── logo.png
+│   │   └── hero1.png
+│   │
+│   ├── components/             # Reusable UI components
+│   │   ├── CourseCard/
+│   │   ├── LessonCard/
+│   │   ├── ButtonAnswer/
+│   │   ├── LessonNavbar/
+│   │   └── …
+│   │
+│   ├── context/                # Global state management
+│   │   ├── LoggedInUserContext.jsx
+│   │   └── LoggedInUserProvider.jsx
+│   │
+│   ├── layouts/                # Public & Private layout structure
+│   │   ├── PublicLayout.jsx
+│   │   └── PrivateLayout.jsx
+│   │
+│   ├── pages/                  # Main route components
+│   │   ├── LandingPage/
+│   │   ├── Login/
+│   │   ├── RegisterUser/
+│   │   ├── Dashboard/
+│   │   ├── Course/
+│   │   └── Lesson/
+│   │   └── …  
+│   │
+│   ├── App.jsx                 # Main routing configuration
+│   └── main.jsx                # Entry point
+│
+├── index.html
+├── package.json
+└── README.md
+</pre>
+
 
 ---
 
