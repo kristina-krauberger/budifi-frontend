@@ -187,8 +187,9 @@ Both services must be running locally or deployed for full functionality.
 
 ## Media & Assets
 
+- Product demo videos were created by the project author.
+- Visual assets and illustrations were generated using AI-assisted design tools.
+
 **Sound Effects** are licensed under [Pixabay Free License](https://pixabay.com/service/license-summary/):
 - Free for commercial use
 - No attribution required
-
-All images and audio are either self-made or sourced from royalty-free platforms (Pixabay, Unsplash, etc.).
