@@ -187,8 +187,6 @@ Both services must be running locally or deployed for full functionality.
 
 ## Media & Assets
 
-## Media & Assets
-
 **Sound Effects** are licensed under [Pixabay Free License](https://pixabay.com/service/license-summary/):
 - Free for commercial use
 - No attribution required
