@@ -31,7 +31,7 @@ export default function InitialSplashScreen() {
           <p className="text-sm text-gray-500 transition-all duration-500 ease-in-out">
             {!showColdStartMessage
               ? "Wir bereiten deine Lernreise vor..."
-              : "☕ Der Server wird gerade aufgeweckt. Das kann beim ersten Laden nach einer Pause ca. 20-30 Sekunden dauern. Gleich geht's los!"}
+              : "Der Server wird gerade aufgeweckt. Das kann beim ersten Laden nach einer Pause ca. 20-30 Sekunden dauern. Gleich geht's los!"}
           </p>
         </div>
       </div>
