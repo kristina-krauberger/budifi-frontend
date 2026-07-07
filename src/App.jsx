@@ -29,6 +29,7 @@ import LessonQuiz from "./components/LessonQuiz/LessonQuiz.jsx";
 import LessonSummary from "./components/LessonSummary/LessonSummary.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import InitialSplashScreen from "./components/InitialSplashScreen/InitialSplashScreen.jsx";
+import Chatbot from "./components/Chatbot/Chatbot.jsx";
 
 function App() {
   const { loggedInUser, authLoading } = useContext(LoggedInUserContext);
@@ -191,6 +192,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      <Chatbot />
     </div>
   );
 }
