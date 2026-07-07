@@ -126,7 +126,7 @@ export default function Chatbot() {
 
       {/* Chat Window (Direct Chat Mode) */}
       {isOpen && (
-        <div className="w-[calc(100vw-32px)] sm:w-[360px] md:w-[380px] h-[450px] md:h-[480px] bg-white rounded-3xl shadow-2xl flex flex-col border border-gray-150 overflow-hidden transition-all duration-300 transform scale-100 origin-bottom-right animate-scale-up">
+        <div className="w-[calc(100vw-32px)] sm:w-[360px] md:w-[380px] h-[450px] md:h-[480px] bg-white rounded-3xl shadow-2xl flex flex-col border border-gray-100 overflow-hidden transition-all duration-300 transform scale-100 origin-bottom-right animate-scale-up">
           {/* Header */}
           <div className="bg-white p-3.5 md:p-4 flex items-center justify-between border-b border-gray-100">
             <div className="flex items-center gap-3">
