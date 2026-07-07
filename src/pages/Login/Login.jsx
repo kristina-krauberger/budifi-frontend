@@ -15,6 +15,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Access the global context to set the currently logged-in user
   const { setLoggedInUser } = useContext(LoggedInUserContext);
@@ -22,6 +23,11 @@ export default function Login() {
   // Handle login form submission
   const handleLogin = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setLoginError(false);
+
     try {
       // Send login request to backend
       const response = await loginUser(email, password);
@@ -40,6 +46,8 @@ export default function Login() {
     } catch (error) {
       setLoginError(true);
       console.error("Login fehlgeschlagen", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -64,8 +72,9 @@ export default function Login() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 required
+                disabled={isSubmitting}
                 autoComplete="email"
-                className="w-full px-4 py-3 border border-gray-200 rounded-2xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0EB689]/20 focus:border-[#0EB689] transition-all duration-200 text-sm font-sans bg-gray-50/30"
+                className="w-full px-4 py-3 border border-gray-200 rounded-2xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0EB689]/20 focus:border-[#0EB689] transition-all duration-200 text-sm font-sans bg-gray-50/30 disabled:opacity-60"
               />
             </div>
 
@@ -81,8 +90,9 @@ export default function Login() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 required
+                disabled={isSubmitting}
                 autoComplete="current-password"
-                className="w-full px-4 py-3 border border-gray-200 rounded-2xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0EB689]/20 focus:border-[#0EB689] transition-all duration-200 text-sm font-sans bg-gray-50/30"
+                className="w-full px-4 py-3 border border-gray-200 rounded-2xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0EB689]/20 focus:border-[#0EB689] transition-all duration-200 text-sm font-sans bg-gray-50/30 disabled:opacity-60"
               />
             </div>
           </div>
@@ -95,16 +105,32 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full bg-[#0EB689] hover:bg-[#0c9d76] text-white text-sm font-semibold py-3.5 px-4 rounded-full shadow-sm hover:shadow transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 mt-6"
+            disabled={isSubmitting}
+            className="w-full bg-[#0EB689] hover:bg-[#0c9d76] disabled:bg-[#0EB689]/75 text-white text-sm font-semibold py-3.5 px-4 rounded-full shadow-sm hover:shadow transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 mt-6 disabled:cursor-not-allowed"
           >
-            Jetzt einloggen <span>→</span>
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Einloggen...</span>
+              </>
+            ) : (
+              <>
+                Jetzt einloggen <span>→</span>
+              </>
+            )}
           </button>
         </form>
 
         {/* Option to navigate to registration */}
         <p className="text-xs text-gray-400 text-center mt-8">
           Noch kein Konto?{" "}
-          <Link to="/registrieren" className="font-bold text-[#0EB689] hover:underline">
+          <Link 
+            to="/registrieren" 
+            className={`font-bold text-[#0EB689] hover:underline ${isSubmitting ? 'pointer-events-none opacity-50' : ''}`}
+          >
             Jetzt registrieren
           </Link>
         </p>
