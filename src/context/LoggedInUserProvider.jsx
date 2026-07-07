@@ -13,6 +13,7 @@ import { fetchLoggedInUser } from "../api/auth.api";
 export function LoggedInUserProvider({ children }) {
   // Global state holding the currently logged-in user.
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
   console.log("GLOBAL LOGGED IN USER SAFED:", loggedInUser);
 
   // On app start, check if a token exists in localStorage.
@@ -29,7 +30,13 @@ export function LoggedInUserProvider({ children }) {
         .catch((err) => {
           console.error("Token ungültig oder Serverproblem:", err);
           setLoggedInUser(null); 
+          localStorage.removeItem("authToken");
+        })
+        .finally(() => {
+          setAuthLoading(false);
         });
+    } else {
+      setAuthLoading(false);
     }
   }, []);
 
@@ -40,6 +47,7 @@ export function LoggedInUserProvider({ children }) {
       value={{
         loggedInUser,
         setLoggedInUser,
+        authLoading,
       }}
     >
       {children}

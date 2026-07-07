@@ -28,10 +28,16 @@ import LessonVideo from "./components/LessonVideo/LessonVideo.jsx";
 import LessonQuiz from "./components/LessonQuiz/LessonQuiz.jsx";
 import LessonSummary from "./components/LessonSummary/LessonSummary.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
+import InitialSplashScreen from "./components/InitialSplashScreen/InitialSplashScreen.jsx";
 
 function App() {
-  const { loggedInUser } = useContext(LoggedInUserContext);
+  const { loggedInUser, authLoading } = useContext(LoggedInUserContext);
   const location = useLocation();
+
+  // Block rendering while initial auth state is loading
+  if (authLoading) {
+    return <InitialSplashScreen />;
+  }
 
   // Holds the currently selected course and progress.
   // Shared across Dashboard, Course and Lesson pages.
