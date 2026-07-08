@@ -55,7 +55,7 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
           <div className="flex-1 h-px bg-gray-100" />
         </div>
 
-        <div className="flex items-center justify-between gap-6 bg-white rounded-2xl border border-gray-100 shadow-sm px-7 py-6 max-w-2xl">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-white rounded-2xl border border-gray-100 shadow-sm px-7 py-6 max-w-2xl">
           {/* Left: Icon + Text */}
           <div className="flex items-start gap-5">
             {/* Compass icon */}
@@ -89,7 +89,7 @@ function Dashboard({ course, allCourses, setCourse, userProgress }) {
           </div>
 
           {/* Right: CTA */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 self-start sm:self-auto ml-[68px] sm:ml-0">
             <Link
               to="/money-compass"
               className="inline-block bg-[#0EB689] hover:bg-[#0c9d76] text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all duration-200 whitespace-nowrap"
